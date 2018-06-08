@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -90,13 +90,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tech2k18">
-<meta property="og:url" content="https://dsxlinux.github.io/archives/index.html">
+<meta name="description" content="本文主要介绍centos系统程序包管理软件Yum命令的详细使用方法。">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yum命令详解">
+<meta property="og:url" content="https://dsxlinux.github.io/2018/06/08/linux-yum/index.html">
 <meta property="og:site_name" content="Tech2k18">
+<meta property="og:description" content="本文主要介绍centos系统程序包管理软件Yum命令的详细使用方法。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-08T18:06:17.616Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tech2k18">
+<meta name="twitter:title" content="yum命令详解">
+<meta name="twitter:description" content="本文主要介绍centos系统程序包管理软件Yum命令的详细使用方法。">
 
 
 
@@ -126,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://dsxlinux.github.io/archives/"/>
+  <link rel="canonical" href="https://dsxlinux.github.io/2018/06/08/linux-yum/"/>
 
 
 
 
 
-  <title>归档 | Tech2k18</title>
+  <title>yum命令详解 | Tech2k18</title>
   
 
 
@@ -151,7 +156,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
@@ -288,222 +293,259 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dsxlinux.github.io/2018/06/08/linux-yum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong Shouxin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tech2k18">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">yum命令详解</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-08T13:50:20+08:00">
+                2018-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 5 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/08/linux-yum/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/08/linux-yum/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/08/linux-text/" itemprop="url">
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">Linux文本文件处理(1)</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,039
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-08T17:00:00+08:00"
-              content="2018-06-08" >
-          06-08
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/08/linux-yum/" itemprop="url">
-              
-                <span itemprop="name">yum命令详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-08T13:50:20+08:00"
-              content="2018-06-08" >
-          06-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/08/linux-php-version/" itemprop="url">
-              
-                <span itemprop="name">Centos下Yum安装PHP5.5、PHP5.6、PHP7.0</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-08T10:00:00+08:00"
-              content="2018-06-08" >
-          06-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>本文主要介绍centos系统程序包管理软件Yum命令的详细使用方法。<br><a id="more"></a><br>Yum软件包管理方式，在Red Hat,Fedora,CentOS等发行版本上运用广泛。</p>
+<h4 id="1-Yum的工作机制"><a href="#1-Yum的工作机制" class="headerlink" title="1. Yum的工作机制"></a>1. Yum的工作机制</h4><p>将诸多程序的包信息和头文件提取出来，放到一个集中的地方，记录其依赖关系。在下次安装的时候，均于存储的库文件查找相应的对应关系，再安装所依赖的软件程序。</p>
+<h4 id="2-Yum配置文件"><a href="#2-Yum配置文件" class="headerlink" title="2. Yum配置文件"></a>2. Yum配置文件</h4><p>主配置文件：/etc/yum.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[main]：主名称，固定名称</span><br><span class="line">cachedir=/var/cache/yum/$basearch/$releasever       缓存目录</span><br><span class="line">keepcache=0                                         是否保存缓存</span><br><span class="line">debuglevel=2                                        调试级别</span><br><span class="line">exactarch=1                                         是否做精确严格的平台匹配</span><br><span class="line">gpgcheck=1                                          检查来源法性和完整性</span><br><span class="line">plugins=1                                           是否支持插件</span><br><span class="line">installonly_limit=4                                 同时安装几个</span><br></pre></td></tr></table></figure></p>
+<p>子配置文件：/etc/yum.repos.d/*.repo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[repository ID] ：ID名称，即仓库名称，不可与其他ID重命</span><br><span class="line">name=                     (对ID名称的说明)</span><br><span class="line">baserul=URL1</span><br><span class="line">URL2</span><br><span class="line">URL3                    （如果同一个源有多个镜像，可以在此我写几个，但每个URL需换行）</span><br><span class="line">mirrorlist=              (有一台服务器在网络上，保存了多个baseurl，如果使用这项，就不使用baseurl项）</span><br><span class="line">enabled=&#123;1|0&#125;</span><br><span class="line">gpgcheck=&#123;1|0&#125;</span><br><span class="line">repo_gpgcheck=           (检查仓库的元数据的签名信息)</span><br><span class="line">gpgkey=URL               (gpg密钥文件）</span><br><span class="line">enablegroups= &#123;1|0&#125;&#125;    (是否在此仓库中上使用组来指管理程序包)</span><br><span class="line">failovermethod= roundrobin|priority (对多个baseurl做优先级的，roundrobin为轮循，priority为优先级，默认为轮循，意为随机）</span><br><span class="line">keepalive=              (如果对方是http 1.0是否要保持连接)</span><br><span class="line">username=               (yum的验证用户)</span><br><span class="line">password=               (yum的验证用户密码)</span><br><span class="line">cost=                   (默认baseurl都为1000)</span><br></pre></td></tr></table></figure></p>
+<p>Yum仓库的配置文件示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[epel]</span><br><span class="line">name=Extra Packages for Enterprise Linux 6 - $basearch</span><br><span class="line">#baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch</span><br><span class="line">mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch</span><br><span class="line">failovermethod=priority</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6</span><br></pre></td></tr></table></figure></p>
+<p>其中使用了变量<br>$releasever:当前os的发行版本的主版本号<br>$arch:平台<br>$basearch:基础平台</p>
+<h4 id="3-常用的国内Yum源"><a href="#3-常用的国内Yum源" class="headerlink" title="3. 常用的国内Yum源"></a>3. 常用的国内Yum源</h4><ul>
+<li>中科大<br><a href="http://mirrors.ustc.edu.cn/centos/CentOS-Base.5.mirrors.repo" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/centos/CentOS-Base.5.mirrors.repo</a><br><a href="http://mirrors.ustc.edu.cn/centos/6/os/x86_64/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/centos/6/os/x86_64/</a></li>
+<li>搜狐<br><a href="http://mirrors.sohu.com/help/CentOS-Base-sohu.repo" target="_blank" rel="noopener">http://mirrors.sohu.com/help/CentOS-Base-sohu.repo</a><br><a href="http://mirrors.sohu.com/centos/6/os/x86_64/" target="_blank" rel="noopener">http://mirrors.sohu.com/centos/6/os/x86_64/</a></li>
+<li>REMI<br><a href="http://rpms.remirepo.net/" target="_blank" rel="noopener">http://rpms.remirepo.net/</a>                REMI网站<br><a href="https://mirrors.tuna.tsinghua.edu.cn/remi/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/remi/</a>             REMI中国镜像<br><a href="http://rpms.remirepo.net/enterprise/" target="_blank" rel="noopener">http://rpms.remirepo.net/enterprise/</a><br><a href="http://rpms.remirepo.net/enterprise/remi-release-6.rpm" target="_blank" rel="noopener">http://rpms.remirepo.net/enterprise/remi-release-6.rpm</a></li>
+<li>163源<br><a href="http://mirrors.163.com/centos/" target="_blank" rel="noopener">http://mirrors.163.com/centos/</a></li>
+<li>阿里云<br><a href="https://opsx.alibaba.com/mirror" target="_blank" rel="noopener">https://opsx.alibaba.com/mirror</a></li>
+<li>中国科技大学<br><a href="http://centos.ustc.edu.cn/centos/" target="_blank" rel="noopener">http://centos.ustc.edu.cn/centos/</a></li>
+<li>rpm包常用下载地址<br><a href="https://centos.pkgs.org/" target="_blank" rel="noopener">https://centos.pkgs.org/</a><br><a href="http://rpmfind.net/" target="_blank" rel="noopener">http://rpmfind.net/</a><br><a href="http://dl.fedoraproject.org/pub/epel/" target="_blank" rel="noopener">http://dl.fedoraproject.org/pub/epel/</a></li>
+</ul>
+<h4 id="4-制作Yum源"><a href="#4-制作Yum源" class="headerlink" title="4. 制作Yum源"></a>4. 制作Yum源</h4><p>上面介绍的都是网络上做好的yum源，我们也可以自己来制作yum源。<br></p>
+<ul>
+<li><p>本地光盘源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir /media/cdrom</span><br><span class="line">mount /dev/cdrom /media/cdrom/</span><br><span class="line">cd /etc/yum.repos.d/</span><br><span class="line">vim cdrom.repo</span><br><span class="line">[cdrom]</span><br><span class="line">name=cdrom repolist</span><br><span class="line">baseurl=file:///media/cdrom/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件夹源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mkdir /yum</span><br><span class="line">yum -y install createrepo</span><br><span class="line">mv *.rpm /yum</span><br><span class="line">createrepo /yum</span><br><span class="line">cd /etc/yum.repos.d/</span><br><span class="line">vim cdrom.repo</span><br><span class="line">[local]</span><br><span class="line">name=local directory repolist</span><br><span class="line">baseurl=file:///media/cdrom/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>网络yum源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install httpd -y</span><br><span class="line">ln -s /yum /var/www/html/</span><br><span class="line">service httpd start</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>添加新的yum源：<br>yum install yum-utils -y<br>yum-config-manager –add-repo=file:///yum/</p>
+<h4 id="5-yum命令使用"><a href="#5-yum命令使用" class="headerlink" title="5. yum命令使用"></a>5. yum命令使用</h4><p>安装软件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install packagename</span><br></pre></td></tr></table></figure></p>
+<p>升级软件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum update packagename</span><br></pre></td></tr></table></figure></p>
+<p>卸载软件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove packagename</span><br></pre></td></tr></table></figure></p>
+<p>搜索已安装软件包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search keyword</span><br></pre></td></tr></table></figure></p>
+<p>查看软件包额外信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info packagename</span><br></pre></td></tr></table></figure></p>
+<p>查看可安装的软件包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list | less</span><br></pre></td></tr></table></figure></p>
+<p>列出已安装软件包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | less</span><br></pre></td></tr></table></figure></p>
+<p>显示仓库的所有程序包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list</span><br></pre></td></tr></table></figure></p>
+<p>查看特定文件属于哪个软件包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum provides /etc/sysconfig/nfs</span><br></pre></td></tr></table></figure></p>
+<p>列出可获得的软件组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum grouplist</span><br></pre></td></tr></table></figure></p>
+<p>安装某个特定软件组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall</span><br></pre></td></tr></table></figure></p>
+<p>升级软件组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupupdate &apos;Graphical Internet&apos;</span><br></pre></td></tr></table></figure></p>
+<p>卸载软件组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupremove &apos;DNS Name Server&apos;</span><br></pre></td></tr></table></figure></p>
+<p>列出当前yum软件源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist</span><br></pre></td></tr></table></figure></p>
+<p>查看yum安装的历史<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum history</span><br><span class="line">yum history info 3</span><br><span class="line">yum history undo 4</span><br></pre></td></tr></table></figure></p>
+<p>安装及升级本地程序包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum localinstall rpmfile1</span><br><span class="line">yum localupdate rpmfile1</span><br></pre></td></tr></table></figure></p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/08/linux-basic-02/" itemprop="url">
-              
-                <span itemprop="name">Linux基础02篇</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-08T00:28:44+08:00"
-              content="2018-06-08" >
-          06-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/07/linux-basic-01/" itemprop="url">
-              
-                <span itemprop="name">Linux基础01篇</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-07T02:20:14+08:00"
-              content="2018-06-07" >
-          06-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/08/linux-php-version/" rel="next" title="Centos下Yum安装PHP5.5、PHP5.6、PHP7.0">
+                <i class="fa fa-chevron-left"></i> Centos下Yum安装PHP5.5、PHP5.6、PHP7.0
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/08/linux-text/" rel="prev" title="Linux文本文件处理(1)">
+                Linux文本文件处理(1) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -511,6 +553,44 @@
 
 
           
+
+  
+  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+  <div id="container" style="display:none"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      theme: myTheme,
+      owner: '',
+      repo: '',
+      oauth: {
+        client_id: '',
+        client_secret: ''
+      }
+    });
+    gitment.render('container');
+  }
+  </script>
+
+
+
 
         </div>
         
@@ -531,8 +611,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -603,6 +692,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Yum的工作机制"><span class="nav-number">1.</span> <span class="nav-text">1. Yum的工作机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Yum配置文件"><span class="nav-number">2.</span> <span class="nav-text">2. Yum配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-常用的国内Yum源"><span class="nav-number">3.</span> <span class="nav-text">3. 常用的国内Yum源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-制作Yum源"><span class="nav-number">4.</span> <span class="nav-text">4. 制作Yum源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-yum命令使用"><span class="nav-number">5.</span> <span class="nav-text">5. yum命令使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -761,6 +866,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

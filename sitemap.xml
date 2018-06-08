@@ -2,30 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/06/08/linux-basic-02/</loc>
+    
+    <lastmod>2018-06-08T18:06:17.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/08/linux-php-version/</loc>
+    
+    <lastmod>2018-06-08T18:06:17.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/08/linux-text/</loc>
+    
+    <lastmod>2018-06-08T18:06:17.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/08/linux-yum/</loc>
+    
+    <lastmod>2018-06-08T18:06:17.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/07/linux-basic-01/</loc>
+    
+    <lastmod>2018-06-08T18:06:17.615Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/about/index.html</loc>
     
-    <lastmod>2018-06-04T11:36:33.689Z</lastmod>
+    <lastmod>2018-06-04T11:36:33.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/categories/index.html</loc>
     
-    <lastmod>2018-06-04T11:36:26.773Z</lastmod>
+    <lastmod>2018-06-04T11:36:26.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/tags/index.html</loc>
     
-    <lastmod>2018-06-04T11:36:19.198Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/06/04/hello-world/</loc>
-    
-    <lastmod>2018-06-04T10:23:06.872Z</lastmod>
+    <lastmod>2018-06-04T11:36:19.000Z</lastmod>
     
   </url>
   

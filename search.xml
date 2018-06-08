@@ -1,8 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F06%2F04%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[Linux文本文件处理(1)]]></title>
+    <url>%2F2018%2F06%2F08%2Flinux-text%2F</url>
+    <content type="text"><![CDATA[本文主要介绍Linux下文本文件的查看等操作相关的命令。 1. 文本文件查看命令cat命令 查看文件内容123cat 1.txt 查看文本文件内容cat -n 1.txt 显示行号，空行也算一行cat -nb 1.txt 显示行号，空行忽略 head命令 显示文件前十行的内容(默认)123head 1.txthead -n 20 1.txt 显示文件前20行的内容head -20 1.txt 显示文件前20行的内容 tail命令 查看文件最后十行的内容(默认)1234tail -n 5 1.txt 最后5行tail -5 1.txt 最后5行tail -f 1.txt 动态查看文件内容tailf 1.txt 动态查看文件内容 more命令 分页显示1more 1.txt less命令 分页显示1less 1.txt tac命令 文件内容的输出上下反，不影响源文件1tac 1.txt tac 反过来 cat rev命令 左右反，不影响源文件1rev 1.txt tee命令 将数据重定向到文件和标准输出12ls | tee out.txtls | tee out.txt | cat -n 2. 其他命令wc命令 字符统计123cat /etc/passwd | wc -lcat /etc/passwd | wc -ccat /etc/passwd | wc -w cut命令123who|cut -b 3-5cut -f2 -d&quot;;&quot; test2.txt -d分隔符是&quot;:&quot;，-f是列 cut -f2 --complement test.txt --complement 选项提取指定字段之外的列 tr命令1234567echo &quot;HELLO WORLD&quot; | tr &apos;A-Z&apos; &apos;a-z&apos; 将输入字符由大写转换为小写hello worldecho &quot;hello 123 world 456&quot; | tr -d &apos;0-9&apos; 使用tr删除字符hello world cat text | tr &apos;\t&apos; &apos; &apos; 将制表符转换为空格 sort命令 排序1sort -t &apos; &apos; -k 1.2 facebook.txt uniq命令 忽略文件中的重复行12sort file.txt | uniq sort -u file.txt]]></content>
+      <categories>
+        <category>linux-basic</category>
+      </categories>
+      <tags>
+        <tag>linux-basic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[yum命令详解]]></title>
+    <url>%2F2018%2F06%2F08%2Flinux-yum%2F</url>
+    <content type="text"><![CDATA[本文主要介绍centos系统程序包管理软件Yum命令的详细使用方法。Yum软件包管理方式，在Red Hat,Fedora,CentOS等发行版本上运用广泛。 1. Yum的工作机制将诸多程序的包信息和头文件提取出来，放到一个集中的地方，记录其依赖关系。在下次安装的时候，均于存储的库文件查找相应的对应关系，再安装所依赖的软件程序。 2. Yum配置文件主配置文件：/etc/yum.conf12345678[main]：主名称，固定名称cachedir=/var/cache/yum/$basearch/$releasever 缓存目录keepcache=0 是否保存缓存debuglevel=2 调试级别exactarch=1 是否做精确严格的平台匹配gpgcheck=1 检查来源法性和完整性plugins=1 是否支持插件installonly_limit=4 同时安装几个 子配置文件：/etc/yum.repos.d/*.repo12345678910111213141516[repository ID] ：ID名称，即仓库名称，不可与其他ID重命name= (对ID名称的说明)baserul=URL1URL2URL3 （如果同一个源有多个镜像，可以在此我写几个，但每个URL需换行）mirrorlist= (有一台服务器在网络上，保存了多个baseurl，如果使用这项，就不使用baseurl项）enabled=&#123;1|0&#125;gpgcheck=&#123;1|0&#125;repo_gpgcheck= (检查仓库的元数据的签名信息)gpgkey=URL (gpg密钥文件）enablegroups= &#123;1|0&#125;&#125; (是否在此仓库中上使用组来指管理程序包)failovermethod= roundrobin|priority (对多个baseurl做优先级的，roundrobin为轮循，priority为优先级，默认为轮循，意为随机）keepalive= (如果对方是http 1.0是否要保持连接)username= (yum的验证用户)password= (yum的验证用户密码)cost= (默认baseurl都为1000) Yum仓库的配置文件示例12345678[epel]name=Extra Packages for Enterprise Linux 6 - $basearch#baseurl=http://download.fedoraproject.org/pub/epel/6/$basearchmirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearchfailovermethod=priorityenabled=1gpgcheck=1gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6 其中使用了变量$releasever:当前os的发行版本的主版本号$arch:平台$basearch:基础平台 3. 常用的国内Yum源 中科大http://mirrors.ustc.edu.cn/centos/CentOS-Base.5.mirrors.repohttp://mirrors.ustc.edu.cn/centos/6/os/x86_64/ 搜狐http://mirrors.sohu.com/help/CentOS-Base-sohu.repohttp://mirrors.sohu.com/centos/6/os/x86_64/ REMIhttp://rpms.remirepo.net/ REMI网站https://mirrors.tuna.tsinghua.edu.cn/remi/ REMI中国镜像http://rpms.remirepo.net/enterprise/http://rpms.remirepo.net/enterprise/remi-release-6.rpm 163源http://mirrors.163.com/centos/ 阿里云https://opsx.alibaba.com/mirror 中国科技大学http://centos.ustc.edu.cn/centos/ rpm包常用下载地址https://centos.pkgs.org/http://rpmfind.net/http://dl.fedoraproject.org/pub/epel/ 4. 制作Yum源上面介绍的都是网络上做好的yum源，我们也可以自己来制作yum源。 本地光盘源 123456789mkdir /media/cdrommount /dev/cdrom /media/cdrom/cd /etc/yum.repos.d/vim cdrom.repo[cdrom]name=cdrom repolistbaseurl=file:///media/cdrom/gpgcheck=0enabled=1 文件夹源 1234567891011mkdir /yumyum -y install createrepomv *.rpm /yumcreaterepo /yumcd /etc/yum.repos.d/vim cdrom.repo[local]name=local directory repolistbaseurl=file:///media/cdrom/gpgcheck=0enabled=1 网络yum源 123yum install httpd -yln -s /yum /var/www/html/service httpd start 添加新的yum源：yum install yum-utils -yyum-config-manager –add-repo=file:///yum/ 5. yum命令使用安装软件1yum install packagename 升级软件1yum update packagename 卸载软件1yum remove packagename 搜索已安装软件包1yum search keyword 查看软件包额外信息1yum info packagename 查看可安装的软件包1yum list | less 列出已安装软件包1yum list installed | less 显示仓库的所有程序包1yum list 查看特定文件属于哪个软件包1yum provides /etc/sysconfig/nfs 列出可获得的软件组1yum grouplist 安装某个特定软件组1yum groupinstall 升级软件组1yum groupupdate &apos;Graphical Internet&apos; 卸载软件组1yum groupremove &apos;DNS Name Server&apos; 列出当前yum软件源1yum repolist 查看yum安装的历史123yum historyyum history info 3yum history undo 4 安装及升级本地程序包12yum localinstall rpmfile1yum localupdate rpmfile1]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Centos下Yum安装PHP5.5、PHP5.6、PHP7.0]]></title>
+    <url>%2F2018%2F06%2F08%2Flinux-php-version%2F</url>
+    <content type="text"><![CDATA[本文主要介绍centos系统上如何升级php的版本。Centos系统默认有php，但是默认的版本太低，手动安装有一些麻烦，于是使用Yum来安装。 1. 检查当前安装的PHP包1yum list installed | grep php 如果已经安装PHP的包，先卸载掉。1yum remove php.x86_64 php-cli.x86_64 php-common.x86_64 php-gd.x86_64 php-ldap.x86_64 php-mbstring.x86_64 php-mcrypt.x86_64 php-mysql.x86_64 php-pdo.x86_64 2. 安装新的Yum源Centos 5.x1rpm -Uvh http://mirror.webtatic.com/yum/el5/latest.rpm CentOs 6.x1rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm CentOs 7.x12rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpmrpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 3. 安装PHP1yum install php55w.x86_64 php55w-cli.x86_64 php55w-common.x86_64 php55w-gd.x86_64 php55w-ldap.x86_64 php55w-mbstring.x86_64 php55w-mcrypt.x86_64 php55w-mysql.x86_64 php55w-pdo.x86_64 1yum install php56w.x86_64 php56w-cli.x86_64 php56w-common.x86_64 php56w-gd.x86_64 php56w-ldap.x86_64 php56w-mbstring.x86_64 php56w-mcrypt.x86_64 php56w-mysql.x86_64 php56w-pdo.x86_64 1yum install php70w.x86_64 php70w-cli.x86_64 php70w-common.x86_64 php70w-gd.x86_64 php70w-ldap.x86_64 php70w-mbstring.x86_64 php70w-mcrypt.x86_64 php70w-mysql.x86_64 php70w-pdo.x86_64 4. 安装PHP FPM123yum install php55w-fpmyum install php56w-fpmyum install php70w-fpm]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux基础02篇]]></title>
+    <url>%2F2018%2F06%2F08%2Flinux-basic-02%2F</url>
+    <content type="text"><![CDATA[本文主要介绍文件系统、文件权限、文件打包和解包及软件包管理方面的命令。 1. 文件系统磁盘分区 磁盘分区主要使用fdisk（sfdisk）命令和parted命令。 1234sfdisk -lsfdisk -scfdisk -Psfdisk -l 格式化 mkfs命令 12mkfs.ext4mfks -t ext4 /dev/sda6 挂载 1234mount命令mount /dev/sda5 /testmount /soft/rhel-server-6.3-x86_64-dvd.iso /yum/ -o loopmount -o remount,noexec / 查看磁盘 1234567df –h 显示已经挂载的分区列表df –T 显示分区列表的文件系统类型du -sh dir1 估算目录 &apos;dir1&apos; 已经使用的磁盘空间fsck 文件系统修复dumpe2fs /dev/sda1 显示磁盘状态findmnt 查找已经被挂载的文件系统blkid 2. 文件权限基本的权限 12345678chmod u+s /bin/file1 设置一个二进制文件的SUID 位chmod u-s /bin/file1 禁用一个二进制文件的SUID位chmod g+s /home/public 设置一个目录的SGID位chmod g-s /home/public 禁用一个目录的SGID位chmod o+t /home/public 设置一个文件的STIKY位chmod o-t /home/public 禁用一个目录的STIKY位chown user1:group1 file1 改变一个文件的所有人和群组属性chown -R user1 directory1 改变一个目录的所有人属性并同时改变改目录下所有文件的属性 特殊权限 12345678chattr +a file1 只允许以追加方式读写文件chattr +c file1 允许这个文件能被内核自动压缩/解压chattr +d file1 在进行文件系统备份时，dump程序将忽略这个文件chattr +i file1 设置成不可变的文件，不能被删除、修改、重命名或者链接chattr +s file1 允许一个文件被安全地删除chattr +S file1 一旦应用程序对这个文件执行了写操作，使系统立刻把修改的结果写到磁盘chattr +u file1 若文件被删除，系统会允许你在以后恢复这个被删除的文件lsattr 显示特殊的属性 3.文件打包和解包 示例： 123456789101112tar -cvf archive.tar file1 创建一个非压缩的 tarballtar -cvf archive.tar file1 file2 dir1 创建一个包含了 &apos;file1&apos;, &apos;file2&apos; 以及 &apos;dir1&apos;的档案文件tar -tf archive.tar 显示一个包中的内容tar -xvf archive.tar 释放一个包tar -xvf archive.tar -C /tmp 将压缩包释放到 /tmp目录下tar -cvfj archive.tar.bz2 dir1 创建一个bzip2格式的压缩包tar -xvfj archive.tar.bz2 解压一个bzip2格式的压缩包tar -cvfz archive.tar.gz dir1 创建一个gzip格式的压缩包tar -xvfz archive.tar.gz 解压一个gzip格式的压缩包zip file1.zip file1 创建一个zip格式的压缩包zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包unzip file1.zip 解压一个zip格式压缩包 4. 软件包管理rpm包管理 12345678910111213rpm -ivh package.rpm 安装一个rpm包rpm -ivh --nodeeps package.rpm 安装一个rpm包而忽略依赖关系警告rpm -U package.rpm 更新一个rpm包但不改变其配置文件rpm -e package_name.rpm 删除一个rpm包rpm -qa 显示系统中所有已经安装的rpm包rpm -qa | grep httpd 显示所有名称中包含 &quot;httpd&quot; 字样的rpm包rpm -qi package_name 获取一个已安装包的特殊信息rpm -ql package_name 显示一个已经安装的rpm包提供的文件列表rpm -qc package_name 显示一个已经安装的rpm包提供的配置文件列表rpm -qf /etc/httpd/conf/httpd.conf 确认所给的文件由哪个rpm包所提供rpm -qp package.rpm -l 显示由一个尚未安装的rpm包提供的文件列表rpm --import /media/cdrom/RPM-GPG-KEY 导入公钥数字证书 rpmbuild --rebuild package_name.src.rpm 从一个rpm源码构建一个 rpm 包 yum管理工具 123456789yum install package_name 下载并安装一个rpm包yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系yum update package_name.rpm 更新当前系统中所有安装的rpm包yum update package_name 更新一个rpm包yum remove package_name 删除一个rpm包yum list 列出当前系统中安装的所有包yum search package_name 在rpm仓库中搜寻软件包yum clean packages 清理rpm缓存删除下载的包yum clean all 删除所有缓存的包]]></content>
+      <categories>
+        <category>linux-basic</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux基础01篇]]></title>
+    <url>%2F2018%2F06%2F07%2Flinux-basic-01%2F</url>
+    <content type="text"><![CDATA[从今天开始，陆续介绍Linux常用命令。本文主要介绍文件和目录、文件搜素相关的命令。 1. 文件和目录cd命令123456789cd / 进入系统根目录[root@rzx ~]# cd /cd /home 进入根下的home目录[root@rzx ~]# cd /homecd .. 进入当前目录的上一级目录[root@rzx ~]# cd ..cd - 进入上次所在的目录[root@rzx ~]# cd - ls和pwd命令12345ls 注意ls的参数[root@rzx ~]# ls -a -l -d -hpwd 显示当前工作路径[root@rzx ~]# pwd mkdir命令1234mkdir /test 在根目录下创建test目录[root@rzx ~]# mkdir /testmkdir -p /a/b/c/d 创建多级目录，-p参数是不报错的[root@rzx ~]# mkdir -p /a/b/c/d cp命令1234cp file1 file2 复制一个文件 [root@rzx ~]# cp a.txt b.txtcp -ar dir1 dir2 复制一个目录[root@rzx ~]# cp -ar /abc /test mv命令1234mv /opt/a /root/ 移动文件[root@rzx ~]# mv /opt/a /root/mv /opt/a /root/ 移动文件[root@rzx ~]# mv /opt/a /root/b touch命令1234567touch 1.txt 创建文件[root@rzx ~]# touch 1.txt[root@rzx ~]# touch &#123;a..z&#125;[root@rzx ~]# touch &#123;a..z..2&#125;[root@rzx ~]# touch a&#123;1..5&#125;[root@rzx ~]# touch a&#123;1..5&#125;.txt[root@rzx ~]# touch &#123;1..5&#125;&#123;a..f&#125; file命令12查看文件的类型[root@rzx ~]# file /dev/sda tree命令123显示文件和目录由根目录开始的树形结构[root@rzx ~]# yum install tree[root@rzx ~]# tree –L 1 2. 文件搜素whereis和which命令123查找二进制文件[root@rzx ~]# which cat[root@rzx ~]# whereis whereis find命令1234567891011121314151617181920按名称查找[root@rzx ~]# find /etc/ -name grub.conf[root@rzx ~]# find /etc/ -name &quot;*.conf&quot;[root@rzx ~]# find /etc/ -name &quot;.*&quot;[root@rzx ~]# find /test/ -iname Abc按类型查找[root@rzx ~]# find / -type f[root@rzx ~]# find / -type b[root@rzx ~]# find / -type s[root@rzx ~]# find / -type c[root@rzx ~]# find / -type p[root@rzx ~]# find / -type d[root@rzx ~]# find / -type l按大小查找[root@rzx ~]# find / -size +500M[root@rzx ~]# find / -size +1G[root@rzx ~]# find / -size +50k[root@rzx ~]# find / -size -1M[root@rzx ~]# find / -size +3c[root@rzx ~]# find / -size +80M -size -100M locate命令12345678速度快，通过系统带的一个数据库去查找，数据是非实时的。速度快，通过系统带的一个数据库去查找，数据是非实时的。系统每天自动更新一次，是通过时间任务执行的：/etc/cron.daily/mlocate.cron/usr/bin/updatedb 主要用来更新数据库，通过crontab自动完成的/usr/bin/locate 查询文件位置/etc/updatedb.conf updatedb的配置文件/var/lib/mlocate/mlocate.db 存放文件信息的文件[root@rzx ~]# locate passwd]]></content>
+      <categories>
+        <category>linux-basic</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
   </entry>
 </search>
