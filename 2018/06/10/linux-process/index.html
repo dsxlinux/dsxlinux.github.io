@@ -493,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/10/linux-sed/" rel="next" title="Linux文本文件处理(4)">
-                <i class="fa fa-chevron-left"></i> Linux文本文件处理(4)
+              <a href="/2018/06/09/linux-awk/" rel="next" title="Linux文本文件处理(3)">
+                <i class="fa fa-chevron-left"></i> Linux文本文件处理(3)
               </a>
             
           </div>
@@ -503,8 +503,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/10/linux-system/" rel="prev" title="Linux系统相关命令">
-                Linux系统相关命令 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/10/linux-sed/" rel="prev" title="Linux文本文件处理(4)">
+                Linux文本文件处理(4) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -535,42 +535,6 @@
           
 
   
-  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
-  <div id="container" style="display:none"></div>
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-  <script>
-  const myTheme = {
-    render(state, instance) {
-      const container = document.createElement('div');
-      container.lang = "en-US";
-      container.className = 'gitment-container gitment-root-container';
-      container.appendChild(instance.renderHeader(state, instance));
-      container.appendChild(instance.renderEditor(state, instance));
-      container.appendChild(instance.renderComments(state, instance));
-      container.appendChild(instance.renderFooter(state, instance));
-      return container;
-    }
-  }
-  function showGitment() {
-    $("#gitment_title").attr("style", "display:none");
-    $("#container").attr("style", "").addClass("gitment_container");
-    var gitment = new Gitment({
-      id: window.location.pathname,
-      theme: myTheme,
-      owner: '',
-      repo: '',
-      oauth: {
-        client_id: 'c8b2f1b20439b6d4f32d',
-        client_secret: '9a33b0fa2895f43decd6b08d221ae39ee9fb96c7'
-      }
-    });
-    gitment.render('container');
-  }
-  </script>
-
-
-
 
         </div>
         
@@ -894,6 +858,11 @@
     
 <!-- END LOCAL -->
 
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
     
 
     
