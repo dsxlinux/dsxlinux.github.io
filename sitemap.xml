@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/categories/index.html</loc>
+    
+    <lastmod>2018-06-11T12:29:39.315Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/tags/index.html</loc>
     
-    <lastmod>2018-06-11T10:14:48.603Z</lastmod>
+    <lastmod>2018-06-11T12:29:31.563Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/about/index.html</loc>
+    
+    <lastmod>2018-06-11T12:29:22.117Z</lastmod>
     
   </url>
   
@@ -82,20 +96,6 @@
     <loc>https://dsxlinux.github.io/2018/06/07/linux-basic-01/</loc>
     
     <lastmod>2018-06-09T15:02:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/categories/index.html</loc>
-    
-    <lastmod>2018-06-08T18:16:59.310Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/about/index.html</loc>
-    
-    <lastmod>2018-06-08T18:16:37.652Z</lastmod>
     
   </url>
   
