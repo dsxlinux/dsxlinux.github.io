@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="Tech2k18">
 <meta property="og:description" content="本文主要介绍Linux下文本文件的查看等操作相关的命令。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T15:02:35.000Z">
+<meta property="og:updated_time" content="2018-06-13T16:20:38.164Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux文本文件处理(1)">
 <meta name="twitter:description" content="本文主要介绍Linux下文本文件的查看等操作相关的命令。">
@@ -428,19 +428,19 @@
 
       
         <p>本文主要介绍Linux下文本文件的查看等操作相关的命令。<br><a id="more"></a></p>
-<h4 id="1-文本文件查看命令"><a href="#1-文本文件查看命令" class="headerlink" title="1. 文本文件查看命令"></a>1. 文本文件查看命令</h4><p>cat命令                            查看文件内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat 1.txt						查看文本文件内容</span><br><span class="line">cat -n 1.txt					显示行号，空行也算一行</span><br><span class="line">cat -nb 1.txt					显示行号，空行忽略</span><br></pre></td></tr></table></figure></p>
-<p>head命令                        显示文件前十行的内容(默认)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">head 1.txt</span><br><span class="line">head -n 20 1.txt				显示文件前20行的内容</span><br><span class="line">head -20 1.txt					显示文件前20行的内容</span><br></pre></td></tr></table></figure></p>
-<p>tail命令                        查看文件最后十行的内容(默认)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tail -n 5 1.txt 				最后5行</span><br><span class="line">tail -5 1.txt					最后5行</span><br><span class="line">tail -f 1.txt					动态查看文件内容</span><br><span class="line">tailf	1.txt					动态查看文件内容</span><br></pre></td></tr></table></figure></p>
-<p>more命令                        分页显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">more 1.txt</span><br></pre></td></tr></table></figure></p>
-<p>less命令                        分页显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less 1.txt</span><br></pre></td></tr></table></figure></p>
-<p>tac命令                            文件内容的输出上下反，不影响源文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tac 1.txt						tac 反过来 cat</span><br></pre></td></tr></table></figure></p>
-<p>rev命令                            左右反，不影响源文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rev 1.txt</span><br></pre></td></tr></table></figure></p>
-<p>tee命令                            将数据重定向到文件和标准输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls | tee out.txt</span><br><span class="line">ls | tee out.txt | cat -n</span><br></pre></td></tr></table></figure></p>
-<h4 id="2-其他命令"><a href="#2-其他命令" class="headerlink" title="2. 其他命令"></a>2. 其他命令</h4><p>wc命令                            字符统计<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd | wc -l</span><br><span class="line">cat /etc/passwd | wc -c</span><br><span class="line">cat /etc/passwd | wc -w</span><br></pre></td></tr></table></figure></p>
-<p>cut命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">who|cut -b 3-5</span><br><span class="line">cut -f2 -d&quot;;&quot; test2.txt			-d分隔符是&quot;:&quot;，-f是列			</span><br><span class="line">cut -f2 --complement test.txt 	--complement 选项提取指定字段之外的列</span><br></pre></td></tr></table></figure></p>
-<p>tr命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;HELLO WORLD&quot; | tr &apos;A-Z&apos; &apos;a-z&apos;			将输入字符由大写转换为小写</span><br><span class="line">hello world</span><br><span class="line"></span><br><span class="line">echo &quot;hello 123 world 456&quot; | tr -d &apos;0-9&apos;	使用tr删除字符</span><br><span class="line">hello  world </span><br><span class="line"></span><br><span class="line">cat text | tr &apos;\t&apos; &apos; &apos;						将制表符转换为空格</span><br></pre></td></tr></table></figure></p>
-<p>sort命令                                    排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort -t &apos; &apos; -k 1.2 facebook.txt</span><br></pre></td></tr></table></figure></p>
-<p>uniq命令                                    忽略文件中的重复行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sort file.txt | uniq						</span><br><span class="line">sort -u file.txt</span><br></pre></td></tr></table></figure></p>
+<h4 id="1-文本文件查看命令"><a href="#1-文本文件查看命令" class="headerlink" title="1. 文本文件查看命令"></a>1. 文本文件查看命令</h4><p>cat命令                            查看文件内容<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat 1.txt						查看文本文件内容</span><br><span class="line">cat -n 1.txt					显示行号，空行也算一行</span><br><span class="line">cat -nb 1.txt					显示行号，空行忽略</span><br></pre></td></tr></table></figure></p>
+<p>head命令                        显示文件前十行的内容(默认)<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">head 1.txt</span><br><span class="line">head -n 20 1.txt				显示文件前20行的内容</span><br><span class="line">head -20 1.txt					显示文件前20行的内容</span><br></pre></td></tr></table></figure></p>
+<p>tail命令                        查看文件最后十行的内容(默认)<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tail -n 5 1.txt 				最后5行</span><br><span class="line">tail -5 1.txt					最后5行</span><br><span class="line">tail -f 1.txt					动态查看文件内容</span><br><span class="line">tailf	1.txt					动态查看文件内容</span><br></pre></td></tr></table></figure></p>
+<p>more命令                        分页显示<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">more 1.txt</span><br></pre></td></tr></table></figure></p>
+<p>less命令                        分页显示<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less 1.txt</span><br></pre></td></tr></table></figure></p>
+<p>tac命令                            文件内容的输出上下反，不影响源文件<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tac 1.txt						tac 反过来 cat</span><br></pre></td></tr></table></figure></p>
+<p>rev命令                            左右反，不影响源文件<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rev 1.txt</span><br></pre></td></tr></table></figure></p>
+<p>tee命令                            将数据重定向到文件和标准输出<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls | tee out.txt</span><br><span class="line">ls | tee out.txt | cat -n</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-其他命令"><a href="#2-其他命令" class="headerlink" title="2. 其他命令"></a>2. 其他命令</h4><p>wc命令                            字符统计<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd | wc -l</span><br><span class="line">cat /etc/passwd | wc -c</span><br><span class="line">cat /etc/passwd | wc -w</span><br></pre></td></tr></table></figure></p>
+<p>cut命令<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">who|cut -b 3-5</span><br><span class="line">cut -f2 -d";" test2.txt			-d分隔符是":"，-f是列			</span><br><span class="line">cut -f2 --complement test.txt 	--complement 选项提取指定字段之外的列</span><br></pre></td></tr></table></figure></p>
+<p>tr命令<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo "HELLO WORLD" | tr 'A-Z' 'a-z'			将输入字符由大写转换为小写</span><br><span class="line">hello world</span><br><span class="line"></span><br><span class="line">echo "hello 123 world 456" | tr -d '0-9'	使用tr删除字符</span><br><span class="line">hello  world </span><br><span class="line"></span><br><span class="line">cat text | tr '\t' ' '						将制表符转换为空格</span><br></pre></td></tr></table></figure></p>
+<p>sort命令                                    排序<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort -t ' ' -k 1.2 facebook.txt</span><br></pre></td></tr></table></figure></p>
+<p>uniq命令                                    忽略文件中的重复行<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sort file.txt | uniq						</span><br><span class="line">sort -u file.txt</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -473,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/08/linux-yum/" rel="next" title="yum命令详解">
-                <i class="fa fa-chevron-left"></i> yum命令详解
+              <a href="/2018/06/08/linux-nopass-copy/" rel="next" title="Linux下远程拷贝时无需输入密码">
+                <i class="fa fa-chevron-left"></i> Linux下远程拷贝时无需输入密码
               </a>
             
           </div>
@@ -564,7 +564,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -661,7 +661,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">10.7k</span>
+    <span title="Site words total count">11.1k</span>
   
 </div>
 

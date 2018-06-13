@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="Tech2k18">
 <meta property="og:description" content="本文主要介绍centos系统上如何升级php的版本。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T15:02:34.000Z">
+<meta property="og:updated_time" content="2018-06-13T16:19:31.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos下Yum安装PHP5.5、PHP5.6、PHP7.0">
 <meta name="twitter:description" content="本文主要介绍centos系统上如何升级php的版本。">
@@ -428,15 +428,15 @@
 
       
         <p>本文主要介绍centos系统上如何升级php的版本。<br><a id="more"></a><br>Centos系统默认有php，但是默认的版本太低，手动安装有一些麻烦，于是使用Yum来安装。</p>
-<h4 id="1-检查当前安装的PHP包"><a href="#1-检查当前安装的PHP包" class="headerlink" title="1. 检查当前安装的PHP包"></a>1. 检查当前安装的PHP包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | grep php</span><br></pre></td></tr></table></figure>
-<p>如果已经安装PHP的包，先卸载掉。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove php.x86_64 php-cli.x86_64 php-common.x86_64 php-gd.x86_64 php-ldap.x86_64 php-mbstring.x86_64 php-mcrypt.x86_64 php-mysql.x86_64 php-pdo.x86_64</span><br></pre></td></tr></table></figure></p>
-<h4 id="2-安装新的Yum源"><a href="#2-安装新的Yum源" class="headerlink" title="2. 安装新的Yum源"></a>2. 安装新的Yum源</h4><p>Centos 5.x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh http://mirror.webtatic.com/yum/el5/latest.rpm</span><br></pre></td></tr></table></figure></p>
-<p>CentOs 6.x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm</span><br></pre></td></tr></table></figure></p>
-<p>CentOs 7.x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm</span><br><span class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</span><br></pre></td></tr></table></figure></p>
-<h4 id="3-安装PHP"><a href="#3-安装PHP" class="headerlink" title="3. 安装PHP"></a>3. 安装PHP</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install php55w.x86_64 php55w-cli.x86_64 php55w-common.x86_64 php55w-gd.x86_64 php55w-ldap.x86_64 php55w-mbstring.x86_64 php55w-mcrypt.x86_64 php55w-mysql.x86_64 php55w-pdo.x86_64</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install php56w.x86_64 php56w-cli.x86_64 php56w-common.x86_64 php56w-gd.x86_64 php56w-ldap.x86_64 php56w-mbstring.x86_64 php56w-mcrypt.x86_64 php56w-mysql.x86_64 php56w-pdo.x86_64</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install php70w.x86_64 php70w-cli.x86_64 php70w-common.x86_64 php70w-gd.x86_64 php70w-ldap.x86_64 php70w-mbstring.x86_64 php70w-mcrypt.x86_64 php70w-mysql.x86_64 php70w-pdo.x86_64</span><br></pre></td></tr></table></figure>
-<h4 id="4-安装PHP-FPM"><a href="#4-安装PHP-FPM" class="headerlink" title="4. 安装PHP FPM"></a>4. 安装PHP FPM</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install php55w-fpm</span><br><span class="line">yum install php56w-fpm</span><br><span class="line">yum install php70w-fpm</span><br></pre></td></tr></table></figure>
+<h4 id="1-检查当前安装的PHP包"><a href="#1-检查当前安装的PHP包" class="headerlink" title="1. 检查当前安装的PHP包"></a>1. 检查当前安装的PHP包</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | grep php</span><br></pre></td></tr></table></figure>
+<p>如果已经安装PHP的包，先卸载掉。<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove php.x86<span class="emphasis">_64 php-cli.x86_</span>64 php-common.x86<span class="emphasis">_64 php-gd.x86_</span>64 php-ldap.x86<span class="emphasis">_64 php-mbstring.x86_</span>64 php-mcrypt.x86<span class="emphasis">_64 php-mysql.x86_</span>64 php-pdo.x86_64</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-安装新的Yum源"><a href="#2-安装新的Yum源" class="headerlink" title="2. 安装新的Yum源"></a>2. 安装新的Yum源</h4><p>Centos 5.x<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh http://mirror.webtatic.com/yum/el5/latest.rpm</span><br></pre></td></tr></table></figure></p>
+<p>CentOs 6.x<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm</span><br></pre></td></tr></table></figure></p>
+<p>CentOs 7.x<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm</span><br><span class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-安装PHP"><a href="#3-安装PHP" class="headerlink" title="3. 安装PHP"></a>3. 安装PHP</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install php55w.x86<span class="emphasis">_64 php55w-cli.x86_</span>64 php55w-common.x86<span class="emphasis">_64 php55w-gd.x86_</span>64 php55w-ldap.x86<span class="emphasis">_64 php55w-mbstring.x86_</span>64 php55w-mcrypt.x86<span class="emphasis">_64 php55w-mysql.x86_</span>64 php55w-pdo.x86_64</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install php56w.x86<span class="emphasis">_64 php56w-cli.x86_</span>64 php56w-common.x86<span class="emphasis">_64 php56w-gd.x86_</span>64 php56w-ldap.x86<span class="emphasis">_64 php56w-mbstring.x86_</span>64 php56w-mcrypt.x86<span class="emphasis">_64 php56w-mysql.x86_</span>64 php56w-pdo.x86_64</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install php70w.x86<span class="emphasis">_64 php70w-cli.x86_</span>64 php70w-common.x86<span class="emphasis">_64 php70w-gd.x86_</span>64 php70w-ldap.x86<span class="emphasis">_64 php70w-mbstring.x86_</span>64 php70w-mcrypt.x86<span class="emphasis">_64 php70w-mysql.x86_</span>64 php70w-pdo.x86_64</span><br></pre></td></tr></table></figure>
+<h4 id="4-安装PHP-FPM"><a href="#4-安装PHP-FPM" class="headerlink" title="4. 安装PHP FPM"></a>4. 安装PHP FPM</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install php55w-fpm</span><br><span class="line">yum install php56w-fpm</span><br><span class="line">yum install php70w-fpm</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -560,7 +560,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -657,7 +657,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">10.7k</span>
+    <span title="Site words total count">11.1k</span>
   
 </div>
 

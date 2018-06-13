@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/06/08/linux-yum/</loc>
+    
+    <lastmod>2018-06-13T16:22:03.673Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/08/linux-text/</loc>
+    
+    <lastmod>2018-06-13T16:20:38.164Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/08/linux-php-version/</loc>
+    
+    <lastmod>2018-06-13T16:19:31.517Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/09/linux-grep/</loc>
+    
+    <lastmod>2018-06-13T16:18:40.332Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/08/linux-nopass-copy/</loc>
+    
+    <lastmod>2018-06-13T16:16:28.567Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/06/10/linux-net-tools/</loc>
     
     <lastmod>2018-06-13T15:14:49.306Z</lastmod>
@@ -75,34 +110,6 @@
     <loc>https://dsxlinux.github.io/2018/06/09/linux-awk/</loc>
     
     <lastmod>2018-06-09T15:58:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/06/08/linux-yum/</loc>
-    
-    <lastmod>2018-06-09T15:02:36.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/06/08/linux-text/</loc>
-    
-    <lastmod>2018-06-09T15:02:35.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/06/08/linux-php-version/</loc>
-    
-    <lastmod>2018-06-09T15:02:34.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/06/09/linux-grep/</loc>
-    
-    <lastmod>2018-06-09T15:02:33.000Z</lastmod>
     
   </url>
   
