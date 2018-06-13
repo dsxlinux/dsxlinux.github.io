@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="Tech2k18">
 <meta property="og:description" content="本文主要介绍文件系统、文件权限、文件打包和解包及软件包管理方面的命令。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-13T15:04:06.736Z">
+<meta property="og:updated_time" content="2018-06-13T15:07:25.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux基础02篇">
 <meta name="twitter:description" content="本文主要介绍文件系统、文件权限、文件打包和解包及软件包管理方面的命令。">
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,716
+                  1,717
                 </span>
               
 
@@ -451,7 +451,7 @@
 <p>-rw-r–r–    这个以数字表示为644</p>
 <p>修改文件所有者和组<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># touch 1.txt</span></span><br><span class="line"><span class="section"># ll 1.txt </span></span><br><span class="line">-rw-r--r-- 1 root root 0 Aug 20 15:28 1.txt</span><br><span class="line"><span class="section"># chown user2.user2 1.txt </span></span><br><span class="line"><span class="section"># ll 1.txt </span></span><br><span class="line">-rw-r--r-- 1 user2 user2 0 Aug 20 15:28 1.txt</span><br><span class="line"><span class="section"># chown user3:user3 1.txt </span></span><br><span class="line"><span class="section"># ll 1.txt </span></span><br><span class="line">-rw-r--r-- 1 user3 user3 0 Aug 20 15:28 1.txt</span><br><span class="line"><span class="section"># chown user2:user3 1.txt </span></span><br><span class="line"><span class="section"># ll 1.txt </span></span><br><span class="line">-rw-r--r-- 1 user2 user3 0 Aug 20 15:28 1.txt</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>特殊权限<br>s权限：一个可执行文件拥有s位时，当别的用户来执行这个可执行文件的话，使用的权限是此可执行文件属主或者属组的权限<br>只针对前三位，中间三位。对目录可以加，但是无效，因为目录不是命令，根本不能执行它<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># ll /usr/bin/passwd</span></span><br><span class="line">-rwsr-xr-x. 1 root root 30768 Feb 17  2012 /usr/bin/passwd</span><br><span class="line"><span class="section"># ll /etc/shadow</span></span><br><span class="line">----------. 1 root root 1434 Jul 17 09:27 /etc/shadow</span><br><span class="line"><span class="code">``` </span></span><br><span class="line"><span class="code">t权限，只针对目录有效</span></span><br><span class="line"><span class="code">有t位的目录，任何用户在有权限的情况下是可以创建文件和目录，但是自己只能删除自己创建的目录。</span></span><br><span class="line"><span class="code">```markdown</span></span><br><span class="line"><span class="code"># ll -d /tmp/</span></span><br></pre></td></tr></table></figure>
+<li>特殊权限<br>s权限：一个可执行文件拥有s位时，当别的用户来执行这个可执行文件的话，使用的权限是此可执行文件属主或者属组的权限<br>只针对前三位，中间三位。对目录可以加，但是无效，因为目录不是命令，根本不能执行它<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># ll /usr/bin/passwd</span></span><br><span class="line">-rwsr-xr-x. 1 root root 30768 Feb 17  2012 /usr/bin/passwd</span><br><span class="line"><span class="section"># ll /etc/shadow</span></span><br><span class="line">----------. 1 root root 1434 Jul 17 09:27 /etc/shadow</span><br><span class="line"><span class="code">``` </span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">t权限，只针对目录有效</span></span><br><span class="line"><span class="code">有t位的目录，任何用户在有权限的情况下是可以创建文件和目录，但是自己只能删除自己创建的目录。</span></span><br><span class="line"><span class="code">```markdown</span></span><br><span class="line"><span class="code"># ll -d /tmp/</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>s位和t位注意的地方：<br>用数字表示<br>前三位上加s        4<br>中间三位加s        2<br>后三位加t        1</p>
