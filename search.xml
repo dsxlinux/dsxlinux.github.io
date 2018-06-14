@@ -3,7 +3,7 @@
   <entry>
     <title></title>
     <url>%2F2018%2F06%2F14%2Flinux-live%2F</url>
-    <content type="text"><![CDATA[直播 (function () { var player = new qcVideo.Player("id_video_container", { "live_url" : "http://2117.liveplay.myqcloud.com/live/2117_1e683aaee1.flv", "live_url2" : "http://2117.liveplay.myqcloud.com/live/2117_1e683aaee1.m3u8", "width" : 480, "height" : 320 }); })()]]></content>
+    <content type="text"><![CDATA[直播 这里是直播的播放地址，可以直接观看，不需要其他播放器的支持。 (function () { var player = new qcVideo.Player("id_video_container", { "live_url" : "http://2117.liveplay.myqcloud.com/live/2117_1e683aaee1.flv", "live_url2" : "http://2117.liveplay.myqcloud.com/live/2117_1e683aaee1.m3u8", "width" : 480, "height" : 320 }); })()]]></content>
   </entry>
   <entry>
     <title><![CDATA[Linux下远程拷贝时无需输入密码]]></title>
