@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dsxlinux.github.io/"/>
-  <updated>2018-06-14T02:14:37.434Z</updated>
+  <updated>2018-06-14T02:20:54.712Z</updated>
   <id>https://dsxlinux.github.io/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <title></title>
     <link href="https://dsxlinux.github.io/2018/06/14/linux-live/"/>
     <id>https://dsxlinux.github.io/2018/06/14/linux-live/</id>
-    <published>2018-06-14T02:14:37.508Z</published>
-    <updated>2018-06-14T02:14:37.434Z</updated>
+    <published>2018-06-14T02:20:54.742Z</published>
+    <updated>2018-06-14T02:20:54.712Z</updated>
     
-    <content type="html"><![CDATA[<!DOCTYPE html><html><head>    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">    <title>直播</title></head><body><div id="id_video_container" style="width:100%; height:auto;"></div><p> 这里是直播的播放地址，可以直接观看，不需要其他播放器的支持。<br><script src="//qzonestyle.gtimg.cn/open/qcloud/video/live/h5/live_connect.js" charset="utf-8"></script><script type="text/javascript">    (function () {        var player = new qcVideo.Player("id_video_container", {            "live_url" : "http://2117.liveplay.myqcloud.com/live/2117_1e683aaee1.flv","live_url2" : "http://2117.liveplay.myqcloud.com/live/2117_1e683aaee1.m3u8",            "width" : 480,            "height" : 320        });    })()</script></p></body></html>]]></content>
+    <content type="html"><![CDATA[<!DOCTYPE html><html><head>    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">    <title>直播</title></head><body><p> 这里是直播的观看地址，可以直接观看，不需要其他播放器的支持。请允许您的浏览器支持flash插件。<br><div id="id_video_container" style="width:100%; height:auto;"></div><script src="//qzonestyle.gtimg.cn/open/qcloud/video/live/h5/live_connect.js" charset="utf-8"></script><script type="text/javascript">    (function () {        var player = new qcVideo.Player("id_video_container", {            "live_url" : "http://2117.liveplay.myqcloud.com/live/2117_1e683aaee1.flv","live_url2" : "http://2117.liveplay.myqcloud.com/live/2117_1e683aaee1.m3u8",            "width" : 480,            "height" : 320        });    })()</script></p></body></html>]]></content>
     
     <summary type="html">
     
