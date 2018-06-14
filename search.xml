@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2018%2F06%2F14%2Flinux-live%2F</url>
+    <content type="text"><![CDATA[直播 (function () { var player = new qcVideo.Player("id_video_container", { "live_url" : "http://2117.liveplay.myqcloud.com/live/2117_1e683aaee1.flv", "live_url2" : "http://2117.liveplay.myqcloud.com/live/2117_1e683aaee1.m3u8", "width" : 480, "height" : 320 }); })()]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Linux下远程拷贝时无需输入密码]]></title>
     <url>%2F2018%2F06%2F13%2Flinux-nopass-copy%2F</url>
     <content type="text"><![CDATA[本文主要介绍Linux系统中，远程拷贝文件时无需输入密码来拷贝的一种简单办法。我们在远程拷贝文件时，尤其是不同地区的服务器之间拷贝数据，一般是使用scp或者rsync来拷贝。这两个命令都需要输入密码。一般来说，有三种办法来实现无密码拷贝。(1)SSH等效性建立信任关系(2)使用expect脚本来自动输入密码(3)使用sshpass工具来自动输入密码本文重点介绍sshpass工具来实现，这个工具比较简单。 1. sshpass命令如果系统中没有sshpass命令，则通过如下命令可以安装：1# yum -y install sshpass sshpass命令的使用方法：12# sshpass -p 123456 ssh 192.168.1.100 -p参数是服务器192.168.1.100的密码，这样就可以直接登录了# sshpass -f password.txt ssh 192.168.1.100 -f参数是file，密码文件，默认读取文件的第一行作为密码 2. sshpass实现远程拷贝123# sshpass -f password.txt scp -r /opt/packs/xxx.iso root@192.168.1.100:/root/packs/# sshpass -f password.txt rsync -a /opt/packs/xxx.iso root@192.168.1.100:/root/packs/# nohup sshpass -f password.txt rsync -a /opt/packs/xxx.iso root@192.168.1.100:/root/packs/ &amp; 也可以使用nohup在后台跑 这里建议使用sshpass的-f参数来存放密码，然后执行1# chmod 600 password.txt 这样只有root才可以读写，保证了安全性。-p直接在命令行输入密码不安全。]]></content>
