@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="本文主要介绍文件和目录、文件搜素相关的命令。">
+<meta name="description" content="本文主要介绍Linux存储技术中的RAID的概念和操作方法。">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux基础01篇">
-<meta property="og:url" content="https://dsxlinux.github.io/2018/06/07/linux-basic-01/index.html">
+<meta property="og:title" content="Linux存储之RAID技术">
+<meta property="og:url" content="https://dsxlinux.github.io/2018/06/17/linux-raid/index.html">
 <meta property="og:site_name" content="Tech2k18">
-<meta property="og:description" content="本文主要介绍文件和目录、文件搜素相关的命令。">
+<meta property="og:description" content="本文主要介绍Linux存储技术中的RAID的概念和操作方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-13T14:12:26.000Z">
+<meta property="og:updated_time" content="2018-06-17T21:54:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux基础01篇">
-<meta name="twitter:description" content="本文主要介绍文件和目录、文件搜素相关的命令。">
+<meta name="twitter:title" content="Linux存储之RAID技术">
+<meta name="twitter:description" content="本文主要介绍Linux存储技术中的RAID的概念和操作方法。">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://dsxlinux.github.io/2018/06/07/linux-basic-01/"/>
+  <link rel="canonical" href="https://dsxlinux.github.io/2018/06/17/linux-raid/"/>
 
 
 
 
 
-  <title>Linux基础01篇 | Tech2k18</title>
+  <title>Linux存储之RAID技术 | Tech2k18</title>
   
 
 
@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dsxlinux.github.io/2018/06/07/linux-basic-01/">
+    <link itemprop="mainEntityOfPage" href="https://dsxlinux.github.io/2018/06/17/linux-raid/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Dong Shouxin">
@@ -324,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux基础01篇</h1>
+          <h1 class="post-title" itemprop="name headline">Linux存储之RAID技术</h1>
         
 
         <div class="post-meta">
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-07T02:20:14+08:00">
-                2018-06-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-17T21:50:12+08:00">
+                2018-06-17
               </time>
             
 
@@ -359,8 +359,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux-basic/" itemprop="url" rel="index">
-                    <span itemprop="name">linux-basic</span>
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
                   </a>
                 </span>
 
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  805
+                  2,060
                 </span>
               
 
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  10
                 </span>
               
             </div>
@@ -427,54 +427,71 @@
       
 
       
-        <p>本文主要介绍文件和目录、文件搜素相关的命令。<br><a id="more"></a></p>
-<h4 id="1-文件和目录"><a href="#1-文件和目录" class="headerlink" title="1. 文件和目录"></a>1. 文件和目录</h4><ul>
-<li>cd命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd /进入系统根目录</span><br><span class="line"><span class="section"># cd /</span></span><br><span class="line">cd /home进入根下的home目录</span><br><span class="line"><span class="section"># cd /home</span></span><br><span class="line"></span><br><span class="line">cd ..进入当前目录的上一级目录</span><br><span class="line"><span class="section"># cd ..</span></span><br><span class="line">cd -进入上次所在的目录</span><br><span class="line"><span class="section"># cd -</span></span><br></pre></td></tr></table></figure>
+        <p>本文主要介绍Linux存储技术中的RAID的概念和操作方法。<br><a id="more"></a></p>
+<h4 id="1-RAID概念"><a href="#1-RAID概念" class="headerlink" title="1. RAID概念"></a>1. RAID概念</h4><p> RAID（Redundant Array of Inexpensive Disks）称为廉价磁盘冗余阵列。RAID的基本想法是把多个便宜的小磁盘组合到一起，成为一个磁盘组，使性能达到或超过一个容量巨大、价格昂贵的磁盘。 </p>
+<p>目前 RAID技术大致分为两种：基于硬件的RAID技术和基于软件的RAID技术。 本文介绍的是软RAID。</p>
+<h4 id="2-RAID级别"><a href="#2-RAID级别" class="headerlink" title="2. RAID级别"></a>2. RAID级别</h4><p>raid  0    读写性能佳，坏了其中一块，数据挂掉，可靠性低（stripe条带化），磁盘利用率100％</p>
+<p>​                                A    B</p>
+<p>​                                1    2</p>
+<p>​                                3    4</p>
+<p>raid  1    镜像备份（mirror)，同一份资料完整的保存在多个磁盘上，写的性能不佳，可靠性高，读的性能还行，磁盘利用率50%</p>
+<p>​                                A    B</p>
+<p>​                                1    1</p>
+<p>​                                2    2</p>
+<p>​                                3    3</p>
+<p>​                                4    4</p>
+<p>raid  5    由多块磁盘做raid 5，磁盘利用率为n-1/n,  其中一块放校验数据，允许坏一块盘，数据可以利用校验值来恢复</p>
+<p>​                        disk 1        disk 2        disk 3</p>
+<p>​                        数据        数据        校验</p>
+<p>​                        检验        数据        数据</p>
+<p>​                        数据        检验        数据</p>
+<p>raid 10    先做raid1，再做raid0</p>
+<p>raid01    先做raid0，再做raid1</p>
+<h4 id="3-软RAID实现"><a href="#3-软RAID实现" class="headerlink" title="3. 软RAID实现"></a>3. 软RAID实现</h4><p>使用vmware或者kvm直接在线加8个1G大小的硬盘</p>
+<p>linear    线型</p>
+<p>stripe    条带</p>
+<p>mirror    镜像</p>
 <ul>
-<li>ls和pwd命令</li>
+<li>创建raid 0</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ls注意ls的参数</span><br><span class="line"><span class="section"># ls -a -l -d -h</span></span><br><span class="line"></span><br><span class="line">pwd显示当前工作路径</span><br><span class="line"><span class="section"># pwd</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mdadm --create /dev/md0 --level=0 --raid-devices=2 /dev/sdb /dev/sdc</span></span><br><span class="line">mdadm: array /dev/md0 started.</span><br></pre></td></tr></table></figure>
+<p>创建过程中可以用另一终端cat /proc/mdstat去查看正在创建的状态信息</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mkfs.ext4 /dev/md0</span></span><br><span class="line"><span class="section"># mount /dev/md0 /mnt/</span></span><br><span class="line"><span class="section"># df -h |grep mnt</span></span><br><span class="line"><span class="section"># cat /proc/mdstat</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>mkdir命令</li>
+<li>创建raid 1</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir  /test在根目录下创建test目录</span><br><span class="line"><span class="section"># mkdir /test</span></span><br><span class="line">mkdir  -p  /a/b/c/d创建多级目录，-p参数是不报错的</span><br><span class="line"><span class="section"># mkdir -p /a/b/c/d</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># mdadm --create /dev/md1 --level=1 --raid-devices=2 /dev/sdd /dev/sde</span><br><span class="line"># mkfs.ext4 /dev/md1</span><br><span class="line"># mount /dev/md1 /media/</span><br><span class="line"># df -h |grep md</span><br></pre></td></tr></table></figure>
+<p>对上面的raid0和raid1的一个写性能使用dd命令进行测试，下面命令可以多测几次</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># dd if=/dev/zero of=/mnt/aaa bs=1M count=1000</span></span><br><span class="line"><span class="section"># dd if=/dev/zero of=/media/bbb bs=1M count=1000</span></span><br></pre></td></tr></table></figure>
+<p>测试的结果是raid0写性能比raid1要好</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># yum install sysstat -y</span></span><br></pre></td></tr></table></figure>
+<p>验证raid0，在做raid0的两个盘上查看io情况</p>
+<p>终端1：iostat 2    两秒一次查看所有的盘上的IO情况</p>
+<p>终端2: dd if=/dev/zero of=/mnt/aaa bs=1M count=1000</p>
+<p>可以看到两个盘上都有写的io,并且/dev/sdb和/dev/sdc的IO一样,总和才等于/dev/md0的IO;验证了raid0的功能(条带)</p>
+<p>验证raid1，在做raid1的两个盘上查看io情况</p>
+<p>终端1：iostat 2    两秒一次查看所有的盘上的IO情况</p>
+<p>终端2: dd if=/dev/zero of=/media/aaa bs=1M count=1000 </p>
+<p>可以看到两个盘上都有写的io,并且/dev/sdd和/dev/sde的IO一样,并且也等于/dev/md1的IO;验证了raid1的功能(镜像)</p>
 <ul>
-<li>cp命令</li>
+<li>创建raid5</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp file1 file2复制一个文件</span><br><span class="line"><span class="section"># cp a.txt b.txt</span></span><br><span class="line">cp -ar dir1 dir2 复制一个目录</span><br><span class="line"><span class="section"># cp -ar /abc /test</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mdadm --create /dev/md5 --level=5 --raid-devices=4 /dev/sdf /dev/sdg /dev/sdh /dev/sdi</span></span><br><span class="line">mdadm: array /dev/md5 started.</span><br><span class="line"><span class="section"># watch cat /proc/mdstat  --这里监控一下它们盘之间的数据同步；等它们同步完毕再进行下面的格式化</span></span><br><span class="line"><span class="section"># mkfs.ext4 /dev/md5</span></span><br><span class="line"><span class="section"># mount /dev/md5 /misc/</span></span><br><span class="line"><span class="section"># df -h |grep md</span></span><br><span class="line">/dev/md0              2.0G   36M  1.9G   2% /mnt --raid 0利用率为100%</span><br><span class="line">/dev/md1             1008M   18M  940M   2% /media --raid 1利用率为50%</span><br><span class="line">/dev/md5              3.0G   69M  2.8G   3% /misc --raid 5利用率为n-1/n,在这里就是3/4</span><br><span class="line"><span class="section"># cat /proc/mdstat</span></span><br></pre></td></tr></table></figure>
+<p>验证raid5，在做raid5的四个盘上查看io情况</p>
+<p>终端1：iostat 2    两秒一次查看所有的盘上的IO情况</p>
+<p>终端2: dd if=/dev/zero of=/misc/aaa bs=1M count=1000</p>
+<h4 id="4-RAID启停"><a href="#4-RAID启停" class="headerlink" title="4. RAID启停"></a>4. RAID启停</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># vim /etc/mdadm.conf			手动编写raid的配置文件，此文件不存在，要手动建立，并写上</span></span><br><span class="line">DEVICES /dev/sdb /dev/sdc /dev/sdd /dev/sde /dev/sdf /dev/</span><br><span class="line">sdg /dev/sdh /dev/sdi			把做了raid的分区写上来。或者写成DEVICES /dev/sd[bcdefghi]。但不能写成DEVICES /dev/sd&#123;b,c,d,e,f,g,h,i&#125;</span><br><span class="line"><span class="section"># mdadm --detail --scan &gt;&gt; /etc/mdadm.conf		扫描当前raid的信息，并追加到配置文件里</span></span><br><span class="line"><span class="section"># cat /etc/mdadm.conf </span></span><br><span class="line">DEVICES /dev/sdb /dev/sdc /dev/sdd /dev/sde /dev/sdf /dev/sdg /dev/sdh /dev/sdi</span><br><span class="line">ARRAY /dev/md0 level=raid0 num-devices=2 metadata=0.90 UUID=84209045:9c03c4cb:7f755b8d:cc471294</span><br><span class="line">ARRAY /dev/md1 level=raid1 num-devices=2 metadata=0.90 UUID=4e62fdc1:6c2a652f:fb72c05d:356d5c76</span><br><span class="line">ARRAY /dev/md5 level=raid5 num-devices=4 metadata=0.90 UUID=c3c1f37b:9fba8a89:a711dc6c:01a5ddb3</span><br></pre></td></tr></table></figure>
 <ul>
-<li>mv命令</li>
+<li>停止raid设备</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mv /opt/a /root/移动文件</span><br><span class="line"><span class="section"># mv /opt/a /root/</span></span><br><span class="line">mv /opt/a /root/移动文件</span><br><span class="line"><span class="section"># mv /opt/a /root/b</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">先umount 已经挂载的raid设备</span><br><span class="line"><span class="section"># umount /mnt/</span></span><br><span class="line"><span class="section"># umount /media/</span></span><br><span class="line"><span class="section"># umount /misc/</span></span><br><span class="line"></span><br><span class="line">然后使用命令停止</span><br><span class="line"><span class="section"># mdadm --stop /dev/md0</span></span><br><span class="line">mdadm: stopped /dev/md0</span><br><span class="line"><span class="section"># mdadm --stop /dev/md1</span></span><br><span class="line">mdadm: stopped /dev/md1</span><br><span class="line"><span class="section"># mdadm --stop /dev/md5</span></span><br><span class="line">mdadm: stopped /dev/md5</span><br></pre></td></tr></table></figure>
 <ul>
-<li>touch命令</li>
+<li>启动raid设备”</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">touch 1.txt创建文件</span><br><span class="line"><span class="section"># touch 1.txt</span></span><br><span class="line"><span class="section"># touch &#123;a..z&#125;</span></span><br><span class="line"><span class="section"># touch &#123;a..z..2&#125;</span></span><br><span class="line"><span class="section"># touch a&#123;1..5&#125;</span></span><br><span class="line"><span class="section"># touch a&#123;1..5&#125;.txt</span></span><br><span class="line"><span class="section"># touch &#123;1..5&#125;&#123;a..f&#125;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>file命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">查看文件的类型</span><br><span class="line"><span class="section"># file /dev/sda</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>tree命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">显示文件和目录由根目录开始的树形结构</span><br><span class="line"><span class="section"># yum install tree</span></span><br><span class="line"><span class="section"># tree –L 1</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-文件搜素"><a href="#2-文件搜素" class="headerlink" title="2. 文件搜素"></a>2. 文件搜素</h4><ul>
-<li>whereis和which命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">查找二进制文件</span><br><span class="line"><span class="section"># which cat</span></span><br><span class="line"><span class="section"># whereis whereis</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>find命令</li>
-</ul>
-<p>按名称查找<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># find /etc/ -name grub.conf</span></span><br><span class="line"><span class="section"># find /etc/ -name "*.conf"</span></span><br><span class="line"><span class="section"># find /etc/ -name ".*"</span></span><br><span class="line"><span class="section"># find /test/  -iname Abc</span></span><br></pre></td></tr></table></figure></p>
-<p>按类型查找<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># find / -type f</span></span><br><span class="line"><span class="section"># find / -type b</span></span><br><span class="line"><span class="section"># find / -type s</span></span><br><span class="line"><span class="section"># find / -type c</span></span><br><span class="line"><span class="section"># find / -type p</span></span><br><span class="line"><span class="section"># find / -type d</span></span><br><span class="line"><span class="section"># find / -type l</span></span><br></pre></td></tr></table></figure></p>
-<p>按大小查找<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># find / -size +500M</span></span><br><span class="line"><span class="section"># find / -size +1G</span></span><br><span class="line"><span class="section"># find / -size +50k</span></span><br><span class="line"><span class="section"># find / -size -1M</span></span><br><span class="line"><span class="section"># find / -size +3c</span></span><br><span class="line"><span class="section"># find / -size +80M -size -100M</span></span><br></pre></td></tr></table></figure></p>
-<p>按时间查找<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># stat 1 |tail -3</span></span><br><span class="line">Access: 2014-07-23 11:56:42.297572398 +0800     --atime 阅读过，用cat,tail,head,more,less命令等或者vi访问过，但没有修改；执行过也会改变</span><br><span class="line">Modify: 2014-07-23 11:56:44.836572907 +0800--mtime 修改过内容，用vi修改过或者echo一个值重定向</span><br><span class="line">Change: 2014-07-23 11:56:44.856885177 +0800     —ctime 改变过内容，属主，属组，权限，创建软链接，硬链接等</span><br><span class="line">找出 3 天”以前”被改动过的文件(&gt; 72 小时)</span><br><span class="line">find /var/log/ -mtime +3 -type f</span><br><span class="line">找出 3 天内被改动过的文件(0 ~ 72 小时内)</span><br><span class="line">find /var/log/ -mtime -3 -type f</span><br><span class="line">找出前第 3 天被改动过的文件(72 ~ 96 小时)</span><br><span class="line">find /var/log/ -mtime 3 -type f</span><br><span class="line">find /var/log/ -mtime +2 -mtime -4 -type f</span><br><span class="line">在20-50天内修改过的文件</span><br><span class="line">find ./ -mtime +20 -a -mtime -50 -type f</span><br><span class="line">在2018-04-11当天修改的文件</span><br><span class="line">find / -type f -newermt '2018-04-11 00:00' -a -not -newermt '2018-04-11 23:56'</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>locate命令</li>
-</ul>
-<p>速度快，通过系统带的一个数据库去查找，数据是非实时的。<br>速度快，通过系统带的一个数据库去查找，数据是非实时的。<br>系统每天自动更新一次，是通过时间任务执行的：/etc/cron.daily/mlocate.cron<br>/usr/bin/updatedb主要用来更新数据库，通过crontab自动完成的<br>/usr/bin/locate             查询文件位置<br>/etc/updatedb.confupdatedb的配置文件<br>/var/lib/mlocate/mlocate.db  存放文件信息的文件<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># locate passwd</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">(1) 有/etc/mdadm.conf配置文件的情况下</span><br><span class="line"><span class="section"># mdadm -A /dev/md0 </span></span><br><span class="line">mdadm: /dev/md0 has been started with 2 drives.</span><br><span class="line"><span class="section"># mdadm -A /dev/md1</span></span><br><span class="line">mdadm: /dev/md1 has been started with 2 drives.</span><br><span class="line"><span class="section"># mdadm -A /dev/md5</span></span><br><span class="line">mdadm: /dev/md5 has been started with 4 drives.</span><br><span class="line"></span><br><span class="line"><span class="section"># cat /proc/mdstat  --再查看，就有信息了，并且raid里的数据还在</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(2) 没有配置文件的情况下，手动把设备名写上就可以了</span><br><span class="line"><span class="section"># mdadm -A /dev/md0  /dev/sd&#123;b,c&#125;</span></span><br><span class="line">mdadm: /dev/md0 has been started with 2 drives.</span><br><span class="line"></span><br><span class="line"><span class="section"># mdadm -A /dev/md1  /dev/sd&#123;d,e&#125;</span></span><br><span class="line">mdadm: /dev/md1 has been started with 2 drives.</span><br><span class="line"></span><br><span class="line"><span class="section"># mdadm -A /dev/md5  /dev/sd&#123;f,g,h,i&#125;</span></span><br><span class="line">mdadm: /dev/md5 has been started with 4 drives.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(3) 如果连设备名都不知道，可以去查看每个设备的raid信息，使用uuid把raid设备重新组合</span><br><span class="line"><span class="section"># mdadm -E /dev/sdf</span></span><br><span class="line">/dev/sdf:</span><br><span class="line"><span class="code">          Magic : a92b4efc</span></span><br><span class="line"><span class="code">        Version : 0.90.00</span></span><br><span class="line"><span class="code">           UUID : b091e16b:f8df9671:465755db:c640595b --UUID,同一个raid里每个磁盘查看的都是这个值</span></span><br><span class="line">  Creation Time : Sat May  7 11:23:52 2011</span><br><span class="line"><span class="code">     Raid Level : raid5</span></span><br><span class="line">  Used Dev Size : 1048512 (1024.11 MiB 1073.68 MB)</span><br><span class="line"><span class="code">     Array Size : 3145536 (3.00 GiB 3.22 GB)</span></span><br><span class="line">   Raid Devices : 4</span><br><span class="line">  Total Devices : 4</span><br><span class="line">Preferred Minor : 5</span><br><span class="line"></span><br><span class="line"><span class="code">    Update Time : Sat May  7 11:42:09 2011</span></span><br><span class="line"><span class="code">          State : clean</span></span><br><span class="line"> Active Devices : 4</span><br><span class="line">Working Devices : 4</span><br><span class="line"> Failed Devices : 0</span><br><span class="line">  Spare Devices : 0</span><br><span class="line"><span class="code">       Checksum : facef367 - correct</span></span><br><span class="line"><span class="code">         Events : 2</span></span><br><span class="line"></span><br><span class="line"><span class="code">         Layout : left-symmetric</span></span><br><span class="line"><span class="code">     Chunk Size : 64K</span></span><br><span class="line"></span><br><span class="line"><span class="code">      Number   Major   Minor   RaidDevice State</span></span><br><span class="line">this     0       8       80        0      active sync   /dev/sdf</span><br><span class="line"></span><br><span class="line">   0     0       8       80        0      active sync   /dev/sdf</span><br><span class="line">   1     1       8       96        1      active sync   /dev/sdg</span><br><span class="line">   2     2       8      112        2      active sync   /dev/sdh</span><br><span class="line">   3     3       8      128        3      active sync   /dev/sdi</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section"># mdadm -A --uuid=b091e16b:f8df9671:465755db:c640595b /dev/md5	</span></span><br><span class="line">mdadm: /dev/md5 has been started with 4 drives.</span><br><span class="line"></span><br><span class="line">上面组合后的名字可以随意写，甚至是不存在的一个名字，相当于是重新组合</span><br></pre></td></tr></table></figure>
+<h4 id="5-软raid的热插拔实验"><a href="#5-软raid的热插拔实验" class="headerlink" title="5. 软raid的热插拔实验"></a>5. 软raid的热插拔实验</h4><p>模拟raid中其中一块盘故障</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mdadm /dev/md5 --fail /dev/sdf</span></span><br><span class="line">mdadm: set /dev/sdf faulty in /dev/md5</span><br><span class="line">--使用--fail对raid中其中一块盘打一个fail标记</span><br><span class="line"></span><br><span class="line"><span class="section"># cat /proc/mdstat </span></span><br><span class="line">Personalities : [raid0] [raid1] [raid6] [raid5] [raid4] </span><br><span class="line">md5 : active raid5 sdf[<span class="string">4</span>](<span class="link">F</span>) sdi[3] sdh[2] sdg[1]--有个F标记</span><br><span class="line"><span class="code">      3145536 blocks level 5, 64k chunk, algorithm 2 [4/3] [_UUU]</span></span><br><span class="line"><span class="code">      </span></span><br><span class="line">md1 : active raid1 sdd[0] sde[1]</span><br><span class="line"><span class="code">      1048512 blocks [2/2] [UU]</span></span><br><span class="line"><span class="code">      </span></span><br><span class="line">md0 : active raid0 sdb[0] sdc[1]</span><br><span class="line"><span class="code">      2097024 blocks 64k chunks</span></span><br><span class="line"></span><br><span class="line"><span class="section"># mdadm /dev/md5 --remove /dev/sdf</span></span><br><span class="line">mdadm: hot removed /dev/sdf</span><br><span class="line">热移除故障磁盘</span><br><span class="line"></span><br><span class="line"><span class="section"># mdadm /dev/md5 --add /dev/sdj  --增加一块新的磁盘上去</span></span><br><span class="line">mdadm: re-added /dev/sdj</span><br><span class="line">--刚增加完后，机器负载较高，因为现在它在对新盘同步数据</span><br><span class="line"></span><br><span class="line"><span class="section"># cat /proc/mdstat </span></span><br><span class="line">Personalities : [raid0] [raid1] [raid6] [raid5] [raid4] </span><br><span class="line">md5 : active raid5 sdj[4] sdi[3] sdh[2] sdg[1]</span><br><span class="line"><span class="code">      3145536 blocks level 5, 64k chunk, algorithm 2 [4/3] [_UUU]</span></span><br><span class="line"><span class="code">      [=====&gt;...............]  recovery = 29.2% (307840/1048512) finish=0.0min speed=153920K/sec	--这里可以看到在同步中</span></span><br><span class="line"><span class="code">      </span></span><br><span class="line">md1 : active raid1 sdd[0] sde[1]</span><br><span class="line"><span class="code">      1048512 blocks [2/2] [UU]</span></span><br><span class="line"><span class="code">      </span></span><br><span class="line">md0 : active raid0 sdb[0] sdc[1]</span><br><span class="line"><span class="code">      2097024 blocks 64k chunks</span></span><br><span class="line">  </span><br><span class="line">同步完成后，查看数据还在；</span><br></pre></td></tr></table></figure>
+<h4 id="6-删除raid"><a href="#6-删除raid" class="headerlink" title="6. 删除raid"></a>6. 删除raid</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">(1) 第一步</span><br><span class="line"><span class="section"># umount</span></span><br><span class="line">(2) 第二步</span><br><span class="line"><span class="section"># mdadm /dev/md5 --fail /dev/sdf --remove /dev/sdf</span></span><br><span class="line">mdadm: set /dev/sdf faulty in /dev/md5</span><br><span class="line">mdadm: hot removed /dev/sdf</span><br><span class="line"><span class="section"># mdadm /dev/md5 --fail /dev/sdg --remove /dev/sdg</span></span><br><span class="line">mdadm: set /dev/sdg faulty in /dev/md5</span><br><span class="line">mdadm: hot removed /dev/sdg</span><br><span class="line"><span class="section"># mdadm /dev/md5 --fail /dev/sdh --remove /dev/sdh</span></span><br><span class="line">mdadm: set /dev/sdh faulty in /dev/md5</span><br><span class="line">mdadm: hot removed /dev/sdh</span><br><span class="line"><span class="section"># mdadm /dev/md5 --fail /dev/sdi --remove /dev/sdi</span></span><br><span class="line">mdadm: set /dev/sdi faulty in /dev/md5</span><br><span class="line">mdadm: hot removed /dev/sdi</span><br><span class="line">(3) 第三步</span><br><span class="line"><span class="section"># mdadm --stop /dev/md5</span></span><br><span class="line">mdadm: stopped /dev/md5</span><br><span class="line">(4) 第四步</span><br><span class="line">直接用fdisk删除分区，或者用下面命令擦除superblock</span><br><span class="line"><span class="section"># mdadm --misc --zero-superblock /dev/sdf</span></span><br><span class="line"><span class="section"># mdadm --misc --zero-superblock /dev/sdg</span></span><br><span class="line"><span class="section"># mdadm --misc --zero-superblock /dev/sdh</span></span><br><span class="line"><span class="section"># mdadm --misc --zero-superblock /dev/sdi</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -507,14 +524,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/06/15/linux-ks/" rel="next" title="Linux下自动批量部署操作系统">
+                <i class="fa fa-chevron-left"></i> Linux下自动批量部署操作系统
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/08/linux-basic-02/" rel="prev" title="Linux基础02篇">
-                Linux基础02篇 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/17/linux-lvm/" rel="prev" title="Linux存储之LVM技术">
+                Linux存储之LVM技术 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -656,7 +677,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-文件和目录"><span class="nav-number">1.</span> <span class="nav-text">1. 文件和目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-文件搜素"><span class="nav-number">2.</span> <span class="nav-text">2. 文件搜素</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-RAID概念"><span class="nav-number">1.</span> <span class="nav-text">1. RAID概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-RAID级别"><span class="nav-number">2.</span> <span class="nav-text">2. RAID级别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-软RAID实现"><span class="nav-number">3.</span> <span class="nav-text">3. 软RAID实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-RAID启停"><span class="nav-number">4.</span> <span class="nav-text">4. RAID启停</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-软raid的热插拔实验"><span class="nav-number">5.</span> <span class="nav-text">5. 软raid的热插拔实验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-删除raid"><span class="nav-number">6.</span> <span class="nav-text">6. 删除raid</span></a></li></ol></div>
             
 
           </div>

@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tech2k18" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="本文主要介绍Linux存储技术中的LVM的概念和操作方法。">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux存储之LVM技术">
+<meta property="og:url" content="https://dsxlinux.github.io/2018/06/17/linux-lvm/index.html">
+<meta property="og:site_name" content="Tech2k18">
+<meta property="og:description" content="本文主要介绍Linux存储技术中的LVM的概念和操作方法。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-17T21:54:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux存储之LVM技术">
+<meta name="twitter:description" content="本文主要介绍Linux存储技术中的LVM的概念和操作方法。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://dsxlinux.github.io/2018/06/17/linux-lvm/"/>
+
+
+
+
+
+  <title>Linux存储之LVM技术 | Tech2k18</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tech2k18</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dsxlinux.github.io/2018/06/17/linux-lvm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong Shouxin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tech2k18">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux存储之LVM技术</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-17T21:53:02+08:00">
+                2018-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,147
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文主要介绍Linux存储技术中的LVM的概念和操作方法。<br><a id="more"></a></p>
+<h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h4><p>LVM全称是Logical Volume Manager，即逻辑卷管理器。它是Linux环境下对磁盘分区进行管理的一种机制；它可以将多个物理分区整合在一起，并且可以根据实际需要动态调整文件系统空间。 </p>
+<h4 id="2-LVM的相关概念"><a href="#2-LVM的相关概念" class="headerlink" title="2. LVM的相关概念"></a>2. LVM的相关概念</h4><p>(1) 物理卷(Physical Volume)</p>
+<p>物理卷是组成LVM的最底层的元素，即Linux上的物理分区。</p>
+<p> (2) 卷组(Volume Group)</p>
+<p>将各个独立的PV组合起来形成的一个存储空间就称为VG，VG的大小就是整个LVM的大小。</p>
+<p>(3) 逻辑卷(Logical Volume)</p>
+<p>可以被用户格式化、挂载并提供数据存储的对象就是LV。</p>
+<p> (4) 物理扩展块(Physical Extent)</p>
+<p>PE相当于Linux分区中的block，它是LVM的最小存储单位，默认为4M。</p>
+<p>做成lvm的优势:</p>
+<blockquote>
+<p>可以灵活变动大小</p>
+<p>可以自定义设备名(物理卷也可以改名，使用udev）</p>
+<p>可以做线型(linear),条带(stripe),镜像(mirror) </p>
+<p>可以做lvm快照</p>
+</blockquote>
+<h4 id="3-LVM基本操作"><a href="#3-LVM基本操作" class="headerlink" title="3. LVM基本操作"></a>3. LVM基本操作</h4><ul>
+<li>创建PV</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># pvcreate /dev/md0 </span></span><br><span class="line">  Physical volume "/dev/md0" successfully created</span><br><span class="line"><span class="section"># pvcreate /dev/md1</span></span><br><span class="line">  Physical volume "/dev/md1" successfully created</span><br><span class="line"><span class="section"># pvcreate /dev/md10</span></span><br><span class="line">  Physical volume "/dev/md10" successfully created</span><br><span class="line"></span><br><span class="line">查看相关信息的命令 pvscan  pvdisplay  pvs</span><br><span class="line">删除pv的命令  pvremove /dev/md10</span><br><span class="line"></span><br><span class="line"><span class="section"># pv</span></span><br><span class="line">pvchange   pvcreate   pvmove     pvresize   pvscan</span><br><span class="line">pvck       pvdisplay  pvremove   pvs        pv.sh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>划分vg</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># vgcreate vg01 /dev/md10</span></span><br><span class="line">  Volume group "vg01" successfully created </span><br><span class="line"><span class="section"># vgextend vg01 /dev/md0 </span></span><br><span class="line">  Volume group "vg01" successfully extended</span><br><span class="line"><span class="section"># vgextend vg01 /dev/md1</span></span><br><span class="line">  Volume group "vg01" successfully extended</span><br><span class="line"></span><br><span class="line">补充：vgcreate -s  指定PE的大小</span><br><span class="line">查看相关信息的命令vgscan vgdisplay vgs</span><br><span class="line"></span><br><span class="line"><span class="section"># vgs</span></span><br><span class="line">  VG   #PV #LV #SN Attr   VSize VFree</span><br><span class="line">  vg01   3   0   0 wz--n- 4.99G 4.99G</span><br><span class="line"></span><br><span class="line"><span class="section"># vgreduce vg01 /dev/md0 </span></span><br><span class="line">Removed "/dev/md0" from volume group "vg01"</span><br><span class="line"></span><br><span class="line">vgreduce跟vgextend是相反的，是在vg里移除pv</span><br><span class="line">移除vg的命令是vgremove，它是和vgcreate相反</span><br></pre></td></tr></table></figure>
+<ul>
+<li>把vg划分为逻辑卷(线性卷linear)</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># lvcreate -L 1000M -n lv01 vg01	--L指定大小，n指定lv的名字</span></span><br><span class="line">  Logical volume "lv01" created</span><br><span class="line"></span><br><span class="line"><span class="section"># lvcreate -l 250 -n lv02 vg01	--l指定PE的个数，n指定lv的名字</span></span><br><span class="line">  Logical volume "lv02" created</span><br><span class="line"> </span><br><span class="line"><span class="section"># lvcreate -L 1001M -n lv03 vg01	--指定为1001M，它会自动做成1004M，要是PE的倍数</span></span><br><span class="line">  Rounding up size to full physical extent 1004.00 MB</span><br><span class="line">  Logical volume "lv03" created</span><br><span class="line"></span><br><span class="line"><span class="section"># ls /dev/vg01/ -l</span></span><br><span class="line">lrwxrwxrwx 1 root root 21 May  7 14:14 lv01 -&gt; /dev/mapper/vg01-lv01</span><br><span class="line">lrwxrwxrwx 1 root root 21 May  7 14:15 lv02 -&gt; /dev/mapper/vg01-lv02</span><br><span class="line"></span><br><span class="line"><span class="section"># ls /dev/mapper/ -l</span></span><br><span class="line">brw-rw---- 1 root disk 253,  0 May  7 14:14 vg01-lv01</span><br><span class="line">brw-rw---- 1 root disk 253,  1 May  7 14:15 vg01-lv02</span><br><span class="line"></span><br><span class="line"><span class="section"># mkfs.ext4  /dev/vg01/lv01</span></span><br><span class="line"><span class="section"># mkfs.ext4  /dev/vg01/lv02</span></span><br><span class="line"></span><br><span class="line"><span class="section"># mount /dev/vg01/lv01 /mnt/</span></span><br><span class="line"><span class="section"># mount /dev/vg01/lv02 /media/</span></span><br><span class="line"></span><br><span class="line"><span class="section"># df -h | tail -4</span></span><br><span class="line">/dev/mapper/vg01-lv01</span><br><span class="line"><span class="code">                      985M   18M  918M   2% /mnt</span></span><br><span class="line">/dev/mapper/vg01-lv02</span><br><span class="line"><span class="code">                      985M   18M  918M   2% /media</span></span><br><span class="line"></span><br><span class="line"><span class="section"># echo '12345' &gt; /mnt/1</span></span><br><span class="line"><span class="section"># echo '678910' &gt; /media/2	</span></span><br><span class="line"></span><br><span class="line">查看的相关参数为lvscan lvdisplay</span><br><span class="line"></span><br><span class="line"><span class="section"># lvscan </span></span><br><span class="line">  ACTIVE            '/dev/vg01/lv01' [1000.00 MB] inherit</span><br><span class="line">  ACTIVE            '/dev/vg01/lv02' [1000.00 MB] inherit</span><br><span class="line"></span><br><span class="line">移除lv使用lvremove</span><br><span class="line">完全删除lvm，就要先lvremove,再vgremove，最后pvremove</span><br><span class="line"></span><br><span class="line"><span class="section"># vgs</span></span><br><span class="line">  VG   #PV #LV #SN Attr   VSize VFree</span><br><span class="line">  vg01   3   2   0 wz--n- 4.99G 3.04G</span><br><span class="line"></span><br><span class="line"><span class="section"># lvcreate -l 50%VG -n lv03 vg01		--创建lv03，大小为vg01的一半</span></span><br><span class="line"><span class="section"># lvcreate -l 100%FREE -n lv04 vg01	--把剩下的所有空间都分配给新创建的lv04</span></span><br><span class="line"></span><br><span class="line"><span class="section"># lvs		--使用lvs验证</span></span><br><span class="line">  LV   VG   Attr   LSize    Origin Snap%  Move Log Copy%  Convert</span><br><span class="line">  lv01 vg01 -wi-ao 1000.00M</span><br><span class="line">  lv02 vg01 -wi-ao 1000.00M</span><br><span class="line">  lv03 vg01 -wi-a-    2.49G    </span><br><span class="line">  lv04 vg01 -wi-a-  556.00M</span><br><span class="line"></span><br><span class="line">使用lvremove把上面的四个卷给移除，再来创建条状卷</span><br><span class="line"><span class="section"># lvremove vg01 	--移除四个卷	</span></span><br><span class="line">Do you really want to remove active logical volume lv01? [y/n]: y</span><br><span class="line">  Logical volume "lv01" successfully removed</span><br><span class="line">Do you really want to remove active logical volume lv02? [y/n]: y</span><br><span class="line">  Logical volume "lv02" successfully removed</span><br><span class="line">Do you really want to remove active logical volume lv03? [y/n]: y</span><br><span class="line">  Logical volume "lv03" successfully removed</span><br><span class="line">Do you really want to remove active logical volume lv04? [y/n]: y</span><br><span class="line">  Logical volume "lv04" successfully removed</span><br><span class="line">  Volume group "lv01" not found</span><br><span class="line"></span><br><span class="line">当您创建条状逻辑卷时，请使用 lvcreate 命令的 -i 参数指定条带的数目。这取决于逻辑卷要进行条带</span><br><span class="line">化的物理卷数目。条带的数目不能超过卷组中物理卷的数目（除非使用 --alloc anywhere 参数）</span><br><span class="line"></span><br><span class="line">如果构成逻辑卷的基本物理设备的大小不同，条状卷的最大容量由最小的基本设备决定。例如，在有两</span><br><span class="line">个分支条状卷中，其容量最大为较小设备的两倍。在有三个分支的条状卷中，其容量是最小设备的三倍</span><br><span class="line"></span><br><span class="line">条带卷的大小由最小的PV和创建命令的-i参数(条带数)来决定</span><br><span class="line">以这个为例</span><br><span class="line">  PV         VG   Fmt  Attr PSize    PFree   </span><br><span class="line">  /dev/md0   vg01 lvm2 a--     2.00g    2.00g</span><br><span class="line">  /dev/md1   vg01 lvm2 a--  1020.00m 1020.00m</span><br><span class="line">  /dev/md10  vg01 lvm2 a--     2.00g    2.00g</span><br><span class="line">因为有三个PV,所以用-i 3实现三个条带;那么最大大小为1020*3=3060M</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建条带卷</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># lvcreate -L 3060M -i3  -n stripe_lv_01 vg01</span></span><br><span class="line">  Logical volume "stripe<span class="emphasis">_lv_</span>01" created</span><br><span class="line">  </span><br><span class="line">可以对其格式化，再用dd和iostat来做测试(但测试的结果比较复杂,因为我是几种不同的raid做的条带卷)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>镜像卷</li>
+</ul>
+<p>当您创建一个镜像卷时，您可使用 lvcreate 命令的 -m 参数来指定数据的备份数目。指定 -m1 生成一个镜像，也就是生成两个文件系统副本：一个线性逻辑卷加上一个副本。同样的，指定 -m2 会生成两个镜像，也就是生成三个文件系统副本。</p>
+<p>镜像卷的大小由最小的PV和副本数（也就是-m后接的数字)来决定</p>
+<p>以这个为例</p>
+<p>  PV         VG   Fmt  Attr PSize    PFree   </p>
+<p>  /dev/md0   vg01 lvm2 a–     2.00g    2.00g</p>
+<p>  /dev/md1   vg01 lvm2 a–  1020.00m 1020.00m</p>
+<p>  /dev/md10  vg01 lvm2 a–     2.00g    2.00g</p>
+<p>如果-m 1，那么他会选md0和md10这两个来做镜像，所以最大大小为2G</p>
+<p>如果-m 2,那么他会选这三个一起来做，最大大小为1020M</p>
+<p>不能-m 3或者更大;因为我这里只有三个PV</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">以下面的为例</span><br><span class="line"><span class="section"># pvs</span></span><br><span class="line">  PV         VG   Fmt  Attr PSize   PFree  </span><br><span class="line">  /dev/sdb13 vg01 lvm2 a-   964.00M 964.00M</span><br><span class="line">  /dev/sdb14 vg01 lvm2 a-   964.00M 964.00M</span><br><span class="line">  /dev/sdb15 vg01 lvm2 a-   964.00M 964.00M</span><br><span class="line"></span><br><span class="line"><span class="section"># vgs</span></span><br><span class="line">  VG   #PV #LV #SN Attr   VSize VFree</span><br><span class="line">  vg01   3   0   0 wz--n- 2.82G 2.82G</span><br><span class="line"></span><br><span class="line">再次创建镜像卷，成功创建</span><br><span class="line"><span class="section"># lvcreate -n lv_mirror -L 300M -m 1 vg01</span></span><br><span class="line">  Logical volume "lv_mirror" created</span><br><span class="line"></span><br><span class="line"><span class="section"># ls /dev/mapper/</span></span><br><span class="line">control         vg01-lv<span class="emphasis">_mirror_</span>mimage<span class="emphasis">_0  vg01-lv_</span>mirror_mlog</span><br><span class="line">vg01-lv<span class="emphasis">_mirror  vg01-lv_</span>mirror<span class="emphasis">_mimage_</span>1</span><br><span class="line"></span><br><span class="line">格式化这个镜像卷，并挂载</span><br><span class="line"><span class="section"># mkfs.ext3 /dev/mapper/vg01-lv_mirror</span></span><br><span class="line"><span class="section"># mount /dev/mapper/vg01-lv_mirror /media/</span></span><br><span class="line"></span><br><span class="line"><span class="section"># df -h</span></span><br><span class="line">/dev/mapper/vg01-lv_mirror</span><br><span class="line"><span class="code">                      291M   11M  266M   4% /media</span></span><br><span class="line"><span class="code">                      </span></span><br><span class="line">测试镜像卷可用性</span><br><span class="line"><span class="section"># echo 123 &gt; /media/123</span></span><br><span class="line"><span class="section"># cat /media/123</span></span><br><span class="line">123</span><br><span class="line">破坏其中一个物理卷。</span><br><span class="line"><span class="code">		# dd if=/dev/zero of=/dev/sdb13</span></span><br><span class="line"><span class="code">		或者</span></span><br><span class="line"><span class="code">		# mkfs.ext3 /dev/sdb13</span></span><br><span class="line"></span><br><span class="line">pvs  检测出有物理卷被损坏,找不到uuid</span><br><span class="line"></span><br><span class="line">但数据仍然可以正常访问</span><br><span class="line"><span class="section"># cat /media/123</span></span><br><span class="line">123</span><br><span class="line"></span><br><span class="line">可以对其格式化，再用dd和iostat来做测试(但测试的结果比较复杂,因为我是几种不同的raid做的条带卷)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>关于三种卷之间的转换:</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">把线性卷转化成镜像卷</span><br><span class="line"><span class="section"># lvconvert -m 1 vg01/lv_linear   --速度较慢	</span></span><br><span class="line">把镜像卷转化成线性卷</span><br><span class="line"><span class="section"># lvconvert -m 0 vg01/lv_mirror	--速度较快</span></span><br><span class="line"></span><br><span class="line">实现总结：</span><br><span class="line">(1) 如果物理做了raid10，那么就可以不做条带和镜像卷了，只有线性卷就可以了</span><br><span class="line">(2) 如果物理没做raid，那么你希望提高IO性能或高可用，则可以使用条带或镜像卷</span><br></pre></td></tr></table></figure>
+<h4 id="4-LVM扩容"><a href="#4-LVM扩容" class="headerlink" title="4. LVM扩容"></a>4. LVM扩容</h4><p>先考虑vg是否还有空间去扩容，如果没有，那么要先扩容vg,使用vgextend</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># lvextend -L 1.5g /dev/vg01/lv01 </span></span><br><span class="line">  Extending logical volume lv01 to 1.50 GB</span><br><span class="line">  Logical volume lv01 successfully resized</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">下面两种写法也可以</span><br><span class="line"><span class="section"># lvextend -L +500M /dev/vg01/lv01</span></span><br><span class="line"><span class="section"># lvextend -l +125 /dev/vg01/lv01</span></span><br><span class="line"></span><br><span class="line"><span class="section"># df -h</span></span><br><span class="line">/dev/mapper/vg01-lv01</span><br><span class="line">985M   18M  918M   2% /mnt					查看已经挂载的大小，没有变化</span><br><span class="line"></span><br><span class="line"><span class="section"># resize2fs /dev/vg01/lv01					再使用这个命令去在线同步</span></span><br><span class="line">resize2fs 1.39 (29-May-2006)</span><br><span class="line">Filesystem at /dev/vg01/lv01 is mounted on /mnt; on-line resizing required</span><br><span class="line">Performing an on-line resize of /dev/vg01/lv01 to 393216 (4k) blocks.</span><br><span class="line">The filesystem on /dev/vg01/lv01 is now 393216 blocks long.</span><br><span class="line"></span><br><span class="line"><span class="section"># df -h</span></span><br><span class="line">/dev/mapper/vg01-lv01</span><br><span class="line">1.5G   18M  1.4G   2% /mnt  				再次查看,已经挂载的lv扩大了，并且数据没有影响</span><br></pre></td></tr></table></figure>
+<h4 id="5-LVM缩小"><a href="#5-LVM缩小" class="headerlink" title="5. LVM缩小"></a>5. LVM缩小</h4><p>做缩小操作之前，都要去验证查看一下数据的大小，缩小时不要缩到比已经存在的数据量还要小(数据库内的表空间缩小也是一样要先查看已有数据大小）</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># resize2fs /dev/vg01/lv01 1g	--这样去缩小的话，报错已经mount了</span></span><br><span class="line">resize2fs 1.39 (29-May-2006)</span><br><span class="line">Filesystem at /dev/vg01/lv01 is mounted on /mnt; on-line resizing required</span><br><span class="line">On-line shrinking from 393216 to 262144 not supported.</span><br><span class="line"></span><br><span class="line"><span class="section"># umount /mnt/</span></span><br><span class="line"></span><br><span class="line"><span class="section"># resize2fs /dev/vg01/lv01 1g	--umount后再使用resize2fs命令，要求先去e2fsck检测</span></span><br><span class="line">resize2fs 1.39 (29-May-2006)</span><br><span class="line">Please run 'e2fsck -f /dev/vg01/lv01' first.</span><br><span class="line"></span><br><span class="line"><span class="section"># e2fsck -f /dev/vg01/lv01 </span></span><br><span class="line">e2fsck 1.39 (29-May-2006)</span><br><span class="line">Pass 1: Checking inodes, blocks, and sizes</span><br><span class="line">Pass 2: Checking directory structure</span><br><span class="line">Pass 3: Checking directory connectivity</span><br><span class="line">Pass 4: Checking reference counts</span><br><span class="line">Pass 5: Checking group summary information</span><br><span class="line">/dev/vg01/lv01: 12/192000 files (8.3% non-contiguous), 10517/393216 blocks</span><br><span class="line"></span><br><span class="line"><span class="section"># resize2fs /dev/vg01/lv01 1g	检测后再使用resize2fs命令缩小，并挂载查看大小是否缩小</span></span><br><span class="line">resize2fs 1.39 (29-May-2006)</span><br><span class="line">Resizing the filesystem on /dev/vg01/lv01 to 262144 (4k) blocks.</span><br><span class="line">The filesystem on /dev/vg01/lv01 is now 262144 blocks long.</span><br><span class="line"></span><br><span class="line"><span class="section"># lvscan </span></span><br><span class="line">  ACTIVE            '/dev/vg01/lv01' [1.50 GB] inherit				但这里查看的还是1.5g</span><br><span class="line">  ACTIVE            '/dev/vg01/lv02' [1000.00 MB] inherit</span><br><span class="line"></span><br><span class="line"><span class="section"># lvreduce -L 1g /dev/vg01/lv01 						所以lvreduce也要做</span></span><br><span class="line">  WARNING: Reducing active logical volume to 1.00 GB</span><br><span class="line">  THIS MAY DESTROY YOUR DATA (filesystem etc.)</span><br><span class="line">Do you really want to reduce lv01? [y/n]: y</span><br><span class="line">  Reducing logical volume lv01 to 1.00 GB</span><br><span class="line">  Logical volume lv01 successfully resized</span><br><span class="line"></span><br><span class="line"><span class="section"># lvscan </span></span><br><span class="line">  ACTIVE            '/dev/vg01/lv01' [1.00 GB] inherit	--OK</span><br><span class="line">  ACTIVE            '/dev/vg01/lv02' [1000.00 MB] inherit</span><br><span class="line"></span><br><span class="line"><span class="section"># mount /dev/vg01/lv01 /mnt/</span></span><br><span class="line"><span class="section"># df -h</span></span><br><span class="line">/dev/mapper/vg01-lv02</span><br><span class="line">985M   18M  918M   2% /media										缩小了</span><br></pre></td></tr></table></figure>
+<h4 id="6-lvm-快照功能"><a href="#6-lvm-快照功能" class="headerlink" title="6. lvm 快照功能"></a>6. lvm 快照功能</h4><p>(1) 快照创建的速度非常快，不需要停止生产环境</p>
+<p>(2) 快照的大小是存储差异数据，或是快照时间点的状态，不需要和lv同大小</p>
+<p>(3) 它可以用于一些特殊的情况，比如数据库备份，或者批量复制虚拟机（不关闭虚拟机的情况下，克隆是需要关闭或暂停虚拟机的),虚拟机做快照等</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># dd if=/dev/zero of=/media/10m bs=1M count=10</span></span><br><span class="line"></span><br><span class="line"><span class="section"># dd if=/dev/zero of=/media/20m bs=1M count=20</span></span><br><span class="line"></span><br><span class="line"><span class="section"># dd if=/dev/zero of=/media/30m bs=1M count=30</span></span><br><span class="line"></span><br><span class="line"><span class="section"># ls /media/ -l</span></span><br><span class="line">total 61532</span><br><span class="line">-rw-r--r-- 1 root root 10485760 May  7 15:18 10m</span><br><span class="line">-rw-r--r-- 1 root root 20971520 May  7 15:18 20m</span><br><span class="line">-rw-r--r-- 1 root root 31457280 May  7 15:18 30m</span><br><span class="line">drwx------ 2 root root    16384 May  7 14:17 lost+found</span><br><span class="line"></span><br><span class="line"><span class="section"># lvcreate -s -L 100m -n snap01 /dev/vg01/lv02   --L参数指定的大小不是快照大小，它类似于一个快照存活的时间（由源的改变来定义存活时间的长短。源增加多少，这个100M‘时间‘就会被使用多少，源删除，这个100M时间只会被增加一点点，因为删除只记录它的一个innode失效。但注意，快照的内容不会跟着改变。</span></span><br><span class="line">  Logical volume "snap01" created</span><br><span class="line"></span><br><span class="line"><span class="section"># ls /dev/vg01/snap01 </span></span><br><span class="line">/dev/vg01/snap01</span><br><span class="line"></span><br><span class="line"><span class="section"># mkdir /snap</span></span><br><span class="line"><span class="section"># mount /dev/vg01/snap01 /snap/</span></span><br><span class="line"></span><br><span class="line"><span class="section"># ls /snap/	--快照的内容</span></span><br><span class="line">10m  20m  30m  lost+found</span><br><span class="line"></span><br><span class="line"><span class="section"># dd if=/dev/zero of=/media/50m bs=1M count=50</span></span><br><span class="line">--在源目录加一个50M的文件</span><br><span class="line"></span><br><span class="line"><span class="section"># ls /snap/	--快照的内容不会跟着变</span></span><br><span class="line">10m  20m  30m  lost+found</span><br><span class="line"></span><br><span class="line"><span class="section"># lvs</span></span><br><span class="line">  LV     VG   Attr   LSize    Origin Snap%  Move Log Copy%  Convert</span><br><span class="line">  lv01   vg01 -wi-ao    1.00G                                      </span><br><span class="line">  lv02   vg01 owi-ao 1000.00M                                      </span><br><span class="line">  snap01 vg01 swi-ao  100.00M lv02    50.48    --但是这个snap%会发现由几乎为0变化到50%</span><br><span class="line"></span><br><span class="line">下面再可以继续做试验：</span><br><span class="line">1，在源删除一个文件，再使用lvs查看  %snap只会增加一点点</span><br><span class="line">2，当%snap用完了100%，则快照失效。umount和mount快照都会出问题</span><br><span class="line">3, 快照的内容不会跟着源改变</span><br><span class="line"></span><br><span class="line"><span class="section"># lvremove /dev/vg01/snap01 	--快照的移除</span></span><br><span class="line">Do you really want to remove active logical volume snap01? [y/n]: y</span><br><span class="line">  Logical volume "snap01" successfully removed</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/17/linux-raid/" rel="next" title="Linux存储之RAID技术">
+                <i class="fa fa-chevron-left"></i> Linux存储之RAID技术
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/21/linux-live/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Dong Shouxin" />
+            
+              <p class="site-author-name" itemprop="name">Dong Shouxin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-LVM的相关概念"><span class="nav-number">2.</span> <span class="nav-text">2. LVM的相关概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-LVM基本操作"><span class="nav-number">3.</span> <span class="nav-text">3. LVM基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-LVM扩容"><span class="nav-number">4.</span> <span class="nav-text">4. LVM扩容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-LVM缩小"><span class="nav-number">5.</span> <span class="nav-text">5. LVM缩小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-lvm-快照功能"><span class="nav-number">6.</span> <span class="nav-text">6. lvm 快照功能</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong Shouxin</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">17.3k</span>
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>

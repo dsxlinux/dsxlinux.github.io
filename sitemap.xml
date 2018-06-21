@@ -2,86 +2,100 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/06/15/linux-ks/</loc>
+    
+    <lastmod>2018-06-17T21:57:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/17/linux-lvm/</loc>
+    
+    <lastmod>2018-06-17T21:54:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/17/linux-raid/</loc>
+    
+    <lastmod>2018-06-17T21:54:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/06/10/linux-process/</loc>
     
-    <lastmod>2018-06-15T06:23:34.268Z</lastmod>
+    <lastmod>2018-06-15T06:23:34.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/2018/06/08/linux-basic-02/</loc>
     
-    <lastmod>2018-06-15T02:35:36.282Z</lastmod>
+    <lastmod>2018-06-15T02:35:36.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://dsxlinux.github.io/2018/06/14/linux-ks/</loc>
+    <loc>https://dsxlinux.github.io/2018/06/21/linux-live/</loc>
     
-    <lastmod>2018-06-14T09:05:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/06/14/linux-live/</loc>
-    
-    <lastmod>2018-06-14T02:37:16.904Z</lastmod>
+    <lastmod>2018-06-14T02:37:16.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/2018/06/13/linux-nopass-copy/</loc>
     
-    <lastmod>2018-06-13T16:31:03.114Z</lastmod>
+    <lastmod>2018-06-13T16:31:03.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/2018/06/08/linux-yum/</loc>
     
-    <lastmod>2018-06-13T16:22:03.673Z</lastmod>
+    <lastmod>2018-06-13T16:22:03.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/2018/06/08/linux-text/</loc>
     
-    <lastmod>2018-06-13T16:20:38.164Z</lastmod>
+    <lastmod>2018-06-13T16:20:38.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/2018/06/08/linux-php-version/</loc>
     
-    <lastmod>2018-06-13T16:19:31.517Z</lastmod>
+    <lastmod>2018-06-13T16:19:31.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/2018/06/09/linux-grep/</loc>
     
-    <lastmod>2018-06-13T16:18:40.332Z</lastmod>
+    <lastmod>2018-06-13T16:18:40.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/2018/06/10/linux-net-tools/</loc>
     
-    <lastmod>2018-06-13T15:14:49.306Z</lastmod>
+    <lastmod>2018-06-13T15:14:49.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/2018/06/07/linux-basic-01/</loc>
     
-    <lastmod>2018-06-13T14:12:26.927Z</lastmod>
+    <lastmod>2018-06-13T14:12:26.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/2018/06/12/linux-system-backup/</loc>
     
-    <lastmod>2018-06-12T18:07:24.065Z</lastmod>
+    <lastmod>2018-06-12T18:07:24.000Z</lastmod>
     
   </url>
   
