@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="linux," />
+  <meta name="keywords" content="mysql," />
 
 
 
@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="本文主要介绍文件和目录、文件搜素相关的命令。">
-<meta name="keywords" content="linux">
+<meta name="description" content="本文主要介绍如何避开MySQL数据库登录时，在终端中输入密码提示的warning。">
+<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux基础01篇">
-<meta property="og:url" content="https://dsxlinux.github.io/2018/06/07/linux-basic-01/index.html">
+<meta property="og:title" content="MySQL--避开登录时的[Warning]">
+<meta property="og:url" content="https://dsxlinux.github.io/2018/06/20/mysql-warning/index.html">
 <meta property="og:site_name" content="Tech2k18">
-<meta property="og:description" content="本文主要介绍文件和目录、文件搜素相关的命令。">
+<meta property="og:description" content="本文主要介绍如何避开MySQL数据库登录时，在终端中输入密码提示的warning。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-13T14:12:26.000Z">
+<meta property="og:updated_time" content="2018-06-20T06:04:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux基础01篇">
-<meta name="twitter:description" content="本文主要介绍文件和目录、文件搜素相关的命令。">
+<meta name="twitter:title" content="MySQL--避开登录时的[Warning]">
+<meta name="twitter:description" content="本文主要介绍如何避开MySQL数据库登录时，在终端中输入密码提示的warning。">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://dsxlinux.github.io/2018/06/07/linux-basic-01/"/>
+  <link rel="canonical" href="https://dsxlinux.github.io/2018/06/20/mysql-warning/"/>
 
 
 
 
 
-  <title>Linux基础01篇 | Tech2k18</title>
+  <title>MySQL--避开登录时的[Warning] | Tech2k18</title>
   
 
 
@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dsxlinux.github.io/2018/06/07/linux-basic-01/">
+    <link itemprop="mainEntityOfPage" href="https://dsxlinux.github.io/2018/06/20/mysql-warning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Dong Shouxin">
@@ -324,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux基础01篇</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL--避开登录时的[Warning]</h1>
         
 
         <div class="post-meta">
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-07T02:20:14+08:00">
-                2018-06-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-20T11:41:17+08:00">
+                2018-06-20
               </time>
             
 
@@ -359,8 +359,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux-basic/" itemprop="url" rel="index">
-                    <span itemprop="name">linux-basic</span>
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
                   </a>
                 </span>
 
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  805
+                  357
                 </span>
               
 
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  2
                 </span>
               
             </div>
@@ -427,54 +427,36 @@
       
 
       
-        <p>本文主要介绍文件和目录、文件搜素相关的命令。<br><a id="more"></a></p>
-<h4 id="1-文件和目录"><a href="#1-文件和目录" class="headerlink" title="1. 文件和目录"></a>1. 文件和目录</h4><ul>
-<li>cd命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd /进入系统根目录</span><br><span class="line"><span class="section"># cd /</span></span><br><span class="line">cd /home进入根下的home目录</span><br><span class="line"><span class="section"># cd /home</span></span><br><span class="line"></span><br><span class="line">cd ..进入当前目录的上一级目录</span><br><span class="line"><span class="section"># cd ..</span></span><br><span class="line">cd -进入上次所在的目录</span><br><span class="line"><span class="section"># cd -</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>ls和pwd命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ls注意ls的参数</span><br><span class="line"><span class="section"># ls -a -l -d -h</span></span><br><span class="line"></span><br><span class="line">pwd显示当前工作路径</span><br><span class="line"><span class="section"># pwd</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>mkdir命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir  /test在根目录下创建test目录</span><br><span class="line"><span class="section"># mkdir /test</span></span><br><span class="line">mkdir  -p  /a/b/c/d创建多级目录，-p参数是不报错的</span><br><span class="line"><span class="section"># mkdir -p /a/b/c/d</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>cp命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp file1 file2复制一个文件</span><br><span class="line"><span class="section"># cp a.txt b.txt</span></span><br><span class="line">cp -ar dir1 dir2 复制一个目录</span><br><span class="line"><span class="section"># cp -ar /abc /test</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>mv命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mv /opt/a /root/移动文件</span><br><span class="line"><span class="section"># mv /opt/a /root/</span></span><br><span class="line">mv /opt/a /root/移动文件</span><br><span class="line"><span class="section"># mv /opt/a /root/b</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>touch命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">touch 1.txt创建文件</span><br><span class="line"><span class="section"># touch 1.txt</span></span><br><span class="line"><span class="section"># touch &#123;a..z&#125;</span></span><br><span class="line"><span class="section"># touch &#123;a..z..2&#125;</span></span><br><span class="line"><span class="section"># touch a&#123;1..5&#125;</span></span><br><span class="line"><span class="section"># touch a&#123;1..5&#125;.txt</span></span><br><span class="line"><span class="section"># touch &#123;1..5&#125;&#123;a..f&#125;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>file命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">查看文件的类型</span><br><span class="line"><span class="section"># file /dev/sda</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>tree命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">显示文件和目录由根目录开始的树形结构</span><br><span class="line"><span class="section"># yum install tree</span></span><br><span class="line"><span class="section"># tree –L 1</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-文件搜素"><a href="#2-文件搜素" class="headerlink" title="2. 文件搜素"></a>2. 文件搜素</h4><ul>
-<li>whereis和which命令</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">查找二进制文件</span><br><span class="line"><span class="section"># which cat</span></span><br><span class="line"><span class="section"># whereis whereis</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>find命令</li>
-</ul>
-<p>按名称查找<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># find /etc/ -name grub.conf</span></span><br><span class="line"><span class="section"># find /etc/ -name "*.conf"</span></span><br><span class="line"><span class="section"># find /etc/ -name ".*"</span></span><br><span class="line"><span class="section"># find /test/  -iname Abc</span></span><br></pre></td></tr></table></figure></p>
-<p>按类型查找<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># find / -type f</span></span><br><span class="line"><span class="section"># find / -type b</span></span><br><span class="line"><span class="section"># find / -type s</span></span><br><span class="line"><span class="section"># find / -type c</span></span><br><span class="line"><span class="section"># find / -type p</span></span><br><span class="line"><span class="section"># find / -type d</span></span><br><span class="line"><span class="section"># find / -type l</span></span><br></pre></td></tr></table></figure></p>
-<p>按大小查找<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># find / -size +500M</span></span><br><span class="line"><span class="section"># find / -size +1G</span></span><br><span class="line"><span class="section"># find / -size +50k</span></span><br><span class="line"><span class="section"># find / -size -1M</span></span><br><span class="line"><span class="section"># find / -size +3c</span></span><br><span class="line"><span class="section"># find / -size +80M -size -100M</span></span><br></pre></td></tr></table></figure></p>
-<p>按时间查找<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># stat 1 |tail -3</span></span><br><span class="line">Access: 2014-07-23 11:56:42.297572398 +0800     --atime 阅读过，用cat,tail,head,more,less命令等或者vi访问过，但没有修改；执行过也会改变</span><br><span class="line">Modify: 2014-07-23 11:56:44.836572907 +0800--mtime 修改过内容，用vi修改过或者echo一个值重定向</span><br><span class="line">Change: 2014-07-23 11:56:44.856885177 +0800     —ctime 改变过内容，属主，属组，权限，创建软链接，硬链接等</span><br><span class="line">找出 3 天”以前”被改动过的文件(&gt; 72 小时)</span><br><span class="line">find /var/log/ -mtime +3 -type f</span><br><span class="line">找出 3 天内被改动过的文件(0 ~ 72 小时内)</span><br><span class="line">find /var/log/ -mtime -3 -type f</span><br><span class="line">找出前第 3 天被改动过的文件(72 ~ 96 小时)</span><br><span class="line">find /var/log/ -mtime 3 -type f</span><br><span class="line">find /var/log/ -mtime +2 -mtime -4 -type f</span><br><span class="line">在20-50天内修改过的文件</span><br><span class="line">find ./ -mtime +20 -a -mtime -50 -type f</span><br><span class="line">在2018-04-11当天修改的文件</span><br><span class="line">find / -type f -newermt '2018-04-11 00:00' -a -not -newermt '2018-04-11 23:56'</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>locate命令</li>
-</ul>
-<p>速度快，通过系统带的一个数据库去查找，数据是非实时的。<br>速度快，通过系统带的一个数据库去查找，数据是非实时的。<br>系统每天自动更新一次，是通过时间任务执行的：/etc/cron.daily/mlocate.cron<br>/usr/bin/updatedb主要用来更新数据库，通过crontab自动完成的<br>/usr/bin/locate             查询文件位置<br>/etc/updatedb.confupdatedb的配置文件<br>/var/lib/mlocate/mlocate.db  存放文件信息的文件<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># locate passwd</span></span><br></pre></td></tr></table></figure></p>
+        <p>本文主要介绍如何避开MySQL数据库登录时，在终端中输入密码提示的warning。<br><a id="more"></a></p>
+<p>在MySQL中, 如果显示的输入密码去登录的话, 就会有一个Warning显示出来, 提醒这种使用方式会不安全。在写脚本时，通过mysql命令行去执行SQL语句，获取执行的结果，这个提示会带来灾难。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql: [Warning] Using a password on the command line interface can be insecure.</span><br></pre></td></tr></table></figure>
+<p>解决办法如下：</p>
+<ol>
+<li>修改数据库配置文件</li>
+</ol>
+<p>在my.cnf配置文件中，加入以下几行：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">port=3306</span><br><span class="line">socket=/tmp/mysql.sock</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line">host=localhost</span><br><span class="line">user=数据库用户</span><br><span class="line">password='数据库密码'</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>利用mysql_config_editor安全登录工具</li>
+</ol>
+<p>生成加密文件：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mysql_config_editor set --login-path=local --host=192.168.1.190 --user=root --password</span></span><br><span class="line">参数说明：</span><br><span class="line">--login-path			标识</span><br><span class="line">--host				登录数据库的主机ip</span><br><span class="line">--user				登录数据库的用户名</span><br><span class="line">--password			要设置的密码</span><br><span class="line"><span class="section"># ll ~/.mylogin.cnf</span></span><br></pre></td></tr></table></figure>
+<p>使用加密文件登录：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mysql --login-path=local</span></span><br></pre></td></tr></table></figure>
+<p>查看当前主机上的加密文件：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mysql_config_editor print --all</span></span><br></pre></td></tr></table></figure>
+<p>删除某个加密登陆：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mysql_config_editor remove --login-path=remote</span></span><br><span class="line"><span class="section"># mysql_config_editor print --all</span></span><br></pre></td></tr></table></figure>
+<p>重置所有：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mysql_config_editor reset</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>利用环境变量MYSQL_PWD</li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># export MYSQL_PWD=666666					    				 密码</span></span><br><span class="line"><span class="section"># mysql -uroot -e 'select count(*) from mysql.user;'			   不需要-p参数</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>将警告输出到null</li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mysql -uroot -p123456 -e 'show grants;' 2&gt;/dev/nul			   2是标准出错</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -494,7 +476,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+            <a href="/tags/mysql/" rel="tag"><i class="fa fa-tag"></i> mysql</a>
           
         </div>
       
@@ -507,14 +489,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/06/17/linux-lvm/" rel="next" title="Linux存储之LVM技术">
+                <i class="fa fa-chevron-left"></i> Linux存储之LVM技术
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/08/linux-basic-02/" rel="prev" title="Linux基础02篇">
-                Linux基础02篇 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/21/python-update/" rel="prev" title="CentOS6.x机器安装Python2.7">
+                CentOS6.x机器安装Python2.7 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -565,17 +551,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -646,22 +623,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-文件和目录"><span class="nav-number">1.</span> <span class="nav-text">1. 文件和目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-文件搜素"><span class="nav-number">2.</span> <span class="nav-text">2. 文件搜素</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

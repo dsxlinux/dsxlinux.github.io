@@ -42,6 +42,50 @@
   </entry>
   
   <entry>
+    <title>CentOS6.x机器安装Python2.7</title>
+    <link href="https://dsxlinux.github.io/2018/06/21/python-update/"/>
+    <id>https://dsxlinux.github.io/2018/06/21/python-update/</id>
+    <published>2018-06-21T07:09:10.000Z</published>
+    <updated>2018-06-21T07:16:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文主要介绍Centos6.x系统安装Python2.7。<br><a id="more"></a><br>CentOS6.x默认的python版本为2.6.6，有些软件需要python2.7的环境。安装Python2.7有两种方式：源码安装或者YUM安装。</p><h4 id="1-源码方式安装"><a href="#1-源码方式安装" class="headerlink" title="1.源码方式安装"></a>1.源码方式安装</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># wget https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tgz</span></span><br><span class="line"><span class="section"># tar xf Python-2.7.12.tgz</span></span><br><span class="line"><span class="section"># cd Python-2.7.12</span></span><br><span class="line"><span class="section"># ./configure --prefix=/usr/local/python27</span></span><br><span class="line"><span class="section"># make</span></span><br><span class="line"><span class="section"># make install</span></span><br></pre></td></tr></table></figure><h4 id="2-YUM方式安装"><a href="#2-YUM方式安装" class="headerlink" title="2.YUM方式安装"></a>2.YUM方式安装</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># yum install centos-release-SCL添加新的yum源</span></span><br><span class="line"><span class="section"># yum install scl-utils-build</span></span><br><span class="line"><span class="section"># yum --disablerepo="*" --enablerepo="centos-sclo-rh" list</span></span><br><span class="line"><span class="section"># yum install python27 -y</span></span><br><span class="line"><span class="section"># find / -name libpython2.7.so.1.0</span></span><br><span class="line">/opt/rh/python27/root/usr/lib64/libpython2.7.so.1.0</span><br><span class="line"><span class="section"># echo '/opt/rh/python27/root/usr/lib64/' &gt; /etc/ld.so.conf.d/python27.conf</span></span><br><span class="line"><span class="section"># /sbin/ldconfig</span></span><br><span class="line"><span class="section"># /sbin/ldconfig –v</span></span><br><span class="line"><span class="section"># mv /usr/bin/python /usr/bin/python.bak</span></span><br><span class="line"><span class="section"># ln -s /opt/rh/python27/root/usr/bin/python2.7 /usr/bin/python</span></span><br><span class="line"><span class="section"># python -V</span></span><br><span class="line"><span class="section"># vim /usr/bin/yum</span></span><br><span class="line">将第一行的内容改成：#!/usr/bin/python2.6</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文主要介绍Centos6.x系统安装Python2.7。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="https://dsxlinux.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://dsxlinux.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL--避开登录时的[Warning]</title>
+    <link href="https://dsxlinux.github.io/2018/06/20/mysql-warning/"/>
+    <id>https://dsxlinux.github.io/2018/06/20/mysql-warning/</id>
+    <published>2018-06-20T03:41:17.000Z</published>
+    <updated>2018-06-20T06:04:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文主要介绍如何避开MySQL数据库登录时，在终端中输入密码提示的warning。<br><a id="more"></a></p><p>在MySQL中, 如果显示的输入密码去登录的话, 就会有一个Warning显示出来, 提醒这种使用方式会不安全。在写脚本时，通过mysql命令行去执行SQL语句，获取执行的结果，这个提示会带来灾难。</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql: [Warning] Using a password on the command line interface can be insecure.</span><br></pre></td></tr></table></figure><p>解决办法如下：</p><ol><li>修改数据库配置文件</li></ol><p>在my.cnf配置文件中，加入以下几行：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">port=3306</span><br><span class="line">socket=/tmp/mysql.sock</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line">host=localhost</span><br><span class="line">user=数据库用户</span><br><span class="line">password='数据库密码'</span><br></pre></td></tr></table></figure><ol start="2"><li>利用mysql_config_editor安全登录工具</li></ol><p>生成加密文件：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mysql_config_editor set --login-path=local --host=192.168.1.190 --user=root --password</span></span><br><span class="line">参数说明：</span><br><span class="line">--login-path标识</span><br><span class="line">--host登录数据库的主机ip</span><br><span class="line">--user登录数据库的用户名</span><br><span class="line">--password要设置的密码</span><br><span class="line"><span class="section"># ll ~/.mylogin.cnf</span></span><br></pre></td></tr></table></figure><p>使用加密文件登录：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mysql --login-path=local</span></span><br></pre></td></tr></table></figure><p>查看当前主机上的加密文件：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mysql_config_editor print --all</span></span><br></pre></td></tr></table></figure><p>删除某个加密登陆：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mysql_config_editor remove --login-path=remote</span></span><br><span class="line"><span class="section"># mysql_config_editor print --all</span></span><br></pre></td></tr></table></figure><p>重置所有：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mysql_config_editor reset</span></span><br></pre></td></tr></table></figure><ol start="3"><li>利用环境变量MYSQL_PWD</li></ol><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># export MYSQL_PWD=666666     密码</span></span><br><span class="line"><span class="section"># mysql -uroot -e 'select count(*) from mysql.user;'   不需要-p参数</span></span><br></pre></td></tr></table></figure><ol start="4"><li>将警告输出到null</li></ol><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># mysql -uroot -p123456 -e 'show grants;' 2&gt;/dev/nul   2是标准出错</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文主要介绍如何避开MySQL数据库登录时，在终端中输入密码提示的warning。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://dsxlinux.github.io/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://dsxlinux.github.io/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux存储之LVM技术</title>
     <link href="https://dsxlinux.github.io/2018/06/17/linux-lvm/"/>
     <id>https://dsxlinux.github.io/2018/06/17/linux-lvm/</id>
