@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="Tech2k18">
 <meta property="og:description" content="本文主要介绍Python自动化运维的常用模块，比如：psutil、Dnspython、smtplib等。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-22T08:09:42.305Z">
+<meta property="og:updated_time" content="2018-06-22T08:47:21.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python自动化运维01">
 <meta name="twitter:description" content="本文主要介绍Python自动化运维的常用模块，比如：psutil、Dnspython、smtplib等。">
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  937
+                  1,281
                 </span>
               
 
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  7
                 </span>
               
             </div>
@@ -453,6 +453,7 @@
 <p>语法：filecmp.cmp(f1.f2[,shallow])</p>
 <p>比较f1和f2，相同返回true，不同返回false，shallow默认为true，会根据os.stat()比较，不会比较文件内容；反之则会比较内容。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> filecmp</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>filecmp.cmp(<span class="string">"/etc/passwd"</span>,<span class="string">"/etc/passwd"</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>filecmp.cmp(<span class="string">"/etc/passwd"</span>,<span class="string">"/etc/shadow"</span>)</span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h4 id="5-pycurl模块"><a href="#5-pycurl模块" class="headerlink" title="5. pycurl模块"></a>5. pycurl模块</h4><p>pycurl模块是一个用C语言编写的libcurl P python实现，功能非常强大，支持的协议有FTP、HTTP、HTTPS、TELNET等，可以理解成linux下curl命令功能的python封装。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os,sys</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> pycurl</span><br><span class="line"></span><br><span class="line">URL=<span class="string">"http://www.baidu.com"</span></span><br><span class="line">c = pycurl.Curl()</span><br><span class="line">c.setopt(pycurl.URL,URL)</span><br><span class="line">c.setopt(pycurl.CONNECTTIMEOUT,<span class="number">5</span>)</span><br><span class="line">c.setopt(pycurl.TIMEOUT,<span class="number">5</span>)</span><br><span class="line">c.setopt(pycurl.NOPROGRESS,<span class="number">1</span>)</span><br><span class="line">c.setopt(pycurl.FORBID_REUSE,<span class="number">1</span>)</span><br><span class="line">c.setopt(pycurl.MAXREDIRS,<span class="number">1</span>)</span><br><span class="line">c.setopt(pycurl.DNS_CACHE_TIMEOUT,<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line">indexfile = open(os.path.dirname(os.path.realpath(__file__))+<span class="string">"/content.html"</span>,<span class="string">"wb"</span>)</span><br><span class="line">c.setopt(pycurl.WRITEHEADER,indexfile)</span><br><span class="line">c.setopt(pycurl.WRITEDATA,indexfile)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">        c.perform()</span><br><span class="line"><span class="keyword">except</span> Exception,e:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"connection error:"</span>+str(e)</span><br><span class="line">        indexfile.close()</span><br><span class="line">        c.close()</span><br><span class="line">        sys.exit()</span><br><span class="line"></span><br><span class="line">NAMELOOKUP_TIME = c.getinfo(c.NAMELOOKUP_TIME)</span><br><span class="line">CONNECT_TIME = c.getinfo(c.CONNECT_TIME)</span><br><span class="line">PRETRANSFER_TIME = c.getinfo(c.PRETRANSFER_TIME)</span><br><span class="line"></span><br><span class="line">STARTTRANSFER_TIME = c.getinfo(c.STARTTRANSFER_TIME)</span><br><span class="line"></span><br><span class="line">TOTAL_TIME = c.getinfo(c.TOTAL_TIME)</span><br><span class="line">HTTP_CODE = c.getinfo(c.HTTP_CODE)</span><br><span class="line">SIZE_DOWNLOAD = c.getinfo(c.SIZE_DOWNLOAD)</span><br><span class="line">HEADER_SIZE = c.getinfo(c.HEADER_SIZE)</span><br><span class="line">SPEED_DOWNLOAD = c.getinfo(c.SPEED_DOWNLOAD)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"HTTP状态码：%s"</span> %(HTTP_CODE)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"DNS解析时间：%.2f ms"</span> %(NAMELOOKUP_TIME*<span class="number">1000</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"建立连接时间：%.2f ms"</span> %(CONNECT_TIME*<span class="number">1000</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"准备传输时间：%.2f ms"</span> %(PRETRANSFER_TIME*<span class="number">1000</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"传输开始时间：%.2f ms"</span> %(STARTTRANSFER_TIME*<span class="number">1000</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"传输结束总时间：%.2f ms"</span> %(TOTAL_TIME*<span class="number">1000</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"下载数据包大小：%d bytes/s"</span> %(SIZE_DOWNLOAD)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"HTTP头部大小：%d byte"</span> %(HEADER_SIZE)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"平均下载速度：%d bytes/s"</span> %(SPEED_DOWNLOAD)</span><br><span class="line"></span><br><span class="line">indexfile.close()</span><br><span class="line">c.close()</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -634,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-psutil模块"><span class="nav-number">1.</span> <span class="nav-text">1. psutil模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-dnspython模块"><span class="nav-number">2.</span> <span class="nav-text">2. dnspython模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-smtplib模块"><span class="nav-number">3.</span> <span class="nav-text">3. smtplib模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-difflib模块"><span class="nav-number">4.</span> <span class="nav-text">4. difflib模块</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-psutil模块"><span class="nav-number">1.</span> <span class="nav-text">1. psutil模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-dnspython模块"><span class="nav-number">2.</span> <span class="nav-text">2. dnspython模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-smtplib模块"><span class="nav-number">3.</span> <span class="nav-text">3. smtplib模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-difflib模块"><span class="nav-number">4.</span> <span class="nav-text">4. difflib模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-pycurl模块"><span class="nav-number">5.</span> <span class="nav-text">5. pycurl模块</span></a></li></ol></div>
             
 
           </div>
@@ -669,7 +670,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">18.8k</span>
+    <span title="Site words total count">19.2k</span>
   
 </div>
 
