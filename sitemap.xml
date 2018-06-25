@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/06/25/redis-install/</loc>
+    
+    <lastmod>2018-06-25T10:07:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/06/25/docker-basic/</loc>
     
     <lastmod>2018-06-25T09:27:33.000Z</lastmod>
