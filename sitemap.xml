@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/06/25/docker-basic/</loc>
+    
+    <lastmod>2018-06-25T09:27:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/22/nginx-apply/</loc>
+    
+    <lastmod>2018-06-24T08:26:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/24/mysql5.7-install/</loc>
+    
+    <lastmod>2018-06-23T06:04:41.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/06/22/python-stdmod02/</loc>
     
     <lastmod>2018-06-22T10:53:15.357Z</lastmod>
