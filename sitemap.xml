@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/06/26/httpd-webdav/</loc>
+    
+    <lastmod>2018-06-26T08:15:48.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/25/memcached-install/</loc>
+    
+    <lastmod>2018-06-25T13:20:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/25/mongodb-install/</loc>
+    
+    <lastmod>2018-06-25T13:00:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/06/25/redis-install/</loc>
     
-    <lastmod>2018-06-25T10:12:35.685Z</lastmod>
+    <lastmod>2018-06-25T10:07:22.000Z</lastmod>
     
   </url>
   
@@ -16,30 +37,51 @@
   </url>
   
   <url>
-    <loc>https://dsxlinux.github.io/2018/06/22/nginx-apply/</loc>
+    <loc>https://dsxlinux.github.io/2018/06/24/mysql-replication/</loc>
+    
+    <lastmod>2018-06-24T10:57:41.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/24/nginx-apply/</loc>
     
     <lastmod>2018-06-24T08:26:05.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://dsxlinux.github.io/2018/06/24/mysql5.7-install/</loc>
+    <loc>https://dsxlinux.github.io/2018/06/24/nginx-rewrite/</loc>
+    
+    <lastmod>2018-06-24T08:20:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/24/nginx-basic/</loc>
+    
+    <lastmod>2018-06-24T06:34:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/23/mysqld-multi/</loc>
+    
+    <lastmod>2018-06-23T10:50:15.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/23/mysql5.7-install/</loc>
     
     <lastmod>2018-06-23T06:04:41.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://dsxlinux.github.io/2018/06/22/python-stdmod02/</loc>
-    
-    <lastmod>2018-06-22T10:53:15.357Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://dsxlinux.github.io/2018/06/22/python-stdmod04/</loc>
     
-    <lastmod>2018-06-22T10:33:53.288Z</lastmod>
+    <lastmod>2018-06-22T10:33:53.000Z</lastmod>
     
   </url>
   
@@ -47,6 +89,13 @@
     <loc>https://dsxlinux.github.io/2018/06/22/python-stdmod03/</loc>
     
     <lastmod>2018-06-22T10:14:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/22/python-stdmod02/</loc>
+    
+    <lastmod>2018-06-22T10:05:45.000Z</lastmod>
     
   </url>
   
@@ -60,28 +109,28 @@
   <url>
     <loc>https://dsxlinux.github.io/2018/06/22/python-devops03/</loc>
     
-    <lastmod>2018-06-22T09:25:06.241Z</lastmod>
+    <lastmod>2018-06-22T09:25:06.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/2018/06/22/python-devops02/</loc>
     
-    <lastmod>2018-06-22T09:07:32.440Z</lastmod>
+    <lastmod>2018-06-22T09:07:32.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/2018/06/22/python-devops01/</loc>
     
-    <lastmod>2018-06-22T08:47:21.414Z</lastmod>
+    <lastmod>2018-06-22T08:47:21.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://dsxlinux.github.io/2018/06/10/linux-net-tools/</loc>
     
-    <lastmod>2018-06-22T01:43:13.714Z</lastmod>
+    <lastmod>2018-06-22T01:43:13.000Z</lastmod>
     
   </url>
   
@@ -135,7 +184,7 @@
   </url>
   
   <url>
-    <loc>https://dsxlinux.github.io/2018/06/21/linux-live/</loc>
+    <loc>https://dsxlinux.github.io/2018/06/26/linux-live/</loc>
     
     <lastmod>2018-06-14T02:37:16.000Z</lastmod>
     
