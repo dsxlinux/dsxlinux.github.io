@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/06/08/linux-text/</loc>
+    
+    <lastmod>2018-06-27T03:31:13.470Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/06/26/httpd-webdav/</loc>
     
     <lastmod>2018-06-26T08:37:16.397Z</lastmod>
@@ -201,13 +208,6 @@
     <loc>https://dsxlinux.github.io/2018/06/08/linux-yum/</loc>
     
     <lastmod>2018-06-13T16:22:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/06/08/linux-text/</loc>
-    
-    <lastmod>2018-06-13T16:20:38.000Z</lastmod>
     
   </url>
   
