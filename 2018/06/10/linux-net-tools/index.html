@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="Tech2k18">
 <meta property="og:description" content="本文主要介绍Linux系统中常用的网络工具。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-29T01:39:11.376Z">
+<meta property="og:updated_time" content="2018-06-29T01:42:32.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux网络工具">
 <meta name="twitter:description" content="本文主要介绍Linux系统中常用的网络工具。">
@@ -499,8 +499,9 @@
 </blockquote>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># wget -r -np -nd http://mirrors.163.com/centos/6/isos/x86_64/</span></span><br><span class="line"><span class="section"># wget -r -p -np -k http://mirrors.163.com/centos/6/isos/x86_64/</span></span><br><span class="line">参数说明：</span><br><span class="line">-r,  --recursive	  递归下载</span><br><span class="line">-k,  --convert-links	  让下载得到的 HTML 或 CSS 中的链接指向本地文件</span><br><span class="line">-m,  --mirror             -N -r -l inf --no-remove-listing 的缩写形式</span><br><span class="line">-np, --no-parent          不追溯至父目录</span><br><span class="line">-nd, --no-directories     不创建目录</span><br><span class="line">-l,  --level=NUMBER       最大递归深度 (inf 或 0 代表无限制，即全部下载)</span><br><span class="line">-c,  --continue           断点续传下载文件</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>https协议<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># wget https://centos6.iuscommunity.org/ius-release.rpm</span></span><br><span class="line"><span class="section"># wget https://centos6.iuscommunity.org/ius-release.rpm --no-check-certificate</span></span><br></pre></td></tr></table></figure></p>
+<p>https协议</p>
 </blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># wget https://centos6.iuscommunity.org/ius-release.rpm</span></span><br><span class="line"><span class="section"># wget https://centos6.iuscommunity.org/ius-release.rpm --no-check-certificate</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
