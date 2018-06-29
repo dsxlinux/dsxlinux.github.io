@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/06/10/linux-net-tools/</loc>
+    
+    <lastmod>2018-06-29T01:39:11.376Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/06/08/linux-text/</loc>
     
     <lastmod>2018-06-27T03:31:13.470Z</lastmod>
@@ -138,13 +145,6 @@
     <loc>https://dsxlinux.github.io/2018/06/22/python-devops01/</loc>
     
     <lastmod>2018-06-22T08:47:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/06/10/linux-net-tools/</loc>
-    
-    <lastmod>2018-06-22T01:43:13.000Z</lastmod>
     
   </url>
   
