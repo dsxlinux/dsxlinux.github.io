@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Tech2k18">
 <meta property="og:description" content="本文主要介绍Centos6.x安装vsftpd、配置文件、以及客户端的使用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-02T09:09:13.700Z">
+<meta property="og:updated_time" content="2018-07-02T09:12:40.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux安装vsftpd及配置详解">
 <meta name="twitter:description" content="本文主要介绍Centos6.x安装vsftpd、配置文件、以及客户端的使用。">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,218
+                  2,214
                 </span>
               
 
@@ -496,10 +496,31 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># chroot_local_user=YES</span></span><br></pre></td></tr></table></figure>
 <p>注意：</p>
 <p>对于chroot_local_user与chroot_list_enable的组合效果，可以参考下表： </p>
-<p>|表头|chroot_local_user=YES|chroot_local_user=NO|<br>|:-|:-|<br>| chroot_list_enable=YES | 1.所有用户都被限制在其主目录下  2.使用chroot_list_file指定的用户列表，这些用户作为“例外”，不受限制 | 1.所有用户都不被限制其主目录下  2.使用chroot_list_file指定的用户列表，这些用户作为“例外”，受到限制 |<br>| chroot_list_enable=NO  | 1.所有用户都被限制在其主目录下  2.不使用chroot_list_file指定的用户列表，没有任何“例外”用户 | 1.所有用户都不被限制其主目录下  2.不使用chroot_list_file指定的用户列表，没有任何“例外”用户 |</p>
 </li>
-<li><p>被动连接模式，控制服务器数据传输端口的范围</p>
-</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">chroot_local_user=YES</th>
+<th>chroot_local_user=NO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">chroot_list_enable=YES</td>
+<td style="text-align:left">(1)所有用户都被限制在其主目录下 (2)使用chroot_list_file指定的用户列表，这些用户作为“例外”，不受限制</td>
+<td>(1)所有用户都不被限制其主目录下  (2)使用chroot_list_file指定的用户列表，这些用户作为“例外”，受到限制</td>
+</tr>
+<tr>
+<td style="text-align:left">chroot_list_enable=NO</td>
+<td style="text-align:left">(1)所有用户都被限制在其主目录下  (2)不使用chroot_list_file指定的用户列表，没有任何“例外”用户</td>
+<td>(1)所有用户都不被限制其主目录下  (2)不使用chroot_list_file指定的用户列表，没有任何“例外”用户</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>被动连接模式，控制服务器数据传输端口的范围</li>
 </ul>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># vim /etc/vsftpd/vsftpd.conf</span></span><br><span class="line">pasv_enable=YES				#这一句默认不加也可以</span><br><span class="line">pasv<span class="emphasis">_min_</span>port=3000</span><br><span class="line">pasv<span class="emphasis">_max_</span>port=3005			#最小端口范围和最大端口范围可以自定义，也可以使用同一个端口</span><br><span class="line"></span><br><span class="line"><span class="section"># netstat -nt |grep TIME_</span></span><br><span class="line">tcp        0      0 127.0.0.1:3000              127.0.0.1:38206             TIME_WAIT</span><br></pre></td></tr></table></figure>
 <h4 id="5-客户端工具的使用"><a href="#5-客户端工具的使用" class="headerlink" title="5.客户端工具的使用"></a>5.客户端工具的使用</h4><ul>
