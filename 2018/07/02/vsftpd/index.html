@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Tech2k18">
 <meta property="og:description" content="本文主要介绍Centos6.x安装vsftpd、配置文件、以及客户端的使用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-02T08:13:25.106Z">
+<meta property="og:updated_time" content="2018-07-02T08:20:33.547Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux安装vsftpd及配置详解">
 <meta name="twitter:description" content="本文主要介绍Centos6.x安装vsftpd、配置文件、以及客户端的使用。">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,216
+                  2,218
                 </span>
               
 
@@ -436,12 +436,12 @@
 <li>主动模式</li>
 </ul>
 <p>主动：默认情况下，ftp服务是开放了21端口，用来接受控制命令，服务器用20端口去发送数据（连接客户端大于1024的随机端口）</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server						client</span><br><span class="line">  21 &lt;-----------命令----------- 随机端口</span><br><span class="line">                       20 ------------数据----------&gt; 随机端口</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server						client</span><br><span class="line">21 &lt;-----------命令----------- 随机端口</span><br><span class="line">20 ------------数据----------&gt; 随机端口</span><br></pre></td></tr></table></figure>
 <ul>
 <li>被动模式</li>
 </ul>
 <p>被动：ftp服务也是开放21端口，用来接受命令控制，进行数据传输时，客户端会告知服务端打开一个大于1024的端口，然后客户端去主动连接服务</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server						client</span><br><span class="line">  	   21 &lt;-----------命令----------- 随机端口</span><br><span class="line">             			  随机端口 ---------数据-----------&gt; 随机端口</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server						client</span><br><span class="line">21 &lt;-----------命令----------- 随机端口</span><br><span class="line">随机端口 ---------数据-----------&gt; 随机端口</span><br></pre></td></tr></table></figure>
 <p>主动模式：建立数据链路时由sever端去主动连接客户端的大于1024的随机端口<br>被动模式：建立数据链路时由client端去主动连服务端的随机端口</p>
 <p>vsftpd默认使用被动模式。</p>
 <h4 id="3-FTP匿名登录"><a href="#3-FTP匿名登录" class="headerlink" title="3. FTP匿名登录"></a>3. FTP匿名登录</h4><p>先启动vsftpd服务端：</p>
@@ -454,7 +454,7 @@
 <h4 id="4-配置文件"><a href="#4-配置文件" class="headerlink" title="4.配置文件"></a>4.配置文件</h4><ul>
 <li>默认配置文件</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># cat  /etc/vsftpd/vsftpd.conf  |grep -v ^# |grep -v ^$</span></span><br><span class="line">anonymous_enable=YES			#允许匿名用户登录</span><br><span class="line">local_enable=YES				#允许本地用户登录</span><br><span class="line">write_enable=YES				#允许本地用户登录后可写</span><br><span class="line">local_umask=022					#建立文件或者目录的权限掩码</span><br><span class="line">dirmessage_enable=YES				#启用目录的说明或者欢迎信息</span><br><span class="line">xferlog_enable=YES				#打开日志功能 （只记录文件的上传和下载信息）</span><br><span class="line">connect<span class="emphasis">_from_</span>port_20=YES			#默认支持主动模式（两个模式都是开启的，直接使用的话是使用的被动模式）</span><br><span class="line">xferlog<span class="emphasis">_std_</span>format=YES				#日志使用xferlog而不是vsftpd.log，改为NO的话，则相反</span><br><span class="line">listen=YES					#默认运行在stand alone下</span><br><span class="line">pam<span class="emphasis">_service_</span>name=vsftpd				#支持pam（可植入模块）</span><br><span class="line">userlist_enable=YES				#打开用户列表的功能</span><br><span class="line">tcp<span class="emphasis">_wrappers=YES				#支持tcp_</span>wrappers</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># cat  /etc/vsftpd/vsftpd.conf  |grep -v ^# |grep -v ^$</span></span><br><span class="line">anonymous_enable=YES				#允许匿名用户登录</span><br><span class="line">local_enable=YES				#允许本地用户登录</span><br><span class="line">write_enable=YES				#允许本地用户登录后可写</span><br><span class="line">local_umask=022					#建立文件或者目录的权限掩码</span><br><span class="line">dirmessage_enable=YES				#启用目录的说明或者欢迎信息</span><br><span class="line">xferlog_enable=YES				#打开日志功能 （只记录文件的上传和下载信息）</span><br><span class="line">connect<span class="emphasis">_from_</span>port_20=YES			#默认支持主动模式（两个模式都是开启的，直接使用的话是使用的被动模式）</span><br><span class="line">xferlog<span class="emphasis">_std_</span>format=YES				#日志使用xferlog而不是vsftpd.log，改为NO的话，则相反</span><br><span class="line">listen=YES					#默认运行在stand alone下</span><br><span class="line">pam<span class="emphasis">_service_</span>name=vsftpd				#支持pam（可植入模块）</span><br><span class="line">userlist_enable=YES				#打开用户列表的功能</span><br><span class="line">tcp<span class="emphasis">_wrappers=YES				#支持tcp_</span>wrappers</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>匿名用户（anonymous）设置</p>
 <ul>
@@ -496,7 +496,7 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># chroot_local_user=YES</span></span><br></pre></td></tr></table></figure>
 <p>注意：</p>
 <p>对于chroot_local_user与chroot_list_enable的组合效果，可以参考下表： </p>
-<p>| | chroot_local_user=YES| chroot_local_user=NO|<br>| - | :-: | -: |<br>| chroot_list_enable=YES | 1.所有用户都被限制在其主目录下  2.使用chroot_list_file指定的用户列表，这些用户作为“例外”，不受限制 | 1.所有用户都不被限制其主目录下  2.使用chroot_list_file指定的用户列表，这些用户作为“例外”，受到限制 |<br>| chroot_list_enable=NO  | 1.所有用户都被限制在其主目录下  2.不使用chroot_list_file指定的用户列表，没有任何“例外”用户 | 1.所有用户都不被限制其主目录下  2.不使用chroot_list_file指定的用户列表，没有任何“例外”用户 |</p>
+<p>|表头|chroot_local_user=YES|chroot_local_user=NO|<br>| - | :-: | -: |<br>| chroot_list_enable=YES | 1.所有用户都被限制在其主目录下  2.使用chroot_list_file指定的用户列表，这些用户作为“例外”，不受限制 | 1.所有用户都不被限制其主目录下  2.使用chroot_list_file指定的用户列表，这些用户作为“例外”，受到限制 |<br>| chroot_list_enable=NO  | 1.所有用户都被限制在其主目录下  2.不使用chroot_list_file指定的用户列表，没有任何“例外”用户 | 1.所有用户都不被限制其主目录下  2.不使用chroot_list_file指定的用户列表，没有任何“例外”用户 |</p>
 </li>
 <li><p>被动连接模式，控制服务器数据传输端口的范围</p>
 </li>
