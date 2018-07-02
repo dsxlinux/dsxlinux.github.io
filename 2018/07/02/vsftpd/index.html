@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Tech2k18">
 <meta property="og:description" content="本文主要介绍Centos6.x安装vsftpd、配置文件、以及客户端的使用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-02T08:20:33.547Z">
+<meta property="og:updated_time" content="2018-07-02T09:09:13.700Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux安装vsftpd及配置详解">
 <meta name="twitter:description" content="本文主要介绍Centos6.x安装vsftpd、配置文件、以及客户端的使用。">
@@ -496,7 +496,7 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># chroot_local_user=YES</span></span><br></pre></td></tr></table></figure>
 <p>注意：</p>
 <p>对于chroot_local_user与chroot_list_enable的组合效果，可以参考下表： </p>
-<p>|表头|chroot_local_user=YES|chroot_local_user=NO|<br>| - | :-: | -: |<br>| chroot_list_enable=YES | 1.所有用户都被限制在其主目录下  2.使用chroot_list_file指定的用户列表，这些用户作为“例外”，不受限制 | 1.所有用户都不被限制其主目录下  2.使用chroot_list_file指定的用户列表，这些用户作为“例外”，受到限制 |<br>| chroot_list_enable=NO  | 1.所有用户都被限制在其主目录下  2.不使用chroot_list_file指定的用户列表，没有任何“例外”用户 | 1.所有用户都不被限制其主目录下  2.不使用chroot_list_file指定的用户列表，没有任何“例外”用户 |</p>
+<p>|表头|chroot_local_user=YES|chroot_local_user=NO|<br>|:-|:-|<br>| chroot_list_enable=YES | 1.所有用户都被限制在其主目录下  2.使用chroot_list_file指定的用户列表，这些用户作为“例外”，不受限制 | 1.所有用户都不被限制其主目录下  2.使用chroot_list_file指定的用户列表，这些用户作为“例外”，受到限制 |<br>| chroot_list_enable=NO  | 1.所有用户都被限制在其主目录下  2.不使用chroot_list_file指定的用户列表，没有任何“例外”用户 | 1.所有用户都不被限制其主目录下  2.不使用chroot_list_file指定的用户列表，没有任何“例外”用户 |</p>
 </li>
 <li><p>被动连接模式，控制服务器数据传输端口的范围</p>
 </li>
