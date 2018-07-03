@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Tech2k18">
 <meta property="og:description" content="本文主要介绍Centos6.x安装vsftpd、配置文件、以及客户端的使用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-02T09:12:40.032Z">
+<meta property="og:updated_time" content="2018-07-03T01:59:34.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux安装vsftpd及配置详解">
 <meta name="twitter:description" content="本文主要介绍Centos6.x安装vsftpd、配置文件、以及客户端的使用。">
@@ -436,12 +436,12 @@
 <li>主动模式</li>
 </ul>
 <p>主动：默认情况下，ftp服务是开放了21端口，用来接受控制命令，服务器用20端口去发送数据（连接客户端大于1024的随机端口）</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server						client</span><br><span class="line">21 &lt;-----------命令----------- 随机端口</span><br><span class="line">20 ------------数据----------&gt; 随机端口</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server				client</span><br><span class="line">21 &lt;-----------命令----------- 随机端口</span><br><span class="line">20 ------------数据----------&gt; 随机端口</span><br></pre></td></tr></table></figure>
 <ul>
 <li>被动模式</li>
 </ul>
 <p>被动：ftp服务也是开放21端口，用来接受命令控制，进行数据传输时，客户端会告知服务端打开一个大于1024的端口，然后客户端去主动连接服务</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server						client</span><br><span class="line">21 &lt;-----------命令----------- 随机端口</span><br><span class="line">随机端口 ---------数据-----------&gt; 随机端口</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server				client</span><br><span class="line">21 &lt;-----------命令----------- 随机端口</span><br><span class="line">随机端口 ---------数据-----------&gt; 随机端口</span><br></pre></td></tr></table></figure>
 <p>主动模式：建立数据链路时由sever端去主动连接客户端的大于1024的随机端口<br>被动模式：建立数据链路时由client端去主动连服务端的随机端口</p>
 <p>vsftpd默认使用被动模式。</p>
 <h4 id="3-FTP匿名登录"><a href="#3-FTP匿名登录" class="headerlink" title="3. FTP匿名登录"></a>3. FTP匿名登录</h4><p>先启动vsftpd服务端：</p>
