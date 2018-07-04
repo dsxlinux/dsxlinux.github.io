@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dsxlinux.github.io/"/>
-  <updated>2018-07-03T02:06:24.408Z</updated>
+  <updated>2018-07-04T05:47:35.316Z</updated>
   <id>https://dsxlinux.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://dsxlinux.github.io/2018/07/04/linux-live/"/>
+    <id>https://dsxlinux.github.io/2018/07/04/linux-live/</id>
+    <published>2018-07-04T05:47:35.355Z</published>
+    <updated>2018-07-04T05:47:35.316Z</updated>
+    
+    <content type="html"><![CDATA[<!DOCTYPE html><html><head>    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    <meta property="og:title" content="直播地址">    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">    <title>直播</title></head><body><div style="width:100%; height:auto;"><p> 这里是直播的观看地址，可以直接观看，不需要其他播放器的支持。<b style="color:red">请允许您的浏览器支持flash插件。</b>原来使用播放器播放的方式也是可以的。<br><div><div id="id_video_container" style="width:100%; height:auto;"></div><script src="//qzonestyle.gtimg.cn/open/qcloud/video/live/h5/live_connect.js" charset="utf-8"></script><script type="text/javascript">    (function () {        var player = new qcVideo.Player("id_video_container", {            "live_url" : "http://2117.liveplay.myqcloud.com/live/2117_80c5034582.flv",    "live_url2" : "http://2117.liveplay.myqcloud.com/live/2117_80c5034582.m3u8",            "width" : 480,            "height" : 320        });    })()</script></div></p></div></body></html>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge,chrome=1&quot;&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Linux安装vsftpd及配置详解</title>
@@ -35,31 +60,6 @@
     
     
       <category term="linux" scheme="https://dsxlinux.github.io/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://dsxlinux.github.io/2018/06/26/linux-live/"/>
-    <id>https://dsxlinux.github.io/2018/06/26/linux-live/</id>
-    <published>2018-06-26T08:34:53.687Z</published>
-    <updated>2018-06-26T08:34:53.685Z</updated>
-    
-    <content type="html"><![CDATA[<!DOCTYPE html><html><head>    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    <meta property="og:title" content="直播地址">    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">    <title>直播</title></head><body><div style="width:100%; height:auto;"><p> 这里是直播的观看地址，可以直接观看，不需要其他播放器的支持。<b style="color:red">请允许您的浏览器支持flash插件。</b>原来使用播放器播放的方式也是可以的。<br><div><div id="id_video_container" style="width:100%; height:auto;"></div><script src="//qzonestyle.gtimg.cn/open/qcloud/video/live/h5/live_connect.js" charset="utf-8"></script><script type="text/javascript">    (function () {        var player = new qcVideo.Player("id_video_container", {            "live_url" : "http://2117.liveplay.myqcloud.com/live/2117_1e683aaee1.flv",    "live_url2" : "http://2117.liveplay.myqcloud.com/live/2117_1e683aaee1.m3u8",            "width" : 480,            "height" : 320        });    })()</script></div></p></div></body></html>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge,chrome=1&quot;&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content
-      
-    
-    </summary>
-    
     
   </entry>
   

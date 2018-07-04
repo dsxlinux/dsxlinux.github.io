@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/07/04/linux-live/</loc>
+    
+    <lastmod>2018-07-04T05:47:35.316Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/07/02/vsftpd/</loc>
     
     <lastmod>2018-07-03T02:06:24.408Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://dsxlinux.github.io/2018/06/26/httpd-webdav/</loc>
     
     <lastmod>2018-06-26T08:37:16.397Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/06/26/linux-live/</loc>
-    
-    <lastmod>2018-06-26T08:34:53.685Z</lastmod>
     
   </url>
   
