@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/06/10/linux-sed/</loc>
+    
+    <lastmod>2018-07-12T06:37:51.355Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/09/linux-awk/</loc>
+    
+    <lastmod>2018-07-12T06:35:46.072Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/09/linux-grep/</loc>
+    
+    <lastmod>2018-07-12T06:33:56.507Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/07/04/linux-live/</loc>
     
     <lastmod>2018-07-04T05:47:35.316Z</lastmod>
@@ -226,13 +247,6 @@
   </url>
   
   <url>
-    <loc>https://dsxlinux.github.io/2018/06/09/linux-grep/</loc>
-    
-    <lastmod>2018-06-13T16:18:40.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://dsxlinux.github.io/2018/06/07/linux-basic-01/</loc>
     
     <lastmod>2018-06-13T14:12:26.000Z</lastmod>
@@ -271,20 +285,6 @@
     <loc>https://dsxlinux.github.io/2018/06/10/linux-system/</loc>
     
     <lastmod>2018-06-10T10:10:43.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/06/10/linux-sed/</loc>
-    
-    <lastmod>2018-06-09T16:38:18.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/06/09/linux-awk/</loc>
-    
-    <lastmod>2018-06-09T15:58:24.000Z</lastmod>
     
   </url>
   
