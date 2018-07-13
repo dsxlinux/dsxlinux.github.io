@@ -81,7 +81,7 @@
 
 
 
-  <meta name="keywords" content="Memcache," />
+  <meta name="keywords" content="nosql," />
 
 
 
@@ -95,14 +95,14 @@
 
 
 <meta name="description" content="本文主要介绍Centos6.x系统通过YUM安装Memcache安装和配置。">
-<meta name="keywords" content="Memcache">
+<meta name="keywords" content="nosql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Memcache安装和配置">
 <meta property="og:url" content="https://dsxlinux.github.io/2018/06/25/memcached-install/index.html">
 <meta property="og:site_name" content="Tech2k18">
 <meta property="og:description" content="本文主要介绍Centos6.x系统通过YUM安装Memcache安装和配置。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-25T13:20:51.000Z">
+<meta property="og:updated_time" content="2018-07-13T08:47:19.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Memcache安装和配置">
 <meta name="twitter:description" content="本文主要介绍Centos6.x系统通过YUM安装Memcache安装和配置。">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  687
+                  686
                 </span>
               
 
@@ -431,7 +431,7 @@
 
       
         <p>本文主要介绍Centos6.x系统通过YUM安装Memcache安装和配置。<br><a id="more"></a></p>
-<h4 id="1-安装redis"><a href="#1-安装redis" class="headerlink" title="1.安装redis"></a>1.安装redis</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum search memcached</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum search memcached</span></span><br></pre></td></tr></table></figure>
 <h4 id="2-启停和连接"><a href="#2-启停和连接" class="headerlink" title="2.启停和连接"></a>2.启停和连接</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># memcached -h</span></span><br><span class="line"><span class="comment"># service memcached start</span></span><br><span class="line"><span class="comment"># service memcached stop</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># netstat -antp | grep memcached </span></span><br><span class="line">tcp        0      0 0.0.0.0:11211               0.0.0.0:*                   LISTEN      2608/memcached      </span><br><span class="line">tcp        0      0 :::11211                    :::*                        LISTEN      2608/memcached</span><br></pre></td></tr></table></figure>
 <h4 id="3-配置文件"><a href="#3-配置文件" class="headerlink" title="3.配置文件"></a>3.配置文件</h4><p>配置文件：/etc/sysconfig/memcached<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Properties file with JDBC-related settings.</span></span><br><span class="line"><span class="comment"># Applied by PropertyPlaceholderConfigurer from "applicationcontext-*.xml".</span></span><br><span class="line"><span class="comment"># Targeted at system administrators, to avoid touching the context XML files.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#memcached.servers=127.0.0.1:11211</span></span><br><span class="line"><span class="comment">#memcached.weights=1</span></span><br><span class="line">memcached.servers=127.0.0.1:11211</span><br><span class="line">memcached.weights=1</span><br><span class="line"><span class="comment">#初始连接数</span></span><br><span class="line">memcached.initConn=5</span><br><span class="line"><span class="comment">#最小连接数</span></span><br><span class="line">memcached.minConn=5</span><br><span class="line"><span class="comment">#最大连接数</span></span><br><span class="line">memcached.maxConn=250</span><br><span class="line"><span class="comment">#最大处理时间(豪秒)</span></span><br><span class="line">memcached.maxIdle=21600000</span><br><span class="line"><span class="comment">#主线程睡眠时间(豪秒) 连接池维护线程的睡眠时间 设置为0，维护线程不启动 维护线程主要通过log输出socket的运行状况，监测连接数目及空闲等待时间等参数以控制连接创建和关闭。</span></span><br><span class="line">memcached.maintSleep=30</span><br><span class="line"><span class="comment">#是否使用Nagle算法，因为我们的通讯数据量通常都比较大（相对TCP控制数据）而且要求响应及时，因此该值需要设置为false（默认是true）</span></span><br><span class="line">memcached.nagle=<span class="literal">false</span></span><br><span class="line"><span class="comment">#socket连接读取超时时间(豪秒)</span></span><br><span class="line">memcached.socketTo=3000</span><br><span class="line"><span class="comment">#设置socket的连接等待超时值</span></span><br><span class="line">memcached.socketConnectTo=0</span><br><span class="line"><span class="comment">#是否压缩数据 默认值是ture</span></span><br><span class="line">memcached.compressEnable=<span class="literal">true</span></span><br><span class="line"><span class="comment">#指定压缩大小(单位:K) 默认值是30K</span></span><br><span class="line">memcached.compressThreshold=65530</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#连接心跳监测开关。设为true则每次通信都要进行连接是否有效的监测，造成通信次数倍增，加大网络负载，因此该参数应该在对HA要求比较高的场合设为TRUE，默认状态是false。</span></span><br><span class="line">memcached.alivecheck=<span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接失败恢复开关 设置为TRUE，当宕机的服务器启动或中断的网络连接后，这个socket连接还可继续使用，否则将不再使用，默认状态是true，建议保持默认。</span></span><br><span class="line">memcached.failback=<span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 容错开关 设置为TRUE，当当前socket不可用时，程序会自动查找可用连接并返回，否则返回NULL，默认状态是true，建议保持默认。</span></span><br><span class="line">memcached.failover=<span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#cache数据的原始类型是String 默认值是false 只有在确定cache的数据类型是string的情况下才设为true，这样可以加快处理速度。</span></span><br><span class="line">memcached.primitiveasstring=<span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当primitiveAsString为true时使用的编码转化格式 默认值是utf-8 如果确认主要写入数据是中文等非ASCII编码字符，建议采用GBK等更短的编码格式</span></span><br><span class="line">memcached.defaultencoding=utf-8</span><br></pre></td></tr></table></figure></p>
 
@@ -453,7 +453,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Memcache/" rel="tag"><i class="fa fa-tag"></i> Memcache</a>
+            <a href="/tags/nosql/" rel="tag"><i class="fa fa-tag"></i> nosql</a>
           
         </div>
       
@@ -568,7 +568,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -579,7 +579,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -619,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装redis"><span class="nav-number">1.</span> <span class="nav-text">1.安装redis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-启停和连接"><span class="nav-number">2.</span> <span class="nav-text">2.启停和连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-配置文件"><span class="nav-number">3.</span> <span class="nav-text">3.配置文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装"><span class="nav-number">1.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-启停和连接"><span class="nav-number">2.</span> <span class="nav-text">2.启停和连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-配置文件"><span class="nav-number">3.</span> <span class="nav-text">3.配置文件</span></a></li></ol></div>
             
 
           </div>
