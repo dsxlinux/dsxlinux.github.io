@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/07/19/linux-live/</loc>
+    
+    <lastmod>2018-07-19T07:23:47.532Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/06/25/redis-install/</loc>
     
     <lastmod>2018-07-13T08:47:26.152Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://dsxlinux.github.io/2018/06/09/linux-grep/</loc>
     
     <lastmod>2018-07-12T06:33:56.507Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/07/04/linux-live/</loc>
-    
-    <lastmod>2018-07-04T05:47:35.316Z</lastmod>
     
   </url>
   

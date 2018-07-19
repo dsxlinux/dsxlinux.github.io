@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2018%2F07%2F19%2Flinux-live%2F</url>
+    <content type="text"><![CDATA[直播 这里是直播的观看地址，可以直接观看，不需要其他播放器的支持。请允许您的浏览器支持flash插件。原来使用播放器播放的方式也是可以的。 (function () { var player = new qcVideo.Player("id_video_container", { "live_url" : "http://2117.liveplay.myqcloud.com/live/2117_332e62ae51.flv", "live_url2" : "http://2117.liveplay.myqcloud.com/live/2117_332e62ae51.m3u8", "width" : 480, "height" : 320 }); })()]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[lftp命令详解]]></title>
     <url>%2F2018%2F07%2F12%2Flinux-lftp%2F</url>
     <content type="text"><![CDATA[本文主要介绍FTP客户端工具lftp的使用方法。 1.安装1# yum -y install lftp 2.登录登录方法： 1234# lftp ftp://ftpuser:123456@192.168.0.213:21 # ftp://可以省略，ftp协议端口是21# lftp ftp://ftpuser@192.168.0.213:21 # 密码可以单独输入# lftp sftp://ftpuser:123456@192.168.0.213:22 # sftp协议，端口是22# lftp sftp://ftpuser@192.168.0.213:22 # 密码可以单独输入 3.用法 查看或者改变目录 123cd # 进入远程目录cd .. # 进入上一级目录ls # 查看文件列表 文件下载 12345get xxx # 下载xxx文件mget *.txt # 使用通配符下载mget -c xxx # 断点续传mirror aaa/ # 将aaa目录整个的下载下来，子目录也会自动复制pget -c -n 10 file.dat # 可以多线程下载 文件上传 123put xxxmput xxx1 xxx2 xxx3mirror -R 本地目录名 # 将本地目录以迭代（包括子目录）的方式反向上传 其他 12345678910111213mkdir -p a/b/c # 创建多级目录rm -rf a/ # 删除文件或目录cat a.txt # 查看远程文件内容queue get 123.txt # 将任务加入任务列表queue put 234.txtqueue mirror aaa/queue # 查看任务列表queue start # 开始任务列表queue stop # 停止任务列表jobs # 查看后台任务列表kill all # 删除全部的jobsmv # 重命名文件open 127.0.0.1 # 连接ftp 4.脚本 上传脚本1234567891011#!/bin/bashecho "script start at `date "+%Y-%m-%d %H:%M:%S"` "lftp &lt;&lt; EOFopen ftp://ftpuser:123456@127.0.0.1:21mirror -R /root/upload/test /code/close byeEOFecho "script end at `date "+%Y-%m-%d %H:%M:%S"` "]]></content>
@@ -10,11 +15,6 @@
       <tags>
         <tag>linux-basic</tag>
       </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F2018%2F07%2F04%2Flinux-live%2F</url>
-    <content type="text"><![CDATA[直播 这里是直播的观看地址，可以直接观看，不需要其他播放器的支持。请允许您的浏览器支持flash插件。原来使用播放器播放的方式也是可以的。 (function () { var player = new qcVideo.Player("id_video_container", { "live_url" : "http://2117.liveplay.myqcloud.com/live/2117_80c5034582.flv", "live_url2" : "http://2117.liveplay.myqcloud.com/live/2117_80c5034582.m3u8", "width" : 480, "height" : 320 }); })()]]></content>
   </entry>
   <entry>
     <title><![CDATA[Linux安装vsftpd及配置详解]]></title>
