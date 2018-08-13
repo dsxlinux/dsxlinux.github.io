@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/08/10/mysql-columns/</loc>
+    
+    <lastmod>2018-08-13T07:26:43.928Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/08/12/mysql-key/</loc>
     
     <lastmod>2018-08-13T07:03:41.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://dsxlinux.github.io/2018/08/10/mysql-dql/</loc>
     
     <lastmod>2018-08-13T06:57:58.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/08/10/mysql-columns/</loc>
-    
-    <lastmod>2018-08-13T03:49:11.000Z</lastmod>
     
   </url>
   
