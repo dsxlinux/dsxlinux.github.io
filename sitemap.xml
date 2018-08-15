@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/08/15/inotify/</loc>
+    
+    <lastmod>2018-08-15T09:47:28.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/08/10/mysql-columns/</loc>
     
     <lastmod>2018-08-13T07:26:43.928Z</lastmod>

@@ -81,7 +81,7 @@
 
 
 
-  <meta name="keywords" content="linux-basic," />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="本文主要介绍Linux系统相关命令，比如关机，查看硬件信息等。">
-<meta name="keywords" content="linux-basic">
+<meta name="description" content="本文主要介绍inotify-tools工具套件的使用方法。">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux系统相关命令">
-<meta property="og:url" content="https://dsxlinux.github.io/2018/06/10/linux-system/index.html">
+<meta property="og:title" content="inotify-tools使用方法介绍">
+<meta property="og:url" content="https://dsxlinux.github.io/2018/08/15/inotify/index.html">
 <meta property="og:site_name" content="Tech2k18">
-<meta property="og:description" content="本文主要介绍Linux系统相关命令，比如关机，查看硬件信息等。">
+<meta property="og:description" content="本文主要介绍inotify-tools工具套件的使用方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-10T10:10:43.000Z">
+<meta property="og:updated_time" content="2018-08-15T09:47:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux系统相关命令">
-<meta name="twitter:description" content="本文主要介绍Linux系统相关命令，比如关机，查看硬件信息等。">
+<meta name="twitter:title" content="inotify-tools使用方法介绍">
+<meta name="twitter:description" content="本文主要介绍inotify-tools工具套件的使用方法。">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://dsxlinux.github.io/2018/06/10/linux-system/"/>
+  <link rel="canonical" href="https://dsxlinux.github.io/2018/08/15/inotify/"/>
 
 
 
 
 
-  <title>Linux系统相关命令 | Tech2k18</title>
+  <title>inotify-tools使用方法介绍 | Tech2k18</title>
   
 
 
@@ -310,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dsxlinux.github.io/2018/06/10/linux-system/">
+    <link itemprop="mainEntityOfPage" href="https://dsxlinux.github.io/2018/08/15/inotify/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Dong Shouxin">
@@ -327,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux系统相关命令</h1>
+          <h1 class="post-title" itemprop="name headline">inotify-tools使用方法介绍</h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-10T17:25:00+08:00">
-                2018-06-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-15T17:19:04+08:00">
+                2018-08-15
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux-basic/" itemprop="url" rel="index">
-                    <span itemprop="name">linux-basic</span>
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
                   </a>
                 </span>
 
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  642
+                  1,096
                 </span>
               
 
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -430,34 +430,83 @@
       
 
       
-        <p>本文主要介绍Linux系统相关命令，比如关机，查看硬件信息等。<br><a id="more"></a></p>
-<h4 id="1-关机命令"><a href="#1-关机命令" class="headerlink" title="1. 关机命令"></a>1. 关机命令</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># shutdown -h now		关机</span></span><br><span class="line"><span class="section"># init 0 				关机</span></span><br><span class="line"><span class="section"># telinit 0 			关机</span></span><br><span class="line"><span class="section"># # shutdown -h hours:minutes &amp; 			按预定时间关机</span></span><br><span class="line"><span class="section"># shutdown -c 						取消按预定时间关闭系统</span></span><br><span class="line"><span class="section"># shutdown -r now		重启 </span></span><br><span class="line"><span class="section"># reboot				重启 </span></span><br><span class="line"><span class="section"># logout 注销</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-硬件相关"><a href="#2-硬件相关" class="headerlink" title="2. 硬件相关"></a>2. 硬件相关</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># dmidecode -q					硬件相关信息 </span></span><br><span class="line"><span class="section"># hdparm -tT /dev/sda				在磁盘上执行测试性读取操作 </span></span><br><span class="line"><span class="section"># lscpu						查看CPU</span></span><br><span class="line"><span class="section"># lspci						查看主板</span></span><br><span class="line"><span class="section"># lsblk						查看磁盘分区</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-网络命令"><a href="#3-网络命令" class="headerlink" title="3. 网络命令"></a>3. 网络命令</h4><ul>
-<li><p>ifconfig命令</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># ifconfig 			显示一个以太网卡的配置，常用选项：</span></span><br><span class="line"><span class="section"># ifconfig eth0</span></span><br><span class="line"><span class="section"># ifconfig eth0 down</span></span><br><span class="line"><span class="section"># ifconfig eth0 up</span></span><br><span class="line"><span class="section"># ifconfig eth0 192.168.1.99 broadcast 192.168.1.255 netmask 255.255.255.0</span></span><br><span class="line"><span class="section"># ifconfig eth0:0 192.168.1.100 netmask 255.255.255.0		添加虚拟网卡</span></span><br><span class="line"><span class="section"># ifup eth0 				启用一个 'eth0' 网络设备 </span></span><br><span class="line"><span class="section"># ifdown eth0 				禁用一个 'eth0' 网络设备</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ip命令</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># ip					网络配置工具，常用选项：</span></span><br><span class="line"><span class="section"># ip a</span></span><br><span class="line"><span class="section"># ip addr show</span></span><br><span class="line"><span class="section"># ip addr show dev eth0		查看服务器ip地址</span></span><br><span class="line"><span class="section"># ip -s link list</span></span><br><span class="line"><span class="section"># ip -s link ls eth0			查看接口统计(ethtool -S eth0)</span></span><br><span class="line"><span class="section"># ip route list			查看路由表</span></span><br><span class="line"><span class="section"># ip neigh list			查看邻居表（arp -an）</span></span><br><span class="line"><span class="section"># ip addr add 192.168.0.215/24 label eth0:1 dev eth0		添加虚拟网卡</span></span><br><span class="line"><span class="section"># ip addr del 192.168.0.215/24 label eth0:1 dev eth0		删除虚拟网卡</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>netstat命令</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># netstat -an | grep LISTEN			-a 显示所有socket，包括正在监听的, -n 以网络IP地址代替名称</span></span><br><span class="line"><span class="section"># netstat -ntlup					查看系统网络的状态信息，t=tcp，u=udp，p=程序名称，l=监听</span></span><br><span class="line"><span class="section"># netstat -s						按照各个协议分别显示其统计数据</span></span><br><span class="line"><span class="section"># netstat -i						显示网卡接口信息</span></span><br><span class="line"><span class="section"># netstat –r						显示关于路由表的信息(rount -n)</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="4-系统监控和性能分析命令"><a href="#4-系统监控和性能分析命令" class="headerlink" title="4. 系统监控和性能分析命令"></a>4. 系统监控和性能分析命令</h4><ul>
-<li><p>iostat命令</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># iostat			直接运行，显示所有设备负载情况</span></span><br><span class="line"><span class="section"># iostat 2 3			每2秒显示一次，总共显示3次</span></span><br><span class="line"><span class="section"># iostat -c			查看cpu</span></span><br><span class="line"><span class="section"># iostat -d			查看磁盘</span></span><br><span class="line"><span class="section"># iostat -d -x 1 		x参数是详细信息</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>vmstat命令</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># vmstat 			虚拟内存统计</span></span><br><span class="line"><span class="section"># vmstat 2 2			每2秒显示一次，总共显示2次</span></span><br><span class="line"><span class="section"># vmstat 2 2 -S m		-S参数是单位，可以是k、m等</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>free命令</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># free			查看内存</span></span><br><span class="line"><span class="section"># free -m			-m是单位</span></span><br><span class="line"><span class="section"># free -m -s 2		-s是时间，每2秒查看一次</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>dstat命令</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># dstat			信息统计工具</span></span><br><span class="line"><span class="section"># dstat -n			n是net</span></span><br><span class="line"><span class="section"># dstat -d			d是disk</span></span><br><span class="line"><span class="section"># dstat -m			m是memory</span></span><br><span class="line"><span class="section"># dstat -l			l是load average 显示系统负载情况</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+        <p>本文主要介绍inotify-tools工具套件的使用方法。<br><a id="more"></a></p>
+<h4 id="1-关于inotify"><a href="#1-关于inotify" class="headerlink" title="1.关于inotify"></a>1.关于inotify</h4><p>Inotify是一种文件变化通知机制，Linux内核从2.6.13开始引入。<br>inotify-tools提供两种工具，一是inotifywait，它是用来监控文件或目录的变化，二是inotifywatch，它是用来统计文件系统访问的次数。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> grep INOTIFY_USER /boot/config-$(uname -r)</span><br></pre></td></tr></table></figure></p>
+<p>如果输出(‘CONFIG_INOTIFY_USER=y’)，表示支持Inotify机制。</p>
+<h4 id="2-安装inotify-tools"><a href="#2-安装inotify-tools" class="headerlink" title="2.安装inotify-tools"></a>2.安装inotify-tools</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> yum install epel-release -y</span><br><span class="line"><span class="meta">#</span> yum install inotify-tools -y</span><br></pre></td></tr></table></figure>
+<h4 id="3-inotifywait使用"><a href="#3-inotifywait使用" class="headerlink" title="3.inotifywait使用"></a>3.inotifywait使用</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> inotifywait -h</span><br><span class="line"></span><br><span class="line">参数说明:</span><br><span class="line">inotifywait [-hcmrq] [-e ] [-t ] [–format ] [–timefmt ] [ … ]</span><br><span class="line">-h,–help</span><br><span class="line">输出帮助信息</span><br><span class="line">@</span><br><span class="line">排除不需要监视的文件，可以是相对路径，也可以是绝对路径。</span><br><span class="line">–fromfile</span><br><span class="line">从文件读取需要监视的文件或排除的文件，一个文件一行，排除的文件以@开头。</span><br><span class="line">-m, –monitor</span><br><span class="line">接收到一个事情而不退出，无限期地执行。默认的行为是接收到一个事情后立即退出。</span><br><span class="line">-d, –daemon</span><br><span class="line">跟–monitor一样，除了是在后台运行，需要指定–outfile把事情输出到一个文件。也意味着使用了–syslog。</span><br><span class="line">-o, –outfile</span><br><span class="line">输出事情到一个文件而不是标准输出。</span><br><span class="line">-s, –syslog</span><br><span class="line">输出错误信息到系统日志</span><br><span class="line">-r, –recursive</span><br><span class="line">监视一个目录下的所有子目录。</span><br><span class="line">-q, –quiet</span><br><span class="line">指定一次，不会输出详细信息，指定二次，除了致命错误，不会输出任何信息。</span><br><span class="line">–exclude</span><br><span class="line">正则匹配需要排除的文件，大小写敏感。</span><br><span class="line">–excludei</span><br><span class="line">正则匹配需要排除的文件，忽略大小写。</span><br><span class="line">-t , –timeout</span><br><span class="line">设置超时时间，如果为0，则无限期地执行下去。</span><br><span class="line">-e , –event</span><br><span class="line">指定监视的事件。</span><br><span class="line">-c, –csv</span><br><span class="line">输出csv格式。</span><br><span class="line">–timefmt</span><br><span class="line">指定时间格式，用于–format选项中的%T格式。</span><br><span class="line">–format</span><br><span class="line">指定输出格式。</span><br><span class="line"><span class="meta">%</span>w 表示发生事件的目录</span><br><span class="line"><span class="meta">%</span>f 表示发生事件的文件</span><br><span class="line"><span class="meta">%</span>e 表示发生的事件</span><br><span class="line"><span class="meta">%</span>Xe 事件以“X”分隔</span><br><span class="line"><span class="meta">%</span>T 使用由–timefmt定义的时间格式</span><br></pre></td></tr></table></figure>
+<p>可监听事件</p>
+<table>
+<thead>
+<tr>
+<th>access</th>
+<th>文件读取</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>modify</td>
+<td>文件更改。</td>
+</tr>
+<tr>
+<td>attrib</td>
+<td>文件属性更改，如权限，时间戳等。</td>
+</tr>
+<tr>
+<td>close_write</td>
+<td>以可写模式打开的文件被关闭，不代表此文件一定已经写入数据。</td>
+</tr>
+<tr>
+<td>close_nowrite</td>
+<td>以只读模式打开的文件被关闭。</td>
+</tr>
+<tr>
+<td>close</td>
+<td>文件被关闭，不管它是如何打开的。</td>
+</tr>
+<tr>
+<td>open</td>
+<td>文件打开。</td>
+</tr>
+<tr>
+<td>moved_to</td>
+<td>一个文件或目录移动到监听的目录，即使是在同一目录内移动，此事件也触发。</td>
+</tr>
+<tr>
+<td>moved_from</td>
+<td>一个文件或目录移出监听的目录，即使是在同一目录内移动，此事件也触发。</td>
+</tr>
+<tr>
+<td>move</td>
+<td>包括moved_to和 moved_from</td>
+</tr>
+<tr>
+<td>move_self</td>
+<td>文件或目录被移除，之后不再监听此文件或目录。</td>
+</tr>
+<tr>
+<td>create</td>
+<td>文件或目录创建</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>文件或目录删除</td>
+</tr>
+<tr>
+<td>delete_self</td>
+<td>文件或目录移除，之后不再监听此文件或目录</td>
+</tr>
+<tr>
+<td>unmount</td>
+<td>文件系统取消挂载，之后不再监听此文件系统。</td>
+</tr>
+</tbody>
+</table>
+<p>案例：</p>
+<p>通过ftp上传了两种不同的文件（ftp一直在工作中），比如：xxx.zip文件和xxx.dat文件，需要将xxx.dat文件移动到其他目录进行单独处理。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> cat inotify.sh </span><br><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"></span><br><span class="line">/usr/bin/inotifywait -mrq -e modify,attrib,close,moved_to,create,delete /test/ |while read files</span><br><span class="line">do</span><br><span class="line">mv /test/*.dat /test2/ &amp;&gt;/dev/null</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h4 id="4-inotifywatch使用"><a href="#4-inotifywatch使用" class="headerlink" title="4.inotifywatch使用"></a>4.inotifywatch使用</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> inotifywatch -h</span><br><span class="line">inotifywatch [-hvzrqf] [-e ] [-t ] [-a ] [-d ] [ … ]</span><br><span class="line"></span><br><span class="line">参数说明：</span><br><span class="line">-h, –help</span><br><span class="line">输出帮助信息</span><br><span class="line">-v, –verbose</span><br><span class="line">输出详细信息</span><br><span class="line">@</span><br><span class="line">排除不需要监视的文件，可以是相对路径，也可以是绝对路径。</span><br><span class="line">–fromfile</span><br><span class="line">从文件读取需要监视的文件或排除的文件，一个文件一行，排除的文件以@开头。</span><br><span class="line">-z, –zero</span><br><span class="line">输出表格的行和列，即使元素为空</span><br><span class="line">–exclude</span><br><span class="line">正则匹配需要排除的文件，大小写敏感。</span><br><span class="line">–excludei</span><br><span class="line">正则匹配需要排除的文件，忽略大小写。</span><br><span class="line">-r, –recursive</span><br><span class="line">监视一个目录下的所有子目录。</span><br><span class="line">-t , –timeout</span><br><span class="line">设置超时时间</span><br><span class="line">-e , –event</span><br><span class="line">只监听指定的事件。</span><br><span class="line">-a , –ascending</span><br><span class="line">以指定事件升序排列。</span><br><span class="line">-d , –descending</span><br><span class="line">以指定事件降序排列。</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> inotifywatch -r -v -e modify,attrib,close,moved_to,create,delete /test/</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -477,7 +526,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux-basic/" rel="tag"><i class="fa fa-tag"></i> linux-basic</a>
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
           
         </div>
       
@@ -490,8 +539,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/10/linux-process/" rel="next" title="Linux进程管理">
-                <i class="fa fa-chevron-left"></i> Linux进程管理
+              <a href="/2018/08/12/mysql-key/" rel="next" title="MySQL主键和外键">
+                <i class="fa fa-chevron-left"></i> MySQL主键和外键
               </a>
             
           </div>
@@ -499,10 +548,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/10/linux-net-tools/" rel="prev" title="Linux网络工具">
-                Linux网络工具 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -643,7 +688,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-关机命令"><span class="nav-number">1.</span> <span class="nav-text">1. 关机命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-硬件相关"><span class="nav-number">2.</span> <span class="nav-text">2. 硬件相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-网络命令"><span class="nav-number">3.</span> <span class="nav-text">3. 网络命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-系统监控和性能分析命令"><span class="nav-number">4.</span> <span class="nav-text">4. 系统监控和性能分析命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-关于inotify"><span class="nav-number">1.</span> <span class="nav-text">1.关于inotify</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-安装inotify-tools"><span class="nav-number">2.</span> <span class="nav-text">2.安装inotify-tools</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-inotifywait使用"><span class="nav-number">3.</span> <span class="nav-text">3.inotifywait使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-inotifywatch使用"><span class="nav-number">4.</span> <span class="nav-text">4.inotifywatch使用</span></a></li></ol></div>
             
 
           </div>
