@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/06/08/linux-basic-02/</loc>
+    
+    <lastmod>2018-08-20T08:44:14.870Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/06/07/linux-basic-01/</loc>
+    
+    <lastmod>2018-08-20T08:44:06.012Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/08/20/socks5-proxy/</loc>
     
     <lastmod>2018-08-20T08:40:34.871Z</lastmod>
@@ -303,13 +317,6 @@
   </url>
   
   <url>
-    <loc>https://dsxlinux.github.io/2018/06/08/linux-basic-02/</loc>
-    
-    <lastmod>2018-06-15T02:35:36.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://dsxlinux.github.io/2018/06/13/linux-nopass-copy/</loc>
     
     <lastmod>2018-06-13T16:31:03.000Z</lastmod>
@@ -327,13 +334,6 @@
     <loc>https://dsxlinux.github.io/2018/06/08/linux-php-version/</loc>
     
     <lastmod>2018-06-13T16:19:31.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/06/07/linux-basic-01/</loc>
-    
-    <lastmod>2018-06-13T14:12:26.000Z</lastmod>
     
   </url>
   
