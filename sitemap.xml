@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/08/22/SaltStack/</loc>
+    
+    <lastmod>2018-08-23T01:24:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/08/20/jenkins/</loc>
     
     <lastmod>2018-08-20T09:10:29.000Z</lastmod>
