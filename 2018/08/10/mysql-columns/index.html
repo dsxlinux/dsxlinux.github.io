@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Tech2k18">
 <meta property="og:description" content="本文主要介绍MySQL语法之列属性。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-13T07:26:43.928Z">
+<meta property="og:updated_time" content="2018-08-23T08:32:25.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL语法之列属性和索引">
 <meta name="twitter:description" content="本文主要介绍MySQL语法之列属性。">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,458
+                  1,584
                 </span>
               
 
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  7
                 </span>
               
             </div>
@@ -459,7 +459,7 @@
 </ul>
 <h4 id="3-索引"><a href="#3-索引" class="headerlink" title="3.索引"></a>3.索引</h4><p>  索引是一种特殊的文件(InnoDB数据表上的索引是表空间的一个组成部分)，它们包含着对数据表里所有记录的引用指针。更通俗的说，数据库索引好比是一本书前面的目录，能加快数据库的查询速度。上述SQL语句，在没有索引的情况下，数据库会遍历全部数据后选择符合条件的；而有了相应的索引之后，数据库会直接在索引中查找符合条件的选项。如果我们把SQL语句换成“SELECT * FROM article WHERE id=2000000”，那么你是希望数据库按照顺序读取完200万行数据以后给你结果还是直接在索引中定位呢？上面的两个图片鲜明的用时对比已经给出了答案（注：一般数据库默认都会为主键生成索引）。<br>  索引分为聚簇索引和非聚簇索引两种，聚簇索引是按照数据存放的物理位置为顺序的，而非聚簇索引就不一样了；聚簇索引能提高多行检索的速度，而非聚簇索引对于单行的检索很快。<br>  索引是一种数据结构，可以是B-tree, R-tree, 或者 hash 结构。其中R-tree 常用于查询比较接近的数据；B-trees适合用于查找某范围内的数据，可以很快的从当前数据找到下条数据；hash结构则适用于随机访问的场合，查找每条数据的时间几乎相同。显然，若要查找某个时间段的数据，用B-tree结构要比hash结构快好多。 </p>
 <ul>
-<li>普通索引<br>这是最基本的索引，它没有任何限制。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE mytable(</span><br><span class="line">ID INT NOT NULL, 	 </span><br><span class="line">username VARCHAR(16) NOT NULL,</span><br><span class="line">INDEX (username(16))</span><br><span class="line">);</span><br><span class="line">直接创建索引:</span><br><span class="line">mysql&gt; CREATE INDEX index_name ON table(column(length))</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE TABLE mytable( ID INT NOT NULL, username VARCHAR(16) NOT NULL );</span><br><span class="line">mysql&gt; create index user_index on mytable(username(16));</span><br><span class="line"></span><br><span class="line">查看索引：</span><br><span class="line">mysql&gt; show index from mytable;</span><br><span class="line"></span><br><span class="line">修改表结构的方式添加索引:</span><br><span class="line">mysql&gt; ALTER TABLE table_name ADD INDEX index_name (column(length))</span><br><span class="line">mysql&gt; alter table mytable add index user_index  (username(16));</span><br><span class="line"></span><br><span class="line">删除索引:</span><br><span class="line">mysql&gt; DROP INDEX index_name ON table</span><br><span class="line"></span><br><span class="line">mysql&gt; drop index user_index on mytable;</span><br></pre></td></tr></table></figure>
+<li>普通索引<br>这是最基本的索引，它没有任何限制。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE mytable(</span><br><span class="line">ID INT NOT NULL, 	 </span><br><span class="line">username VARCHAR(16) NOT NULL,</span><br><span class="line">INDEX (username(16))</span><br><span class="line">);</span><br><span class="line">如果是CHAR，VARCHAR类型，length可以小于字段实际长度；如果是BLOB和TEXT类型，必须指定 length。这个length的用处是什么?</span><br><span class="line">CREATE INDEX part_of_name ON customer (name(10));</span><br><span class="line">创建索引时，使用col_name(length)语法，对前缀编制索引。前缀包括每列值的前length个字符。使用列的一部分创建索引可以使索引文件大大减小，从而节省了大量的磁盘空间，有可能提高INSERT操作的速度。</span><br><span class="line"></span><br><span class="line">直接创建索引:</span><br><span class="line">mysql&gt; CREATE INDEX index_name ON table(column(length))</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE TABLE mytable( ID INT NOT NULL, username VARCHAR(16) NOT NULL );</span><br><span class="line">mysql&gt; create index user_index on mytable(username(16));</span><br><span class="line"></span><br><span class="line">查看索引：</span><br><span class="line">mysql&gt; show index from mytable;</span><br><span class="line"></span><br><span class="line">修改表结构的方式添加索引:</span><br><span class="line">mysql&gt; ALTER TABLE table_name ADD INDEX index_name (column(length))</span><br><span class="line">mysql&gt; alter table mytable add index user_index  (username(16));</span><br><span class="line"></span><br><span class="line">删除索引:</span><br><span class="line">mysql&gt; DROP INDEX index_name ON table</span><br><span class="line"></span><br><span class="line">mysql&gt; drop index user_index on mytable;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
@@ -688,7 +688,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">46.7k</span>
+    <span title="Site words total count">46.8k</span>
   
 </div>
 
