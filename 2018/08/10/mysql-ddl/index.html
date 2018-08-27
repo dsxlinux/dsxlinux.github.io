@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Tech2k18">
 <meta property="og:description" content="本文主要介绍MySQL语法之DDL(data define language)操作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-13T01:39:03.000Z">
+<meta property="og:updated_time" content="2018-08-27T01:38:32.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL语法之DDL">
 <meta name="twitter:description" content="本文主要介绍MySQL语法之DDL(data define language)操作。">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  871
+                  872
                 </span>
               
 
@@ -438,10 +438,9 @@
 </li>
 <li><p>CREATE TABLE建表</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 建表语句</span><br><span class="line">mysql&gt; CREATE TABLE IF NOT EXISTS emp(id int) ENGINE=InnoDB DEFAULT CHARSET=utf8;</span><br><span class="line">mysql&gt; CREATE TABLE IF NOT EXISTS emp1(ID INT NOT NULL DEFAULT 1, NAME CHAR);</span><br><span class="line">mysql&gt; CREATE TABLE IF NOT EXISTS emp2(ID INT NOT NULL AUTO_INCREMENT, NAME CHAR);</span><br><span class="line"># 其中有一部分可以省略</span><br><span class="line">mysql&gt; CREATE TABLE emp(id int);</span><br><span class="line"># 查看系统是如何建表的</span><br><span class="line">mysql&gt; SHOW CREATE TABLE emp;</span><br><span class="line"># 使用like建表，快速建立相同表结构的表</span><br><span class="line"># CREATE TABLE imp LIKE emp;</span><br><span class="line"># DESC emp;</span><br><span class="line"># DESC imp;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>CREATE USER建用户<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 创建一个用户</span><br><span class="line">mysql&gt; CREATE USER &apos;jeffrey&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;new_password&apos; PASSWORD EXPIRE;</span><br><span class="line"># 查看系统是如何创建的</span><br><span class="line">mysql&gt; SHOW CREATE USER &apos;jeffrey&apos;@&apos;localhost&apos;;</span><br><span class="line"># 创建一个用户，指定过期时间</span><br><span class="line">mysql&gt; CREATE USER &apos;tom&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;new_password&apos; PASSWORD EXPIRE INTERVAL 180 DAY;</span><br><span class="line"># 查看系统是如何创建的</span><br><span class="line">mysql&gt; SHOW CREATE USER &apos;tom&apos;@&apos;localhost&apos;;</span><br><span class="line"># 查看user.assword_last_changed 列来看对应账号密码的最近一次的修改时间</span><br><span class="line">mysql&gt; select user,host,password_expired,password_last_changed,password_lifetime from mysql.user;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
+<li><p>CREATE USER建用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 创建一个用户</span><br><span class="line">mysql&gt; CREATE USER &apos;jeffrey&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;new_password&apos; PASSWORD EXPIRE;</span><br><span class="line"># 查看系统是如何创建的</span><br><span class="line">mysql&gt; SHOW CREATE USER &apos;jeffrey&apos;@&apos;localhost&apos;;</span><br><span class="line"># 创建一个用户，指定过期时间</span><br><span class="line">mysql&gt; CREATE USER &apos;tom&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;new_password&apos; PASSWORD EXPIRE INTERVAL 180 DAY;</span><br><span class="line"># 查看系统是如何创建的</span><br><span class="line">mysql&gt; SHOW CREATE USER &apos;tom&apos;@&apos;localhost&apos;;</span><br><span class="line"># 查看user.assword_last_changed 列来看对应账号密码的最近一次的修改时间</span><br><span class="line">mysql&gt; select user,host,password_expired,password_last_changed,password_lifetime from mysql.user;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
@@ -458,7 +457,8 @@
 </li>
 </ul>
 <ul>
-<li>DROP语句<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 删库</span><br><span class="line">mysql&gt; DROP DATABASE IF EXISTS db1;</span><br><span class="line"># 删表</span><br><span class="line">mysql&gt; DROP TABLE IF EXISTS emp;</span><br><span class="line"># 删视图</span><br><span class="line">mysql&gt; drop view emp_view;</span><br></pre></td></tr></table></figure></li>
+<li>DROP语句<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 删库</span><br><span class="line">mysql&gt; DROP DATABASE IF EXISTS db1;</span><br><span class="line"># 删表</span><br><span class="line">mysql&gt; DROP TABLE IF EXISTS emp;</span><br><span class="line"># 删视图</span><br><span class="line">mysql&gt; drop view emp_view;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       

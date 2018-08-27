@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/08/10/mysql-ddl/</loc>
+    
+    <lastmod>2018-08-27T01:38:32.468Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/08/10/mysql-dcl/</loc>
     
     <lastmod>2018-08-23T10:01:22.238Z</lastmod>
@@ -96,13 +103,6 @@
     <loc>https://dsxlinux.github.io/2018/08/10/mysql-dql/</loc>
     
     <lastmod>2018-08-13T06:57:58.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/08/10/mysql-ddl/</loc>
-    
-    <lastmod>2018-08-13T01:39:03.000Z</lastmod>
     
   </url>
   
