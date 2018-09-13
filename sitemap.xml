@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/08/10/mysql-dql/</loc>
+    
+    <lastmod>2018-09-13T08:00:08.541Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://dsxlinux.github.io/2018/08/10/mysql-backup/</loc>
+    
+    <lastmod>2018-09-13T07:23:34.851Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/08/10/mysql-ddl/</loc>
     
     <lastmod>2018-08-30T09:39:32.389Z</lastmod>
@@ -121,23 +135,9 @@
   </url>
   
   <url>
-    <loc>https://dsxlinux.github.io/2018/08/10/mysql-dql/</loc>
-    
-    <lastmod>2018-08-13T06:57:58.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://dsxlinux.github.io/2018/08/12/mysql-datatype/</loc>
     
     <lastmod>2018-08-12T10:31:07.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/08/10/mysql-backup/</loc>
-    
-    <lastmod>2018-08-10T10:05:33.000Z</lastmod>
     
   </url>
   
