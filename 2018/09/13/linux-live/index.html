@@ -81,7 +81,7 @@
 
 
 
-  <meta name="keywords" content="linux," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -94,18 +94,17 @@
 
 
 
-<meta name="description" content="本文主要介绍linux系统下磁盘分区表的备份和恢复方法。">
-<meta name="keywords" content="linux">
+<meta name="description" content="直播     这里是直播的观看地址，可以直接观看，不需要其他播放器的支持。请允许您的浏览器支持flash插件。原来使用播放器播放的方式也是可以的。         (function () {         var player = new qcVideo.Player(&quot;id_video_container&quot;, {">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux下磁盘分区表的备份和恢复">
-<meta property="og:url" content="https://dsxlinux.github.io/2018/08/30/partition/index.html">
+<meta property="og:title" content="Tech2k18">
+<meta property="og:url" content="https://dsxlinux.github.io/2018/09/13/linux-live/index.html">
 <meta property="og:site_name" content="Tech2k18">
-<meta property="og:description" content="本文主要介绍linux系统下磁盘分区表的备份和恢复方法。">
+<meta property="og:description" content="直播     这里是直播的观看地址，可以直接观看，不需要其他播放器的支持。请允许您的浏览器支持flash插件。原来使用播放器播放的方式也是可以的。         (function () {         var player = new qcVideo.Player(&quot;id_video_container&quot;, {">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-30T03:56:03.000Z">
+<meta property="og:updated_time" content="2018-09-13T09:59:05.852Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux下磁盘分区表的备份和恢复">
-<meta name="twitter:description" content="本文主要介绍linux系统下磁盘分区表的备份和恢复方法。">
+<meta name="twitter:title" content="Tech2k18">
+<meta name="twitter:description" content="直播     这里是直播的观看地址，可以直接观看，不需要其他播放器的支持。请允许您的浏览器支持flash插件。原来使用播放器播放的方式也是可以的。         (function () {         var player = new qcVideo.Player(&quot;id_video_container&quot;, {">
 
 
 
@@ -135,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://dsxlinux.github.io/2018/08/30/partition/"/>
+  <link rel="canonical" href="https://dsxlinux.github.io/2018/09/13/linux-live/"/>
 
 
 
 
 
-  <title>linux下磁盘分区表的备份和恢复 | Tech2k18</title>
+  <title> | Tech2k18</title>
   
 
 
@@ -310,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dsxlinux.github.io/2018/08/30/partition/">
+    <link itemprop="mainEntityOfPage" href="https://dsxlinux.github.io/2018/09/13/linux-live/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Dong Shouxin">
@@ -327,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">linux下磁盘分区表的备份和恢复</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -339,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-30T11:55:35+08:00">
-                2018-08-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T17:59:05+08:00">
+                2018-09-13
               </time>
             
 
@@ -349,28 +348,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -393,7 +370,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  629
+                  57
                 </span>
               
 
@@ -409,7 +386,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  1
                 </span>
               
             </div>
@@ -430,157 +407,33 @@
       
 
       
-        <p>本文主要介绍linux系统下磁盘分区表的备份和恢复方法。<br><a id="more"></a></p>
-<h4 id="1-磁盘分区类型"><a href="#1-磁盘分区类型" class="headerlink" title="1.磁盘分区类型"></a>1.磁盘分区类型</h4><p>最常接触的磁盘分区类型： MBR(Master Boot Record), GPT(Globe Partition Table)和Apple Partition(Mixed分区）。</p>
-<h4 id="2-MBR分区表"><a href="#2-MBR分区表" class="headerlink" title="2.MBR分区表"></a>2.MBR分区表</h4><ul>
-<li>MBR简介</li>
-</ul>
-<p>MBR = Main Boot Record，主引导分区。</p>
-<p>整个硬盘可分为MBR，DBR（Dos Boot Record，Dos引导记录），FAT（File Assign Table，文件分配表 ），BD（Boot Directory，根目录）和数据区。 </p>
-<p>MBR分区表位于硬盘第一个物理扇区（绝对扇区）柱面0，磁头0，扇区1处 。</p>
-<p>MBR的结构：</p>
-<table>
-<thead>
-<tr>
-<th>字节偏移（16进制）</th>
-<th>字节数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>00~1BD</td>
-<td>446</td>
-<td>引导代码</td>
-</tr>
-<tr>
-<td>1BE~1CD</td>
-<td>16</td>
-<td>分区表项1</td>
-</tr>
-<tr>
-<td>1CE~1DD</td>
-<td>16</td>
-<td>分区表项2</td>
-</tr>
-<tr>
-<td>1DE~1ED</td>
-<td>16</td>
-<td>分区表项3</td>
-</tr>
-<tr>
-<td>1EE~1FD</td>
-<td>16</td>
-<td>分区表项4</td>
-</tr>
-<tr>
-<td>1FE-1FF</td>
-<td>2</td>
-<td>签名值’55AA’</td>
-</tr>
-</tbody>
-</table>
-<p>MBR总共512 = 446 + 64 + 2</p>
-<ul>
-<li>MBR备份和恢复</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">备份MBR</span><br><span class="line"><span class="meta">#</span><span class="bash"> dd <span class="keyword">if</span>=/dev/sda of=/backup/mbr.backup  bs=1  count=512</span></span><br><span class="line">恢复MBR</span><br><span class="line"><span class="meta">#</span><span class="bash"> dd <span class="keyword">if</span>=/backup/mbr.backup  of=/dev/sda</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>备份分区表</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">备份分区表</span><br><span class="line"><span class="meta">#</span><span class="bash"> dd <span class="keyword">if</span>=/dev/sda of=/backup/partition_table.bak bs=1 count=64 skip=446</span></span><br><span class="line">恢复分区表</span><br><span class="line"><span class="meta">#</span><span class="bash"> dd <span class="keyword">if</span>=/backup/partition_table.bak of=/dev/sda bs=1 seek=446</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-GPT分区表"><a href="#3-GPT分区表" class="headerlink" title="3.GPT分区表"></a>3.GPT分区表</h4><ul>
-<li>GPT简介</li>
-</ul>
-<p>GUID = Globally Unique Identifier，全局唯一标识符，一个随机生成的字符串。</p>
-<p>GPT = GUID Partition Table，GUID分区表 </p>
-<p>GPT是一种新的标准，并在逐渐取代MBR。 </p>
-<p>支持几乎无限个分区数量，限制只在于操作系统——Windows支持最多128个GPT分区。</p>
-<p>MBR磁盘上，分区和启动信息是保存在一起的。如果这部分数据被覆盖或破坏，一切就over了。</p>
-<p>GPT在整个磁盘上保存多个这部分信息的副本， 并可以恢复被破坏的这部分信息。  </p>
-<p>MBR和GPT分区对比：</p>
-<table>
-<thead>
-<tr>
-<th>Basic MBR Disk</th>
-<th>Basic GPT Disk</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Master Boot Code</td>
-<td>Master Boot Code</td>
-</tr>
-<tr>
-<td>1st Partition Table Entry</td>
-<td>1st Partition Table Entry</td>
-</tr>
-<tr>
-<td>2nd Partition Table Entry</td>
-<td>2nd Partition Table Entry</td>
-</tr>
-<tr>
-<td>3rd Partition Table Entry</td>
-<td>3rd Partition Table Entry</td>
-</tr>
-<tr>
-<td>4th Partition Table Entry</td>
-<td>4th Partition Table Entry</td>
-</tr>
-<tr>
-<td>0x55 AA</td>
-<td>0x55 AA</td>
-</tr>
-<tr>
-<td></td>
-<td>Primary GUID Partition Table Header</td>
-</tr>
-<tr>
-<td></td>
-<td>GUID Partition Entry 1</td>
-</tr>
-<tr>
-<td></td>
-<td>GUID Partition Entry 2</td>
-</tr>
-<tr>
-<td></td>
-<td>GUID Partition Entry n</td>
-</tr>
-<tr>
-<td></td>
-<td>GUID Partition Entry 128</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>GUID Partition Entry 1</td>
-</tr>
-<tr>
-<td></td>
-<td>GUID Partition Entry 2</td>
-</tr>
-<tr>
-<td></td>
-<td>GUID Partition Entry n</td>
-</tr>
-<tr>
-<td></td>
-<td>GUID Partition Entry 128</td>
-</tr>
-<tr>
-<td></td>
-<td>Backup GUID Partition Table Header</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>GPT备份和还原</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">备份Protective MBR</span><br><span class="line"><span class="meta">#</span><span class="bash"> dd <span class="keyword">if</span>=/dev/sda of=gpt-mbr bs=512 count=1</span></span><br><span class="line">恢复Protective MBR</span><br><span class="line"><span class="meta">#</span><span class="bash"> dd <span class="keyword">if</span>=gpt-mbr of=/dev/sda bs=512 count=1</span></span><br><span class="line"></span><br><span class="line">备份完整的GPT分区表</span><br><span class="line"><span class="meta">#</span><span class="bash"> dd <span class="keyword">if</span>=/dev/sda of=gpt-partition bs=512 count=34</span></span><br><span class="line">恢复完整的GPT分区表</span><br><span class="line"><span class="meta">#</span><span class="bash"> dd <span class="keyword">if</span>=gpt--partition of=/dev/sda bs=512 count=34</span></span><br><span class="line"></span><br><span class="line">仅备份GPT头和GPT分区</span><br><span class="line"><span class="meta">#</span><span class="bash"> dd <span class="keyword">if</span>=/dev/sda of=gpt-partition bs=512 skip=1 count=33</span></span><br><span class="line">恢复单独的GPT分区信息</span><br><span class="line"><span class="meta">#</span><span class="bash"> dd <span class="keyword">if</span>=gpt-partition of=/dev/sda bs=512 skip=1 seek=1 count=33</span></span><br></pre></td></tr></table></figure>
+        <!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta property="og:title" content="直播地址">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>直播</title>
+</head>
+<body>
+<div style="width:100%; height:auto;">
+<p> 这里是直播的观看地址，可以直接观看，不需要其他播放器的支持。<b style="color:red">请允许您的浏览器支持flash插件。</b>原来使用播放器播放的方式也是可以的。<br>
+<div>
+<div id="id_video_container" style="width:100%; height:auto;"></div>
+<script src="//qzonestyle.gtimg.cn/open/qcloud/video/live/h5/live_connect.js" charset="utf-8"></script>
+<script type="text/javascript">
+    (function () {
+        var player = new qcVideo.Player("id_video_container", {
+            "live_url" : "http://2117.liveplay.myqcloud.com/live/2117_3336024a8a.flv",
+	    "live_url2" : "http://2117.liveplay.myqcloud.com/live/2117_3336024a8a.m3u8",
+            "width" : 480,
+            "height" : 320
+        });
+    })()
+</script>
+</div></p></div></body>
+</html>
 
       
     </div>
@@ -598,12 +451,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
-          
-        </div>
-      
 
       
       
@@ -613,8 +460,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/28/gitlab/" rel="next" title="Centos6搭建Gitlab服务">
-                <i class="fa fa-chevron-left"></i> Centos6搭建Gitlab服务
+              <a href="/2018/08/30/partition/" rel="next" title="linux下磁盘分区表的备份和恢复">
+                <i class="fa fa-chevron-left"></i> linux下磁盘分区表的备份和恢复
               </a>
             
           </div>
@@ -622,10 +469,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/13/linux-live/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -675,17 +518,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -756,22 +590,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-磁盘分区类型"><span class="nav-number">1.</span> <span class="nav-text">1.磁盘分区类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-MBR分区表"><span class="nav-number">2.</span> <span class="nav-text">2.MBR分区表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-GPT分区表"><span class="nav-number">3.</span> <span class="nav-text">3.GPT分区表</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

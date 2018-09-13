@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2018%2F09%2F13%2Flinux-live%2F</url>
+    <content type="text"><![CDATA[直播 这里是直播的观看地址，可以直接观看，不需要其他播放器的支持。请允许您的浏览器支持flash插件。原来使用播放器播放的方式也是可以的。 (function () { var player = new qcVideo.Player("id_video_container", { "live_url" : "http://2117.liveplay.myqcloud.com/live/2117_3336024a8a.flv", "live_url2" : "http://2117.liveplay.myqcloud.com/live/2117_3336024a8a.m3u8", "width" : 480, "height" : 320 }); })()]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[linux下磁盘分区表的备份和恢复]]></title>
     <url>%2F2018%2F08%2F30%2Fpartition%2F</url>
     <content type="text"><![CDATA[本文主要介绍linux系统下磁盘分区表的备份和恢复方法。 1.磁盘分区类型最常接触的磁盘分区类型： MBR(Master Boot Record), GPT(Globe Partition Table)和Apple Partition(Mixed分区）。 2.MBR分区表 MBR简介 MBR = Main Boot Record，主引导分区。 整个硬盘可分为MBR，DBR（Dos Boot Record，Dos引导记录），FAT（File Assign Table，文件分配表 ），BD（Boot Directory，根目录）和数据区。 MBR分区表位于硬盘第一个物理扇区（绝对扇区）柱面0，磁头0，扇区1处 。 MBR的结构： 字节偏移（16进制） 字节数 描述 00~1BD 446 引导代码 1BE~1CD 16 分区表项1 1CE~1DD 16 分区表项2 1DE~1ED 16 分区表项3 1EE~1FD 16 分区表项4 1FE-1FF 2 签名值’55AA’ MBR总共512 = 446 + 64 + 2 MBR备份和恢复 1234备份MBR# dd if=/dev/sda of=/backup/mbr.backup bs=1 count=512恢复MBR# dd if=/backup/mbr.backup of=/dev/sda 备份分区表 1234备份分区表# dd if=/dev/sda of=/backup/partition_table.bak bs=1 count=64 skip=446恢复分区表# dd if=/backup/partition_table.bak of=/dev/sda bs=1 seek=446 3.GPT分区表 GPT简介 GUID = Globally Unique Identifier，全局唯一标识符，一个随机生成的字符串。 GPT = GUID Partition Table，GUID分区表 GPT是一种新的标准，并在逐渐取代MBR。 支持几乎无限个分区数量，限制只在于操作系统——Windows支持最多128个GPT分区。 MBR磁盘上，分区和启动信息是保存在一起的。如果这部分数据被覆盖或破坏，一切就over了。 GPT在整个磁盘上保存多个这部分信息的副本， 并可以恢复被破坏的这部分信息。 MBR和GPT分区对比： Basic MBR Disk Basic GPT Disk Master Boot Code Master Boot Code 1st Partition Table Entry 1st Partition Table Entry 2nd Partition Table Entry 2nd Partition Table Entry 3rd Partition Table Entry 3rd Partition Table Entry 4th Partition Table Entry 4th Partition Table Entry 0x55 AA 0x55 AA Primary GUID Partition Table Header GUID Partition Entry 1 GUID Partition Entry 2 GUID Partition Entry n GUID Partition Entry 128 GUID Partition Entry 1 GUID Partition Entry 2 GUID Partition Entry n GUID Partition Entry 128 Backup GUID Partition Table Header GPT备份和还原 1234567891011121314备份Protective MBR# dd if=/dev/sda of=gpt-mbr bs=512 count=1恢复Protective MBR# dd if=gpt-mbr of=/dev/sda bs=512 count=1备份完整的GPT分区表# dd if=/dev/sda of=gpt-partition bs=512 count=34恢复完整的GPT分区表# dd if=gpt--partition of=/dev/sda bs=512 count=34仅备份GPT头和GPT分区# dd if=/dev/sda of=gpt-partition bs=512 skip=1 count=33恢复单独的GPT分区信息# dd if=gpt-partition of=/dev/sda bs=512 skip=1 seek=1 count=33]]></content>
@@ -175,11 +180,6 @@
       <tags>
         <tag>mysql</tag>
       </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2F2018%2F07%2F19%2Flinux-live%2F</url>
-    <content type="text"><![CDATA[直播 这里是直播的观看地址，可以直接观看，不需要其他播放器的支持。请允许您的浏览器支持flash插件。原来使用播放器播放的方式也是可以的。 (function () { var player = new qcVideo.Player("id_video_container", { "live_url" : "http://2117.liveplay.myqcloud.com/live/2117_332e62ae51.flv", "live_url2" : "http://2117.liveplay.myqcloud.com/live/2117_332e62ae51.m3u8", "width" : 480, "height" : 320 }); })()]]></content>
   </entry>
   <entry>
     <title><![CDATA[lftp命令详解]]></title>

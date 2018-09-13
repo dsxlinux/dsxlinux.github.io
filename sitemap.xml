@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dsxlinux.github.io/2018/09/13/linux-live/</loc>
+    
+    <lastmod>2018-09-13T09:59:05.852Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dsxlinux.github.io/2018/08/10/mysql-backup/</loc>
     
     <lastmod>2018-09-13T08:54:38.979Z</lastmod>
@@ -145,13 +152,6 @@
     <loc>https://dsxlinux.github.io/2018/06/08/linux-text/</loc>
     
     <lastmod>2018-07-26T09:12:56.944Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://dsxlinux.github.io/2018/07/19/linux-live/</loc>
-    
-    <lastmod>2018-07-19T07:23:47.532Z</lastmod>
     
   </url>
   
